@@ -99,7 +99,8 @@ def check_item(it):
             errs.append("unbalanced \\[ \\]")
         if re.search(r"\\\((?:(?!\\\)).)*[<>]", s, flags=re.S):
             errs.append("bare < or > inside math")
-        if re.search(r"\bNone\b|\bnan\b|\{\{|\}\}\}", s):
+        # "}}}" is legal LaTeX (nested radicals and fractions), so it is not a placeholder signal; "{v}" is an unfilled identity template.
+        if re.search(r"\bNone\b|\bnan\b|\{\{|\{v\}", s):
             errs.append("placeholder text in item")
     if not it["parts"]:
         errs.append("no parts")

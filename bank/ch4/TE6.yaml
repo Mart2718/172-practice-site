@@ -1,0 +1,53 @@
+outcome: TE6
+title: Applications of Trigonometry
+chapter: 4
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/TE6/
+objective: Use right-triangle trigonometry, the Law of Sines, and the Law of Cosines to answer application problems.
+generator: te
+problems:
+- id: TE6-F-01
+  tier: floor
+  item_type:
+  - TE6.a
+  kind: template
+  template: right_triangle_application
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Sketch and label a right triangle. Decide which side is opposite, which is adjacent, and which is the hypotenuse relative to the angle in the problem. Angles of elevation and depression are measured from the horizontal.
+  slips:
+  - Measuring an angle of depression from the vertical instead of the horizontal.
+  - Choosing the wrong side as the hypotenuse, such as using the ladder's height instead of its length.
+  - Having the calculator in radian mode.
+  status: checked
+- id: TE6-F-02
+  tier: floor
+  item_type:
+  - TE6.b
+  kind: template
+  template: law_of_cosines_application
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Sketch the triangle. The two distances traveled are sides, and the angle between the paths is the included angle. The unknown distance is the side opposite that angle.
+  slips:
+  - Using the Pythagorean Theorem when the angle is not \(90^{\circ}\).
+  - Using an angle that is not between the two known sides.
+  - Forgetting to take the square root at the end.
+  status: checked
+- id: TE6-A-01
+  tier: assessment
+  item_type:
+  - TE6.a
+  - TE6.b
+  kind: template
+  template: law_of_sines_application
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Sketch the triangle. Find the third angle first (\(180^{\circ}\) minus the other two), then use the Law of Sines with the known side, which is opposite that third angle.
+  slips:
+  - Matching the known side to the wrong angle. The known side is opposite the angle at the object.
+  - Skipping the third angle.
+  - Rounding an angle or a side before the final step.
+  status: checked

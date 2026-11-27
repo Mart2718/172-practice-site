@@ -260,8 +260,8 @@
    "section": "",
    "blurb": "Graphing tangent, cotangent, secant, and cosecant: asymptotes, period, domain, and range",
    "exam": "Exam 2",
-   "items": 0,
-   "families": 0,
+   "items": 36,
+   "families": 3,
    "checkit": "https://tbil.org/preview/precalculus/exercises/#/bank/PF2/"
   },
   {
@@ -271,8 +271,8 @@
    "section": "",
    "blurb": "Inverse sine, cosine, and tangent: exact values, domain and range, and graphs",
    "exam": "Exam 2",
-   "items": 0,
-   "families": 0,
+   "items": 36,
+   "families": 3,
    "checkit": "https://tbil.org/preview/precalculus/exercises/#/bank/PF3/"
   },
   {
@@ -282,8 +282,8 @@
    "section": "",
    "blurb": "Sum and difference, half-angle, and power-reducing formulas, and the Pythagorean identity",
    "exam": "Exam 2",
-   "items": 0,
-   "families": 0,
+   "items": 72,
+   "families": 6,
    "checkit": "https://tbil.org/preview/precalculus/exercises/#/bank/TE1/"
   },
   {
@@ -293,8 +293,8 @@
    "section": "",
    "blurb": "Verifying identities: rewriting in sines and cosines, distributing, simplifying, and working on one side",
    "exam": "Exam 2",
-   "items": 0,
-   "families": 0,
+   "items": 24,
+   "families": 2,
    "checkit": "https://tbil.org/preview/precalculus/exercises/#/bank/TE2/"
   },
   {
@@ -304,8 +304,8 @@
    "section": "",
    "blurb": "Solving trigonometric equations: unit-circle angles, all solutions, squared equations, and multiple angles",
    "exam": "Exam 2",
-   "items": 0,
-   "families": 0,
+   "items": 48,
+   "families": 4,
    "checkit": "https://tbil.org/preview/precalculus/exercises/#/bank/TE3/"
   },
   {
@@ -315,8 +315,8 @@
    "section": "",
    "blurb": "Solving right triangles with sine, cosine, tangent, and the Pythagorean Theorem",
    "exam": "Exam 2",
-   "items": 0,
-   "families": 0,
+   "items": 24,
+   "families": 2,
    "checkit": "https://tbil.org/preview/precalculus/exercises/#/bank/TE4/"
   },
   {
@@ -326,8 +326,8 @@
    "section": "",
    "blurb": "Solving non-right triangles with the law of sines and the law of cosines, including the two-triangle case",
    "exam": "Exam 2",
-   "items": 0,
-   "families": 0,
+   "items": 48,
+   "families": 4,
    "checkit": "https://tbil.org/preview/precalculus/exercises/#/bank/TE5/"
   },
   {
@@ -337,8 +337,8 @@
    "section": "",
    "blurb": "Word problems that use trigonometry to find a side or an angle: sketching the triangle and choosing the right tool",
    "exam": "Exam 2",
-   "items": 0,
-   "families": 0,
+   "items": 36,
+   "families": 3,
    "checkit": "https://tbil.org/preview/precalculus/exercises/#/bank/TE6/"
   },
   {

@@ -1,0 +1,38 @@
+outcome: TE4
+title: Solving Right Triangles
+chapter: 4
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/TE4/
+objective: Solve right triangles for all missing sides and angles using sine, cosine, tangent, and the Pythagorean Theorem.
+generator: te
+problems:
+- id: TE4-F-01
+  tier: floor
+  item_type:
+  - TE4.a
+  kind: template
+  template: right_triangle_angle_given
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Label the sides opposite, adjacent, and hypotenuse relative to the given angle. Choose sine, cosine, or tangent by which two sides are involved. Find the other acute angle as \(90^{\circ}\) minus the given angle.
+  slips:
+  - Having the calculator in radian mode when the angle is in degrees.
+  - Choosing sine when the two sides involved are the opposite and the adjacent sides. That calls for tangent.
+  - Rounding one side and then using the rounded value to find the next side.
+  status: checked
+- id: TE4-A-01
+  tier: assessment
+  item_type:
+  - TE4.a
+  - TE4.b
+  kind: template
+  template: right_triangle_sides_given
+  seed: 1
+  answer: generated
+  solution: null
+  hint: With two sides known, use the Pythagorean Theorem for the third side and an inverse trig function for an angle. Use the given values, not a rounded side, to find the angle.
+  slips:
+  - Using \(\sin\), \(\cos\), or \(\tan\) instead of the inverse function when finding an angle.
+  - Choosing the wrong pair of sides for the ratio.
+  - Having the calculator in radian mode.
+  status: checked
