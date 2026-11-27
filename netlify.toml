@@ -1,0 +1,7 @@
+# Netlify settings for the Math 172 practice site.
+# The website lives in the site/ folder. There is nothing to build: the problem pool in site/pool/
+# is generated ahead of time with generators/pool.py and committed.
+# These settings override anything typed into the Netlify dashboard.
+[build]
+  publish = "site"
+  command = "echo 'Static site: no build step'"
