@@ -1,0 +1,167 @@
+# The 38 Math 172 standards, in course order. Titles for Chapter 1 come from blueprints/ch1.md; the rest from the CheckIt support pages.
+# chapter: 1-2 are covered by Exam 1, 3-4 by Exam 2, and the Final covers everything (Chapter 5 first appears on the Final).
+standards:
+  - code: FN1
+    title: 'Introduction to Functions'
+    chapter: 1
+    section: '1.1'
+    blurb: 'Is a relation a function?'
+  - code: FN2
+    title: 'Function Notation'
+    chapter: 1
+    section: '1.2'
+    blurb: 'Function notation: evaluating piecewise functions, and reading inputs and outputs from a graph'
+  - code: FN3
+    title: 'Characteristics of a Function''s Graph'
+    chapter: 1
+    section: '1.2'
+    blurb: 'Graph features: domain and range, intercepts, maxima and minima, and where a function increases and decreases'
+  - code: LF1
+    title: 'Slope and Average Rate of Change'
+    chapter: 1
+    section: '1.3'
+    blurb: 'Average rate of change of a function on an interval, and the slope of a line from points, a table, or a graph'
+  - code: LF2
+    title: 'Equations of Lines'
+    chapter: 1
+    section: '1.4'
+    blurb: 'Equations of lines: slope and y-intercept from standard form, and equations from a point and slope, two points, or a graph'
+  - code: LF3
+    title: 'Graphs of Linear Equations'
+    chapter: 1
+    section: '1.4'
+    blurb: 'Graphing lines from points, intercepts, a slope, or an equation in any form, including horizontal and vertical lines'
+  - code: LF5
+    title: 'Linear Models and Meanings'
+    chapter: 1
+    section: '1.4'
+    blurb: 'Linear models from word problems: the meaning of slope and intercept, writing the model, and using it to find an input or an output'
+  - code: PR1
+    title: 'Graphing Quadratic Functions'
+    chapter: 1
+    section: '1.5'
+    blurb: 'Graphing quadratic functions: which way the parabola opens, the vertex as a maximum or minimum, the axis of symmetry, and a sketch'
+  - code: PR2
+    title: 'Quadratic Models'
+    chapter: 1
+    section: '1.5'
+    blurb: 'Quadratic models in context: when a quantity reaches its maximum or minimum, how high or low it gets, and what those numbers mean'
+  - code: FN5
+    title: 'Operations and Composition'
+    chapter: 1
+    section: '1.6'
+    blurb: 'Combining functions: sums, differences, products, quotients, and compositions, as formulas and as values'
+  - code: FN6
+    title: 'Inverse Functions'
+    chapter: 1
+    section: '1.7'
+    blurb: 'Inverse functions: what an inverse undoes, and finding the inverse of a power or root function and of a fraction'
+  - code: FN4
+    title: 'Transformations of Functions'
+    chapter: 1
+    section: '1.8'
+    blurb: 'Transformations: shifting, reflecting, and sketching a new graph from an old one'
+  - code: TR1
+    title: 'Degrees, Radians and Standard Position'
+    chapter: 2
+    blurb: 'Converting between degrees and radians, and drawing angles in standard position'
+  - code: TR2
+    title: 'Coterminal Angles and Arc Length'
+    chapter: 2
+    blurb: 'Coterminal angles in degrees and radians, and the length of an arc cut off by a central angle'
+  - code: TR5
+    title: 'Exact Trig Values'
+    chapter: 2
+    blurb: 'Exact values of the six trig functions from special angles, from a point on the unit circle, and from one coordinate and a quadrant'
+  - code: PF1
+    title: 'Graphs of Sine and Cosine'
+    chapter: 2
+    blurb: 'Graphs of sine and cosine: amplitude, period, phase shift, and sketching two periods'
+  - code: EL1
+    title: 'Introduction to Exponentials'
+    chapter: 3
+    blurb: 'Introduction to exponentials: recognizing, writing, and evaluating exponential functions'
+  - code: EL2
+    title: 'Graphing Exponential Functions'
+    chapter: 3
+    blurb: 'Graphing exponential functions: domain, range, and horizontal asymptotes'
+  - code: EL3
+    title: 'Introduction to Logarithms'
+    chapter: 3
+    blurb: 'Introduction to logarithms: converting between forms and evaluating'
+  - code: EL4
+    title: 'Graphing Logarithmic Functions'
+    chapter: 3
+    blurb: 'Graphing logarithmic functions: domain, range, and asymptotes'
+  - code: EL5
+    title: 'Properties of Logarithms'
+    chapter: 3
+    blurb: 'Properties of logarithms: expanding and condensing logarithmic expressions'
+  - code: EL6
+    title: 'Solving Exponential and Logarithmic Equations'
+    chapter: 3
+    blurb: 'Solving exponential and logarithmic equations'
+  - code: EL7
+    title: 'Applications of Exponential and Logarithmic Functions'
+    chapter: 3
+    blurb: 'Applications: compound interest, population growth, depreciation, and half-life'
+  - code: PF2
+    title: 'Graphing Tangent, Cotangent, Secant, and Cosecant'
+    chapter: 4
+    blurb: 'Graphing tangent, cotangent, secant, and cosecant: asymptotes, period, domain, and range'
+  - code: PF3
+    title: 'Inverse Trigonometric Functions'
+    chapter: 4
+    blurb: 'Inverse sine, cosine, and tangent: exact values, domain and range, and graphs'
+  - code: TE1
+    title: 'Trigonometric Identities'
+    chapter: 4
+    blurb: 'Sum and difference, half-angle, and power-reducing formulas, and the Pythagorean identity'
+  - code: TE2
+    title: 'Verifying Trigonometric Identities'
+    chapter: 4
+    blurb: 'Verifying identities: rewriting in sines and cosines, distributing, simplifying, and working on one side'
+  - code: TE3
+    title: 'Solving Trigonometric Equations'
+    chapter: 4
+    blurb: 'Solving trigonometric equations: unit-circle angles, all solutions, squared equations, and multiple angles'
+  - code: TE4
+    title: 'Solving Right Triangles'
+    chapter: 4
+    blurb: 'Solving right triangles with sine, cosine, tangent, and the Pythagorean Theorem'
+  - code: TE5
+    title: 'The Law of Sines and the Law of Cosines'
+    chapter: 4
+    blurb: 'Solving non-right triangles with the law of sines and the law of cosines, including the two-triangle case'
+  - code: TE6
+    title: 'Applications of Trigonometry'
+    chapter: 4
+    blurb: 'Word problems that use trigonometry to find a side or an angle: sketching the triangle and choosing the right tool'
+  - code: PR3
+    title: 'Graphs of Polynomial Functions'
+    chapter: 5
+    blurb: 'Graphs of polynomials: zeros and multiplicities, the y-intercept, end behavior, and sketching'
+  - code: PR4
+    title: 'Polynomial Long Division'
+    chapter: 5
+    blurb: 'Polynomial long division: quotient, remainder, and writing f(x) = quotient + remainder over divisor'
+  - code: PR5
+    title: 'Zeros of Polynomials'
+    chapter: 5
+    blurb: 'Zeros of polynomials: rational zero candidates, synthetic division, the quadratic formula, and linear factors'
+  - code: PR6
+    title: 'Rational Equations'
+    chapter: 5
+    blurb: 'Rational equations: excluded values, clearing denominators, solving, and extraneous solutions'
+  - code: PR7
+    title: 'Graphs of Rational Functions'
+    chapter: 5
+    blurb: 'Graphs of rational functions: holes, vertical and horizontal asymptotes, intercepts, domain, and sketching'
+  - code: PR8
+    title: 'Quadratic Inequalities'
+    chapter: 5
+    blurb: 'Quadratic inequalities: boundary points, testing intervals, interval notation, and number lines'
+  - code: PR9
+    title: 'Rational Inequalities'
+    chapter: 5
+    blurb: 'Rational inequalities: one fraction against 0, critical points, sign charts, and interval notation'

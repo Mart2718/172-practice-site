@@ -1,0 +1,11 @@
+# Netlify headers. The site is meant to be embedded in Canvas and LibreTexts, so there is deliberately
+# no X-Frame-Options and no frame-ancestors rule. Everything is served from this site: no outside scripts,
+# styles, fonts, images or requests. MathJax needs inline styles and a worker made from a blob URL.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'
+/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+/pool/*
+  Cache-Control: public, max-age=300
