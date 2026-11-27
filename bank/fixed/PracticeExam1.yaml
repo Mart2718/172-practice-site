@@ -1,0 +1,705 @@
+# Hand-written problems that appear exactly as written (no generator, no random versions).
+# These are the 38 questions from the Exam 1 review site, rewritten in LaTeX with hints and common slips.
+# Fields: id, standard, stem, parts[q,a], hint, slips[], figures[file,alt,table], table (a data table in the problem body), note.
+# `note` records any change from the original Lab item; the site does not show it.
+source: Practice Exam 1 review (the 38 questions on the Exam 1 review site, 172exam1review)
+items:
+- id: PE1-01
+  standard: PR2
+  stem: A ball is thrown upward. Its height after \(t\) seconds is \(H(t) = -16t^{2} + 80t\), in feet.
+  parts:
+  - q: At what time is the height a maximum?
+    a: \(t = -\dfrac{80}{2(-16)} = 2.5\) seconds.
+  - q: What is the maximum height?
+    a: \(H(2.5) = -16(2.5)^{2} + 80(2.5) = 100\) feet.
+  hint: The graph of a quadratic function is a parabola, and this one opens downward, so the maximum is at the vertex. The vertex is at \(t = -\dfrac{b}{2a}\). The height is the output, so put that time back into \(H\).
+  slips:
+  - Stopping at the time. Part (b) asks for a height, which is an output of \(H\), not the input \(2.5\).
+  - Losing the negative sign in \(-\dfrac{b}{2a}\). Here \(a = -16\), so the denominator is negative and the two negatives cancel.
+  - Leaving off units. Time is in seconds and height is in feet.
+  note: Lab wrote the function as h(t); renamed H(t) because h is reserved for the increment in f(x+h) (CONVENTIONS.md).
+- id: PE1-02
+  standard: PR2
+  stem: The cost, in dollars, to produce \(x\) units is \(C(x) = 0.4x^{2} - 100x + 8500\).
+  parts:
+  - q: How many units minimize the cost?
+    a: \(x = -\dfrac{-100}{2(0.4)} = 125\) units.
+  - q: What is the minimum cost?
+    a: \(C(125) = 0.4(125)^{2} - 100(125) + 8500\), so the minimum cost is $2,250.
+  hint: This parabola opens upward, so the vertex is a minimum. Find the vertex input with \(-\dfrac{b}{2a}\), then evaluate \(C\) there for the cost.
+  slips:
+  - Using \(b = 100\) instead of \(b = -100\). The sign of \(b\) matters.
+  - Giving \(125\) as the minimum cost. \(125\) is the number of units (the input); the cost is the output.
+  - Leaving off units or the dollar sign.
+  note: Lab answer had a formatting error in the dollar amount; the value 2,250 was already correct.
+- id: PE1-03
+  standard: TR1
+  stem: ''
+  parts:
+  - q: Convert \(165\text{°}\) to radians.
+    a: \(165\text{°}\cdot\dfrac{\pi}{180\text{°}} = \dfrac{11\pi}{12}\).
+  - q: Convert \(\dfrac{3\pi}{5}\) radians to degrees.
+    a: \(\dfrac{3\pi}{5}\cdot\dfrac{180\text{°}}{\pi} = 108\text{°}\).
+  hint: To change degrees to radians multiply by \(\dfrac{\pi}{180\text{°}}\). To change radians to degrees multiply by \(\dfrac{180\text{°}}{\pi}\). Reduce the fraction.
+  slips:
+  - 'Using the conversion factor upside down. Check the answer: \(165\text{°}\) is a bit less than a half turn, so its radian measure should be a bit less than \(\pi\).'
+  - Not reducing \(\dfrac{165\pi}{180}\) to lowest terms.
+  - Leaving \(\pi\) in a degree answer. When you convert from radians, the \(\pi\) cancels.
+- id: PE1-04
+  standard: TR1
+  stem: ''
+  parts:
+  - q: Convert \(-100\text{°}\) to radians.
+    a: \(-100\text{°}\cdot\dfrac{\pi}{180\text{°}} = -\dfrac{5\pi}{9}\).
+  - q: Convert \(-\dfrac{9\pi}{4}\) radians to degrees.
+    a: \(-\dfrac{9\pi}{4}\cdot\dfrac{180\text{°}}{\pi} = -405\text{°}\).
+  hint: 'Convert exactly as you would a positive angle. The negative sign stays: it means the angle is measured clockwise.'
+  slips:
+  - Dropping the negative sign.
+  - Replacing \(-405\text{°}\) with a coterminal angle. The question asks for the same measure in different units, not a different angle.
+  - Using the conversion factor upside down.
+- id: PE1-05
+  standard: FN1
+  stem: ''
+  parts:
+  - q: Find the domain and range of the relation \(\{(-3,4),(1,2),(3,4),(5,-2)\}\).
+    a: 'Domain: \(\{-3,1,3,5\}\). Range: \(\{-2,2,4\}\).'
+  - q: Does the relation \(\{(2,5),(6,1),(2,9)\}\) define a function? Explain.
+    a: No. The input \(2\) is paired with two different outputs, \(5\) and \(9\).
+  hint: The domain is the set of inputs (first coordinates) and the range is the set of outputs (second coordinates). A function gives every input exactly one output.
+  slips:
+  - Listing a repeated output twice in the range. In a set, \(4\) is listed once.
+  - Checking for repeated outputs. A function only forbids one <em>input</em> with two different outputs; two inputs may share an output.
+  - 'Mixing up the coordinates: the domain comes from the first number in each pair.'
+- id: PE1-06
+  standard: FN1
+  stem: Find the domain of each function. Write your answer in interval notation.
+  parts:
+  - q: \(f(x) = \dfrac{x+3}{x-6}\)
+    a: 'The denominator cannot be \(0\), so \(x \ne 6\). Domain: \((-\infty,6)\cup(6,\infty)\).'
+  - q: \(g(x) = \sqrt{3x-12}\)
+    a: 'The radicand must be at least \(0\): \(3x-12 \ge 0\), so \(x \ge 4\). Domain: \([4,\infty)\).'
+  hint: 'Ask which inputs would break the function: dividing by zero in (a), or a negative number under a square root in (b). Write what is left in interval notation.'
+  slips:
+  - Excluding \(x=-3\) in (a). Only the denominator can make a rational function undefined; a numerator of \(0\) is fine.
+  - Writing \((4,\infty)\) in (b). At \(x=4\) the radicand is \(0\), and \(\sqrt{0}\) is defined, so \(4\) is included.
+  - Putting a bracket next to \(\infty\). Infinity is never included.
+  note: Lab tag was FN3. Retagged FN1 to match blueprint item types FN1.d (domain of a radical function) and the FN1 radical and rational domain templates.
+- id: PE1-07
+  standard: FN6
+  stem: A one-to-one function \(f\) is given by the table.
+  parts:
+  - q: Find \(f^{-1}(2)\).
+    a: \(f^{-1}(2) = 0\), because \(f(0) = 2\).
+  - q: Find \(f^{-1}(-3)\).
+    a: \(f^{-1}(-3) = 2\), because \(f(2) = -3\).
+  - q: Find \(f^{-1}(6)\).
+    a: \(f^{-1}(6) = -1\), because \(f(-1) = 6\).
+  hint: \(f^{-1}(b) = a\) means \(f(a) = b\). Find \(b\) in the \(f(x)\) row, then read the input above it.
+  slips:
+  - Reading \(f^{-1}(2)\) as \(f(2)\). The \(2\) is an output of \(f\), so look for it in the bottom row.
+  - Reading \(f^{-1}(2)\) as \(\dfrac{1}{f(2)}\). The \(-1\) in \(f^{-1}\) means inverse, not reciprocal.
+  - Reporting the output from the table instead of the input above it.
+  table:
+    caption: Values of \(f(x)\)
+    headers:
+    - \(x\)
+    - '-1'
+    - '0'
+    - '2'
+    - '4'
+    rows:
+    - - \(f(x)\)
+      - '6'
+      - '2'
+      - '-3'
+      - '-8'
+    row_headers: true
+- id: PE1-08
+  standard: FN6
+  stem: Find the inverse formula for each function.
+  parts:
+  - q: \(f(x) = 6x + 11\)
+    a: \(f^{-1}(x) = \dfrac{x-11}{6}\).
+  - q: \(g(x) = \dfrac{3x-5}{x+4}\)
+    a: 'Swap and solve: \(x = \dfrac{3y-5}{y+4}\), so \(xy + 4x = 3y - 5\), so \(xy - 3y = -4x - 5\), so \(y(x-3) = -4x-5\). Then \(g^{-1}(x) = \dfrac{-4x-5}{x-3} = \dfrac{4x+5}{3-x}\).'
+  hint: Write \(y = f(x)\), swap \(x\) and \(y\), then solve for \(y\). In (b), collect every \(y\) term on one side so you can factor \(y\) out.
+  slips:
+  - Solving for \(y\) but forgetting to swap \(x\) and \(y\).
+  - Writing \(f^{-1}(x) = \dfrac{1}{6x+11}\). The \(-1\) is not an exponent.
+  - In (b), dividing instead of factoring when \(y\) appears in two terms.
+- id: PE1-09
+  standard: LF2
+  stem: ''
+  parts:
+  - q: Write in point-slope form the line with slope \(-3\) through \((2,-5)\).
+    a: \(y + 5 = -3(x-2)\).
+  - q: Write in slope-intercept form the line through \((0,4)\) and \((3,13)\).
+    a: \(m = \dfrac{13-4}{3-0} = 3\) and the \(y\)-intercept is \(4\), so \(y = 3x + 4\).
+  hint: Point-slope form is \(y - y_1 = m(x - x_1)\). With two points, find the slope first. The point on the \(y\)-axis gives the intercept directly.
+  slips:
+  - Writing \(y - 5\) instead of \(y + 5\). Subtracting \(-5\) gives \(+5\).
+  - Putting the point's coordinates in the wrong places, for example \(y - 2 = -3(x + 5)\).
+  - Subtracting the coordinates in a different order on the top and the bottom of the slope.
+- id: PE1-10
+  standard: LF2
+  stem: ''
+  parts:
+  - q: Determine the slope and \(y\)-intercept of the line \(5x + 2y = 14\).
+    a: 'Solve for \(y\): \(2y = -5x + 14\), so \(y = -\dfrac{5}{2}x + 7\). The slope is \(-\dfrac{5}{2}\) and the \(y\)-intercept is \((0,7)\).'
+  hint: Solve for \(y\) so the equation looks like \(y = mx + b\). Divide every term, including the right side, by the coefficient of \(y\).
+  slips:
+  - Reading the slope as \(5\) straight from the equation. This is standard form, not slope-intercept form.
+  - Dividing only some terms by \(2\). The \(14\) must be divided too.
+  - Losing the sign when moving \(5x\) to the other side.
+- id: PE1-11
+  standard: PF1
+  stem: For each function, identify the amplitude, period, midline, and phase shift.
+  parts:
+  - q: \(y = 2\sin(4x - \pi) + 3\)
+    a: Amplitude \(2\); period \(\dfrac{\pi}{2}\); midline \(y = 3\); phase shift \(\dfrac{\pi}{4}\) to the right, because \(4x - \pi = 4\left(x - \dfrac{\pi}{4}\right)\).
+  - q: \(y = -\cos\left(\dfrac{1}{3}x + \dfrac{\pi}{6}\right) - 4\)
+    a: Amplitude \(1\); period \(6\pi\); midline \(y = -4\); phase shift \(\dfrac{\pi}{2}\) to the left, because \(\dfrac{1}{3}x + \dfrac{\pi}{6} = \dfrac{1}{3}\left(x + \dfrac{\pi}{2}\right)\).
+  hint: Compare with \(y = A\sin(B(x - C)) + D\). The amplitude is \(|A|\), the period is \(\dfrac{2\pi}{B}\), and the midline is \(y = D\). For the phase shift, factor \(B\) out of the parentheses first.
+  slips:
+  - 'Reading the phase shift as \(\pi\) in (a). Factor out the \(4\): the shift is \(\dfrac{\pi}{4}\).'
+  - Calling the amplitude \(-1\) in (b). Amplitude is never negative; the minus sign is a reflection.
+  - Using \(B = 3\) in (b). The coefficient of \(x\) is \(\dfrac{1}{3}\), so the period is \(2\pi \div \dfrac{1}{3}\).
+- id: PE1-12
+  standard: PF1
+  stem: A sinusoidal wave \(y = A\sin(Bx)\), with \(A > 0\) and \(B > 0\), has a peak at \(\left(\dfrac{\pi}{4}, 3\right)\) and the next trough at \(\left(\dfrac{3\pi}{4}, -3\right)\).
+  parts:
+  - q: Find the amplitude and period.
+    a: 'Amplitude \(= 3\). A peak to the next trough is half a period: \(\dfrac{3\pi}{4} - \dfrac{\pi}{4} = \dfrac{\pi}{2} = \dfrac{T}{2}\), so \(T = \pi\).'
+  - q: Write the equation.
+    a: \(B = \dfrac{2\pi}{\pi} = 2\), so \(y = 3\sin(2x)\).
+  hint: The amplitude is the height of the peak above the midline. A peak and the very next trough are half a period apart.
+  slips:
+  - Using the distance \(\dfrac{\pi}{2}\) as the full period. It is only half.
+  - Writing \(B = \text{period}\). The relationship is \(B = \dfrac{2\pi}{\text{period}}\).
+  - Giving the amplitude as \(6\), the distance from the peak to the trough.
+- id: PE1-13
+  standard: FN3
+  stem: Use the graph of \(f\).
+  parts:
+  - q: State the domain and range.
+    a: Domain \([-4,5]\); range \([-4,5]\).
+  - q: State the interior local minimum and maximum values, with their \(x\)-locations.
+    a: Local minimum \(-4\) at \(x = -1\); local maximum \(5\) at \(x = 2\).
+  - q: State the intervals where \(f\) is increasing and where it is decreasing.
+    a: Decreasing on \((-4,-1)\cup(2,5)\); increasing on \((-1,2)\).
+  hint: Read the domain from left to right and the range from bottom to top. "Interior" means not at an endpoint. Increasing and decreasing are described with \(x\)-intervals, read left to right.
+  slips:
+  - Giving the \(y\)-value when the question asks for the \(x\)-location, or the reverse.
+  - Reporting an endpoint as a local minimum or maximum. Interior extrema exclude the endpoints.
+  - Describing increasing and decreasing intervals with \(y\)-values. They are intervals of \(x\).
+  figures:
+  - file: function-variation-f.png
+    alt: 'Graph of f on the interval from x = -4 to x = 5. One smooth curve with no breaks. Four points are marked and labeled: (-4, 3), (-1, -4), (2, 5) and (5, 1). Reading left to right, the curve starts at (-4, 3), goes
+      down to (-1, -4), goes up to (2, 5), then goes down to (5, 1). The x-axis is shown from -4.5 to 5.5 with grid lines every 1 unit, and the y-axis from -5 to 7 with grid lines every 2 units. A table of the labeled points
+      is below the graph.'
+    table:
+      caption: Labeled points on the graph of \(f\), from left to right
+      toggle: Table of the labeled points
+      headers:
+      - \(x\)
+      - \(f(x)\)
+      rows:
+      - - '-4'
+        - '3'
+      - - '-1'
+        - '-4'
+      - - '2'
+        - '5'
+      - - '5'
+        - '1'
+- id: PE1-14
+  standard: FN3
+  stem: Use the graph of \(g\).
+  parts:
+  - q: State the domain and range.
+    a: Domain \([-6,3]\); range \([-3,6]\).
+  - q: State the interior local maximum and minimum values, with their \(x\)-locations.
+    a: Local maximum \(6\) at \(x = -3\); local minimum \(-3\) at \(x = 0\).
+  - q: State the intervals where \(g\) is increasing and where it is decreasing.
+    a: Increasing on \((-6,-3)\cup(0,3)\); decreasing on \((-3,0)\).
+  hint: Read the domain from left to right and the range from bottom to top, including the endpoints. "Interior" means not at an endpoint.
+  slips:
+  - Giving the \(y\)-value when the question asks for the \(x\)-location, or the reverse.
+  - Taking the range from the endpoints only. The range runs from the lowest point to the highest point on the whole graph.
+  - Describing increasing and decreasing intervals with \(y\)-values. They are intervals of \(x\).
+  figures:
+  - file: function-variation-g.png
+    alt: 'Graph of g on the interval from x = -6 to x = 3. One smooth curve with no breaks. Four points are marked and labeled: (-6, -2), (-3, 6), (0, -3) and (3, 4). Reading left to right, the curve starts at (-6, -2), goes
+      up to (-3, 6), goes down to (0, -3), then goes up to (3, 4). The x-axis is shown from -6.5 to 3.5 with grid lines every 1 unit, and the y-axis from -5 to 7 with grid lines every 2 units. A table of the labeled points
+      is below the graph.'
+    table:
+      caption: Labeled points on the graph of \(g\), from left to right
+      toggle: Table of the labeled points
+      headers:
+      - \(x\)
+      - \(g(x)\)
+      rows:
+      - - '-6'
+        - '-2'
+      - - '-3'
+        - '6'
+      - - '0'
+        - '-3'
+      - - '3'
+        - '4'
+- id: PE1-15
+  standard: LF5
+  stem: Internet Plan A costs $25 per month plus $0.08 per GB of data. Plan B costs a flat $45 per month.
+  parts:
+  - q: Write linear cost models \(C_A(x)\) and \(C_B(x)\) for \(x\) GB of data.
+    a: \(C_A(x) = 0.08x + 25\) and \(C_B(x) = 45\).
+  - q: Find the break-even point by solving \(C_A(x) = C_B(x)\).
+    a: \(0.08x + 25 = 45\), so \(x = 250\) GB. At \(250\) GB both plans cost $45.
+  hint: A linear model is (rate) \(\cdot\, x\) + (fixed amount). Plan B has no per-GB charge. Break-even means the two costs are equal.
+  slips:
+  - 'Attaching the fixed fee to \(x\): writing \(25x + 0.08\).'
+  - Writing \(C_B(x) = 45x\). A flat fee does not grow with the amount of data.
+  - Stopping at \(x = 250\) with no units, or giving the cost instead of the number of GB.
+- id: PE1-16
+  standard: LF5
+  stem: A candle's height, in inches, is modeled by \(H(x) = 10 - 0.5x\), where \(x\) is the number of hours burned.
+  parts:
+  - q: State the slope and describe its meaning in context.
+    a: 'The slope is \(-0.5\): the candle''s height decreases by \(0.5\) inch each hour.'
+  - q: After how many hours will the candle be \(4\) inches tall?
+    a: \(4 = 10 - 0.5x\), so \(x = 12\) hours.
+  hint: The slope is the coefficient of \(x\). Say what changes, by how much, and per what unit. For (b), set \(H(x) = 4\) and solve for \(x\).
+  slips:
+  - Calling the slope \(10\). That is the starting height (the intercept).
+  - Dropping the negative sign. The candle is shrinking, so the rate is negative and your sentence should say "decreases".
+  - Computing \(H(4)\) instead of solving \(H(x) = 4\).
+- id: PE1-17
+  standard: TR5
+  stem: ''
+  parts:
+  - q: Find the exact value of \(\sin\left(\dfrac{7\pi}{4}\right)\).
+    a: \(-\dfrac{\sqrt{2}}{2}\). The reference angle is \(\dfrac{\pi}{4}\), and in Quadrant IV sine is negative.
+  - q: The terminal point \(P(x,y) = \left(\dfrac{5}{13}, -\dfrac{12}{13}\right)\) lies on the unit circle at angle \(\theta\). Find \(\tan\theta\).
+    a: \(\tan\theta = \dfrac{y}{x} = \dfrac{-12/13}{5/13} = -\dfrac{12}{5}\).
+  hint: On the unit circle \(\cos\theta = x\), \(\sin\theta = y\), and \(\tan\theta = \dfrac{y}{x}\). For (a), find the reference angle and the quadrant, then decide the sign.
+  slips:
+  - Giving \(+\dfrac{\sqrt{2}}{2}\). In Quadrant IV the \(y\)-coordinate is negative.
+  - Computing \(\tan\theta\) as \(\dfrac{x}{y}\).
+  - Giving \(\tan\theta = y\) because the point is on the unit circle. That is true for sine, not tangent.
+- id: PE1-18
+  standard: TR5
+  stem: ''
+  parts:
+  - q: In which quadrant must the terminal side of \(\theta\) lie if \(\sin\theta < 0\) and \(\tan\theta > 0\)?
+    a: Quadrant III. \(\sin\theta < 0\) means Quadrant III or IV, and \(\tan\theta > 0\) means Quadrant I or III. Only III satisfies both.
+  - q: The unit circle shows the terminal point \(P\left(-\dfrac{\sqrt{2}}{2}, -\dfrac{\sqrt{2}}{2}\right)\) at \(\theta = \dfrac{5\pi}{4}\). Find the reference angle, then \(\sin\theta\) and \(\cos\theta\).
+    a: \(\theta_r = \dfrac{5\pi}{4} - \pi = \dfrac{\pi}{4}\). \(\sin\theta = -\dfrac{\sqrt{2}}{2}\) and \(\cos\theta = -\dfrac{\sqrt{2}}{2}\).
+  hint: Sine is the \(y\)-coordinate and cosine is the \(x\)-coordinate. Tangent is \(\dfrac{y}{x}\), so it is positive when \(x\) and \(y\) have the same sign. The reference angle is the acute angle between the terminal side
+    and the \(x\)-axis.
+  slips:
+  - Using only one condition. Two quadrants satisfy \(\sin\theta < 0\); the tangent condition picks between them.
+  - Giving \(\dfrac{5\pi}{4}\) or \(2\pi - \dfrac{5\pi}{4}\) as the reference angle. In Quadrant III, subtract \(\pi\).
+  - Swapping which coordinate is sine and which is cosine.
+- id: PE1-19
+  standard: FN5
+  stem: Let \(f(x) = 2x - 3\) and \(g(x) = x^{2} + 2\).
+  parts:
+  - q: Find \((f+g)(x)\).
+    a: \(f(x) + g(x) = 2x - 3 + x^{2} + 2 = x^{2} + 2x - 1\).
+  - q: Find \(\left(\dfrac{f}{g}\right)(x)\).
+    a: \(\dfrac{f(x)}{g(x)} = \dfrac{2x-3}{x^{2}+2}\).
+  - q: Find \((f\circ g)(x)\), the composition of \(f\) and \(g\).
+    a: \(f(g(x)) = 2(x^{2}+2) - 3 = 2x^{2} + 1\).
+  hint: \((f+g)(x)\) means \(f(x) + g(x)\). For \(f\circ g\), put the whole expression \(g(x)\) wherever \(x\) appears in \(f\).
+  slips:
+  - Computing \(g(f(x))\) instead. In \(f\circ g\), the function \(g\) goes first.
+  - Forgetting to distribute the \(2\) across both terms of \(x^{2} + 2\).
+  - Multiplying \(f(x)\cdot g(x)\) when asked for the composition.
+- id: PE1-20
+  standard: FN5
+  stem: Use the table to find each value.
+  parts:
+  - q: \(f(g(1))\)
+    a: \(g(1) = 3\), then \(f(3) = 1\), so \(f(g(1)) = 1\).
+  - q: \(g(f(2))\)
+    a: \(f(2) = 4\), then \(g(4) = 2\), so \(g(f(2)) = 2\).
+  hint: Work from the inside out. Look up the inner function first, then use that result as the input to the outer function.
+  slips:
+  - Looking up the outer function first.
+  - Reading \(f(g(1))\) as \(f(1)\cdot g(1)\).
+  - Using the wrong row. In this table the \(g\) row is first and the \(f\) row is second.
+  table:
+    caption: Values of \(g(x)\) and \(f(x)\)
+    headers:
+    - \(x\)
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    rows:
+    - - \(g(x)\)
+      - '3'
+      - '4'
+      - '1'
+      - '2'
+    - - \(f(x)\)
+      - '2'
+      - '4'
+      - '1'
+      - '3'
+    row_headers: true
+- id: PE1-21
+  standard: LF1
+  stem: Let \(f(x) = x^{2} - 4x\). Find the average rate of change on each interval.
+  parts:
+  - q: \([1,4]\)
+    a: \(f(4) = 0\) and \(f(1) = -3\), so the average rate of change is \(\dfrac{0-(-3)}{4-1} = 1\).
+  - q: \([0,3]\)
+    a: \(f(3) = -3\) and \(f(0) = 0\), so the average rate of change is \(\dfrac{-3-0}{3-0} = -1\).
+  hint: The average rate of change on \([a,b]\) is \(\dfrac{f(b) - f(a)}{b - a}\). It is the slope of the line through the two points of the graph.
+  slips:
+  - Subtracting in a different order on the top and the bottom.
+  - Stopping at \(f(b) - f(a)\) without dividing by \(b - a\).
+  - Mis-evaluating \(f(4)\) as \(16 - 4\). The second term is \(4x\), so it is \(4\cdot 4\).
+- id: PE1-22
+  standard: LF1
+  stem: A cyclist's position, in miles along a trail, after \(t\) hours is \(p(t) = 12t + 3\).
+  parts:
+  - q: Find the average rate of change over \([1,4]\), including units.
+    a: \(\dfrac{p(4) - p(1)}{4 - 1} = \dfrac{51 - 15}{3} = 12\) miles per hour.
+  - q: Explain what this rate means in the context of the ride.
+    a: The cyclist moves at a constant \(12\) miles per hour. Every hour the cyclist's position along the trail increases by \(12\) miles.
+  hint: For a linear function the average rate of change on any interval equals the slope. The units are (output units) per (input unit).
+  slips:
+  - Leaving off the units.
+  - Saying "the cyclist is 12 miles from the start". A rate describes change, not position.
+  - Reporting a position, \(15\) or \(51\), instead of the change in position per hour.
+- id: PE1-23
+  standard: FN4
+  stem: ''
+  parts:
+  - q: Describe the sequence of transformations that produces \(g(x) = -f(x+3) - 5\) from the parent function \(f(x)\).
+    a: Shift left \(3\), reflect across the \(x\)-axis, then shift down \(5\).
+  - q: Let \(f(x) = x^{2}\). Write \(g(x)\) if the graph of \(f\) is shifted left \(3\) units, vertically stretched by a factor of \(2\), and shifted up \(4\) units.
+    a: \(g(x) = 2(x+3)^{2} + 4\).
+  hint: A change inside the parentheses acts on \(x\) and moves the graph sideways, opposite to how the sign looks. A change outside acts on the output.
+  slips:
+  - 'Shifting right for \(x + 3\). Inside changes work backward: \(x + 3\) moves the graph left.'
+  - Shifting up because of the minus sign in front of \(f\). The \(-5\) outside shifts down; the leading minus reflects.
+  - 'Putting the stretch factor inside the parentheses: \((2x+3)^{2}\) is not the same as \(2(x+3)^{2}\).'
+- id: PE1-24
+  standard: FN4
+  stem: The parent function \(f(x) = |x|\) has its vertex at \((0,0)\). A transformed function \(g(x)\) has its vertex at \((2,-3)\), opens downward, and has the same width as the parent function.
+  parts:
+  - q: Write the coordinate mapping for the vertex.
+    a: \((0,0) \rightarrow (2,-3)\).
+  - q: Write \(g(x)\) in terms of \(f(x)\).
+    a: \(g(x) = -f(x-2) - 3\).
+  - q: Write the explicit formula for \(g(x)\).
+    a: \(g(x) = -|x-2| - 3\).
+  hint: 'Move the vertex first: how far right or left, how far up or down. "Opens downward" means a reflection across the \(x\)-axis. "Same width" means no stretch or compression.'
+  slips:
+  - Writing \(f(x+2)\) for a shift right \(2\). To move right, subtract inside.
+  - Writing \(+3\) at the end. The vertex moved down, so subtract.
+  - Leaving out the reflection, which gives a graph that opens upward.
+- id: PE1-25
+  standard: TR2
+  stem: Find one positive and one negative angle coterminal with each angle.
+  parts:
+  - q: \(\theta = 170\text{°}\)
+    a: 'One answer: \(170\text{°} + 360\text{°} = 530\text{°}\) and \(170\text{°} - 360\text{°} = -190\text{°}\). Any \(170\text{°} + 360\text{°}k\) with \(k\) an integer works.'
+  - q: \(\theta = -\dfrac{3\pi}{4}\)
+    a: 'One answer: \(-\dfrac{3\pi}{4} + 2\pi = \dfrac{5\pi}{4}\) and \(-\dfrac{3\pi}{4} - 2\pi = -\dfrac{11\pi}{4}\).'
+  hint: Coterminal angles differ by whole turns. Add or subtract \(360\text{°}\) (or \(2\pi\) radians) as many times as you need.
+  slips:
+  - Adding \(180\text{°}\) or \(\pi\). That gives the opposite direction, not the same terminal side.
+  - 'Mixing units: adding \(360\) to an angle written in radians.'
+  - Getting the negative answer by flipping the sign of the angle. \(-170\text{°}\) is not coterminal with \(170\text{°}\).
+- id: PE1-26
+  standard: TR2
+  stem: A circular sector has radius \(r = 10\) cm and central angle \(\theta = \dfrac{5\pi}{6}\) radians.
+  parts:
+  - q: Find the exact arc length.
+    a: \(s = r\theta = 10\cdot\dfrac{5\pi}{6} = \dfrac{25\pi}{3}\) cm.
+  - q: Find the exact area.
+    a: \(A = \dfrac{1}{2}r^{2}\theta = \dfrac{1}{2}(100)\left(\dfrac{5\pi}{6}\right) = \dfrac{125\pi}{3}\) cm\(^{2}\).
+  hint: With \(\theta\) in radians, arc length is \(s = r\theta\) and sector area is \(A = \dfrac{1}{2}r^{2}\theta\). Keep \(\pi\) in the answer for "exact".
+  slips:
+  - Using \(A = r\theta\), which is the arc length formula, or \(\pi r^{2}\), which is the whole circle.
+  - Forgetting to square the radius in the area formula.
+  - Converting to degrees first and then using the radian formulas.
+- id: PE1-27
+  standard: PR1
+  stem: Consider \(q(x) = 2x^{2} - 8x + 3\).
+  parts:
+  - q: Does the parabola open upward or downward?
+    a: Upward, because \(a = 2 > 0\).
+  - q: Find the vertex and classify it.
+    a: \(x = -\dfrac{-8}{2(2)} = 2\) and \(q(2) = 8 - 16 + 3 = -5\). The vertex is \((2,-5)\), a minimum.
+  - q: State the axis of symmetry, domain, and range.
+    a: Axis of symmetry \(x = 2\); domain \((-\infty,\infty)\); range \([-5,\infty)\).
+  hint: The sign of \(a\) gives the direction. The vertex has \(x = -\dfrac{b}{2a}\); substitute that into \(q\) to get the \(y\)-value. The range starts (or ends) at the \(y\)-value of the vertex.
+  slips:
+  - Writing the axis of symmetry as \(y = 2\). It is a vertical line, \(x = 2\).
+  - Dropping the negative sign in \(-\dfrac{b}{2a}\) and getting \(x = -2\).
+  - Writing the range as \([2,\infty)\). The range uses the \(y\)-value of the vertex, \(-5\).
+- id: PE1-28
+  standard: PR1
+  stem: ''
+  parts:
+  - q: Rewrite \(g(x) = 3x^{2} + 12x + 7\) in vertex form by completing the square.
+    a: \(g(x) = 3(x^{2} + 4x) + 7 = 3(x^{2} + 4x + 4 - 4) + 7 = 3(x+2)^{2} - 12 + 7 = 3(x+2)^{2} - 5\).
+  hint: Factor the leading coefficient out of the \(x^{2}\) and \(x\) terms. Inside the parentheses add and subtract the square of half the middle coefficient.
+  slips:
+  - Adding \(4\) inside the parentheses without subtracting it. The \(3\) multiplies it, so you have changed the function by \(12\).
+  - Using \(\left(\dfrac{12}{2}\right)^{2} = 36\) without first factoring out the \(3\).
+  - Writing \((x-2)^{2}\) instead of \((x+2)^{2}\).
+- id: PE1-29
+  standard: FN2
+  stem: Let \(f(x) = 2x^{2} - 5x\).
+  parts:
+  - q: Evaluate \(f(-3)\).
+    a: \(f(-3) = 2(-3)^{2} - 5(-3) = 18 + 15 = 33\).
+  - q: Find and simplify \(f(a+2)\).
+    a: \(f(a+2) = 2(a+2)^{2} - 5(a+2) = 2a^{2} + 8a + 8 - 5a - 10 = 2a^{2} + 3a - 2\).
+  hint: 'Replace every \(x\) with the input, and use parentheses. For \(a + 2\), expand the square completely: \((a+2)^{2} = a^{2} + 4a + 4\).'
+  slips:
+  - 'Writing \(2(-3)^{2}\) as \(-18\). Square first: \((-3)^{2} = 9\).'
+  - Expanding \((a+2)^{2}\) as \(a^{2} + 4\).
+  - Forgetting to distribute the \(-5\) to both \(a\) and \(2\).
+  - Treating \(f(a+2)\) as \(f(a) + 2\).
+- id: PE1-30
+  standard: FN2
+  stem: ''
+  parts:
+  - q: If \(g(x) = 4x - 7\), solve \(g(x) = 13\).
+    a: \(4x - 7 = 13\), so \(4x = 20\) and \(x = 5\).
+  - q: If \(k(x) = x^{2} - 9\), solve \(k(x) = 16\).
+    a: \(x^{2} - 9 = 16\), so \(x^{2} = 25\) and \(x = \pm 5\). Both \(5\) and \(-5\) work.
+  hint: Set the formula equal to the output and solve for \(x\). The input is the unknown, not the output.
+  slips:
+  - Evaluating \(g(13)\) instead of solving \(g(x) = 13\).
+  - Giving only \(x = 5\) in (b). A squared variable has two solutions.
+  - Forgetting to add \(9\) to both sides before taking the square root.
+  note: Lab wrote the second function as h(x); renamed k(x) because h is reserved for the increment in f(x+h) (CONVENTIONS.md).
+- id: PE1-31
+  standard: LF3
+  stem: ''
+  parts:
+  - q: Find an equation of the line containing the point \((4,-6)\) whose \(x\)-intercept is \(1\).
+    a: The \(x\)-intercept is the point \((1,0)\). The slope is \(m = \dfrac{0-(-6)}{1-4} = -2\), so \(y = -2(x-1) = -2x + 2\).
+  hint: An \(x\)-intercept of \(1\) means the line passes through \((1,0)\). Now you have two points on the line.
+  slips:
+  - Using \((0,1)\) for the intercept. An \(x\)-intercept has \(y = 0\).
+  - Subtracting the coordinates in a different order on the top and the bottom of the slope.
+  - Stopping at the slope. The question asks for an equation.
+  note: Lab tag was LF2. Retagged LF3 to match blueprint item type LF3.a (equation from a point and an x-intercept).
+- id: PE1-32
+  standard: LF3
+  stem: ''
+  parts:
+  - q: Find an equation of the line whose \(x\)-intercept is \(-5\) and whose \(y\)-intercept is \(8\).
+    a: The points are \((-5,0)\) and \((0,8)\). The slope is \(m = \dfrac{8-0}{0-(-5)} = \dfrac{8}{5}\) and the \(y\)-intercept is \(8\), so \(y = \dfrac{8}{5}x + 8\).
+  hint: 'Each intercept is a point: \((-5,0)\) and \((0,8)\). Find the slope from those two points. The \(y\)-intercept is already given.'
+  slips:
+  - Writing the points with the coordinates swapped, \((0,-5)\) and \((8,0)\).
+  - A sign error in \(0 - (-5)\).
+  - Using run over rise, \(\dfrac{5}{8}\), instead of rise over run.
+  note: Lab tag was LF2. Retagged LF3 to match blueprint item type LF3.b (equation from both intercepts).
+- id: PE1-33
+  standard: FN4
+  stem: Each panel shows a parent function \(f\) (dashed) and its transformed graph \(g\) (solid). In panel A, \(f(x) = |x|\). In panel B, \(f(x) = \sqrt{x}\). For each panel, describe the transformations from \(f\) to \(g\),
+    then write an equation for \(g\).
+  parts:
+  - q: Panel A
+    a: 'Shift right \(1\), stretch vertically by a factor of \(2\), reflect across the \(x\)-axis, and shift up \(3\): \(g(x) = -2|x-1| + 3\).'
+  - q: Panel B
+    a: 'Shift left \(2\) and down \(1\): \(g(x) = \sqrt{x+2} - 1\).'
+  hint: Compare key points. Where is the vertex or starting point of \(g\) compared with \(f\)? Does \(g\) open the same way as \(f\)? Is it steeper or flatter?
+  slips:
+  - Writing \(|x+1|\) for a shift right \(1\). To move right, subtract inside.
+  - Missing the vertical stretch. In panel A, \(g\) changes by \(2\) units for each \(1\) unit sideways, where \(f\) changes by \(1\).
+  - Missing the reflection in panel A. The graph of \(g\) opens downward.
+  figures:
+  - file: graph-transformations.png
+    alt: 'Two graphs side by side on coordinate grids, labeled A and B. Both show a dashed graph of f and a solid graph of g, each labeled with its letter. Panel A: the dashed graph is a V shape with its corner at (0, 0).
+      The solid graph is an upside-down V with its peak at (1, 3); it passes through the marked points (0, 1) and (2, 1) and falls steeply on both sides. Panel B: the dashed graph is a square root curve that starts at (0,
+      0) and rises to the right. The solid graph is a curve of the same shape that starts at the marked point (-2, -1) and passes through the marked points (-1, 0) and (2, 1). Both panels show x and y from about -3 to 5. A
+      table of the marked points on g is below the graphs.'
+    table:
+      caption: Marked points on the solid graph \(g\) in each panel, from left to right
+      toggle: Table of the marked points on g
+      headers:
+      - Panel
+      - \(x\)
+      - \(y\)
+      rows:
+      - - A
+        - '0'
+        - '1'
+      - - A
+        - '1'
+        - '3'
+      - - A
+        - '2'
+        - '1'
+      - - B
+        - '-2'
+        - '-1'
+      - - B
+        - '-1'
+        - '0'
+      - - B
+        - '2'
+        - '1'
+- id: PE1-34
+  standard: LF3
+  stem: Use the line shown in the graph.
+  parts:
+  - q: Determine its slope and \(y\)-intercept.
+    a: 'Using the labeled points \((0,3)\) and \((2,-1)\): \(m = \dfrac{-1-3}{2-0} = -2\). The \(y\)-intercept is \((0,3)\).'
+  - q: Write its equation in slope-intercept form.
+    a: \(y = -2x + 3\).
+  hint: Use two points the graph labels. The slope is rise over run, \(\dfrac{y_2 - y_1}{x_2 - x_1}\). The \(y\)-intercept is where the line crosses the \(y\)-axis.
+  slips:
+  - Computing run over rise, \(-\dfrac{1}{2}\), instead of rise over run.
+  - Dropping the negative sign. As \(x\) increases, this line goes down.
+  - Reading the \(x\)-intercept as the \(y\)-intercept.
+  figures:
+  - file: linear-graph.svg
+    alt: 'A straight line on a coordinate grid with x from -4 to 6 and y from -5 to 5. The line slants downward from left to right and continues past the edges of the grid. Two points on the line are marked and labeled: (0,
+      3) and (2, -1). A table of the labeled points is below the graph.'
+    table:
+      caption: Labeled points on the line, from left to right
+      toggle: Table of the labeled points
+      headers:
+      - \(x\)
+      - \(y\)
+      rows:
+      - - '0'
+        - '3'
+      - - '2'
+        - '-1'
+- id: PE1-35
+  standard: FN1
+  stem: Graph A and Graph B are shown. A dashed vertical line is drawn on each.
+  parts:
+  - q: Which graph represents a function? Explain using the Vertical Line Test.
+    a: 'Graph A represents a function: every vertical line intersects it at most once. Graph B does not: a vertical line through the circle, for example the \(y\)-axis, intersects it twice.'
+  hint: Imagine sweeping a vertical line across each graph. A function gives each input one output, so a vertical line can never touch the graph of a function twice.
+  slips:
+  - Using a horizontal line. That tests whether a function is one-to-one, which is a different question.
+  - Saying the circle fails because it is round. The reason is that some vertical line meets it twice.
+  - Saying Graph A fails because it goes down and then up. A function may increase and decrease.
+  figures:
+  - file: vertical-line-test.png
+    alt: 'Two graphs side by side. Graph A: a U-shaped curve (a parabola) that opens upward, with its lowest point near (0, -1.4) and crossing the x-axis near x = -1.2 and x = 1.2. A dashed vertical line is drawn at about
+      x = -1.3. Graph B: a circle centered at the origin with radius 1.5. A dashed vertical line is drawn along the y-axis (x = 0). Both graphs show x and y from -2.5 to 2.5.'
+- id: PE1-36
+  standard: LF1
+  stem: The graph shows \(g(x) = \sqrt{x}\) and a secant line through \(A(1,1)\) and \(B(4,2)\).
+  parts:
+  - q: Find the average rate of change of \(g\) on \([1,4]\).
+    a: \(\dfrac{g(4) - g(1)}{4 - 1} = \dfrac{2 - 1}{3} = \dfrac{1}{3}\).
+  - q: Explain what that value tells you about the secant line.
+    a: 'It is the slope of the secant line through \(A\) and \(B\): the line rises \(1\) unit for every \(3\) units to the right.'
+  hint: The average rate of change on \([a,b]\) is \(\dfrac{g(b) - g(a)}{b - a}\). That fraction is also the slope between the two points.
+  slips:
+  - Giving \(g(4) - g(1) = 1\) without dividing by the change in \(x\).
+  - Computing run over rise, \(\dfrac{4-1}{2-1} = 3\).
+  - Saying the value is the slope of the curve at one point. A secant line joins two points.
+  figures:
+  - file: secant-square-root.png
+    alt: 'Graph of the square root function g(x) = square root of x. The solid curve starts at (0, 0), rises to the right, and curves over as it goes. Two points on the curve are marked and labeled: A at (1, 1) and B at (4,
+      2). A dashed straight line passes through A and B and extends a little past each. A legend names the solid curve g(x) = square root of x and the dashed line Secant through A and B. The x-axis is shown from about -0.5
+      to 5.2 and the y-axis from -0.5 to 2.6. A table of the labeled points is below the graph.'
+    table:
+      caption: Labeled points on the graph
+      toggle: Table of the labeled points
+      headers:
+      - Point
+      - \(x\)
+      - \(y\)
+      rows:
+      - - A
+        - '1'
+        - '1'
+      - - B
+        - '4'
+        - '2'
+- id: PE1-37
+  standard: FN4
+  stem: The graph shows the parent function \(f(x) = \sqrt{x}\) (dashed) and a transformed graph \(g\) (solid).
+  parts:
+  - q: Describe the transformations from \(f\) to \(g\).
+    a: Reflect \(f\) across the \(y\)-axis, then shift it left \(2\) units. The starting point moves from \((0,0)\) to \((-2,0)\).
+  - q: Write \(g(x)\) in terms of \(f\), and then as an explicit formula.
+    a: \(g(x) = f(-(x+2)) = \sqrt{-x-2}\), with domain \((-\infty,-2]\).
+  hint: 'Track the starting point of the square root. Then notice which way the graph opens: a graph that opens to the left has been reflected across the \(y\)-axis.'
+  slips:
+  - Writing \(f(-x+2)\). That shifts the graph right \(2\), because \(-x + 2 = -(x - 2)\).
+  - Reflecting across the \(x\)-axis. That would send the graph downward, not to the left.
+  - Forgetting the domain. The radicand \(-x-2\) must be at least \(0\), so \(x \le -2\).
+  figures:
+  - file: horizontal-reflection.png
+    alt: Graph with two curves. The dashed curve is f(x) = square root of x. It starts at the marked point (0, 0) and rises to the right, passing through (1, 1) and (4, 2). The solid curve is g. It starts at the marked point
+      (-2, 0) and rises to the left, passing through (-3, 1) and (-6, 2). A legend names the dashed curve f(x) = square root of x and the solid curve g. The x-axis is shown from about -6.2 to 4.3 and the y-axis from about
+      -0.8 to 3.
+    table:
+      caption: Labeled points on the graph
+      toggle: Table of the labeled points
+      headers:
+      - Curve
+      - \(x\)
+      - \(y\)
+      rows:
+      - - g
+        - '-2'
+        - '0'
+      - - f
+        - '0'
+        - '0'
+- id: PE1-38
+  standard: FN5
+  stem: Use the table to evaluate each expression. Show the inner lookup first in each case.
+  parts:
+  - q: \(f(g(-2))\)
+    a: \(g(-2) = 2\), so \(f(g(-2)) = f(2) = 2\).
+  - q: \(g(f(0))\)
+    a: \(f(0) = -2\), so \(g(f(0)) = g(-2) = 2\).
+  - q: \(f(g(1))\)
+    a: \(g(1) = 3\), so \(f(g(1)) = f(3) = -1\).
+  - q: \(g(g(0))\)
+    a: \(g(0) = 1\), so \(g(g(0)) = g(1) = 3\).
+  hint: Work from the inside out. Look up the inner value first, then use it as the input to the outer function.
+  slips:
+  - Looking up the outer function first.
+  - Using the wrong row. Check which row is \(f\) and which is \(g\).
+  - In (d), treating \(g(g(0))\) as \(g(0)\cdot g(0)\). It means apply \(g\) twice.
+  table:
+    caption: Values of \(f(x)\) and \(g(x)\)
+    headers:
+    - \(x\)
+    - '-2'
+    - '-1'
+    - '0'
+    - '1'
+    - '2'
+    - '3'
+    rows:
+    - - \(f(x)\)
+      - '1'
+      - '3'
+      - '-2'
+      - '0'
+      - '2'
+      - '-1'
+    - - \(g(x)\)
+      - '2'
+      - '-2'
+      - '1'
+      - '3'
+      - '0'
+      - '-1'
+    row_headers: true

@@ -1,0 +1,148 @@
+outcome: FN1
+title: Introduction to Functions
+chapter: 1
+section: "1.1"
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/FN1/
+objective: "Determine if a relation, equation, or graph defines a function using the definition as well as the vertical line test."
+generator: fn1
+also_practiced: "Finding the domain of a function with a square root (assessed under FN1 on Midterm 1)."
+
+problems:
+  # ---- CheckIt Practice: matches CheckIt FN1's three parts ----
+  - id: FN1-F-01
+    tier: floor
+    item_type: [FN1.a, FN1.c]
+    kind: template
+    template: relations_trio
+    seed: 4
+    answer: generated
+    solution: null
+    hint: 'Take one input at a time and ask: how many different outputs does it have?'
+    slips:
+      - 'Looking for repeated <em>outputs</em>. Two different inputs may share an output. What a function does not allow is one input with two different outputs.'
+    status: audited
+
+  - id: FN1-F-02
+    tier: floor
+    item_type: FN1.e
+    kind: template
+    template: equations_pair
+    seed: 7
+    answer: generated
+    solution: null
+    hint: 'Pick a value for \(x\), solve for \(y\), and see whether you get one answer or more than one.'
+    slips:
+      - 'Forgetting the \(\pm\): an even power of \(y\) (like \(y^2\)) gives two \(y\)-values for a positive \(x\).'
+      - 'Thinking every equation with a power of \(y\) fails. An odd power (like \(y^5\)) gives exactly one real \(y\) for each \(x\).'
+    status: audited
+
+  - id: FN1-F-03
+    tier: floor
+    item_type: FN1.b
+    kind: template
+    template: graphs_trio
+    seed: 12
+    answer: generated
+    solution: null
+    hint: 'Imagine sliding a vertical line across the graph. Does it ever touch the graph in two or more places?'
+    slips:
+      - 'Judging by the overall look of the graph instead of testing vertical lines. Check places where the graph turns back, and separate points that share an input.'
+      - 'Forgetting that a single dot or an endpoint is part of the graph and counts when a vertical line touches it.'
+    status: audited
+
+  - id: FN1-F-04
+    tier: floor
+    item_type: FN1.b
+    kind: template
+    template: graphs_trio
+    seed: 31
+    answer: generated
+    solution: null
+    hint: 'Imagine sliding a vertical line across the graph. Does it ever touch the graph in two or more places?'
+    slips:
+      - 'Judging by the overall look of the graph instead of testing vertical lines. Check places where the graph turns back, and separate points that share an input.'
+      - 'Forgetting that a single dot or an endpoint is part of the graph and counts when a vertical line touches it.'
+    status: audited
+
+  # ---- Putting It Together Practice ----
+  - id: FN1-A-01
+    tier: assessment
+    item_type: FN1.a
+    kind: template
+    template: repeated_outputs
+    seed: 3
+    answer: generated
+    solution: null
+    hint: 'Scan the first coordinates (the inputs). Does any input appear twice with different outputs?'
+    slips:
+      - 'Calling a relation "not a function" because two inputs share an output. That is allowed.'
+    status: audited
+
+  - id: FN1-A-02
+    tier: assessment
+    item_type: FN1.c
+    kind: template
+    template: mapping_domain_range
+    seed: 9
+    answer: generated
+    solution: null
+    hint: 'A function needs exactly one arrow leaving each input. For the range, ask which target values have an arrow pointing to them.'
+    slips:
+      - 'Listing every value in the right oval as the range. The range is only the values an arrow reaches.'
+      - 'Listing a repeated output twice. A set lists each value once.'
+    status: audited
+
+  - id: FN1-A-03
+    tier: assessment
+    item_type: FN1.d
+    kind: template
+    template: radical_domain
+    seed: 6
+    answer: generated
+    solution: null
+    hint: 'A square root needs a non-negative radicand: write \(\text{radicand}\ge 0\) and solve for \(x\).'
+    slips:
+      - 'Not reversing the inequality when you divide by a negative number (as in \(9-2x\ge 0\)).'
+      - 'Using a parenthesis at the endpoint. Zero is allowed under a square root, so the endpoint belongs to the domain: use a bracket.'
+    status: audited
+
+  - id: FN1-A-04
+    tier: assessment
+    item_type: FN1.d
+    kind: template
+    template: radical_rational_domain
+    seed: 2
+    answer: generated
+    solution: null
+    hint: 'Two things can go wrong here: a negative radicand and a zero denominator. Find the inputs for each, then combine them.'
+    slips:
+      - 'Reporting only the radicand condition and forgetting to remove the input that makes the denominator zero.'
+      - 'Writing the domain as one interval when an input has to be carved out. Use a union of intervals.'
+    status: audited
+
+  # ---- Spot the Slip ----
+  - id: FN1-S-01
+    tier: slip
+    item_type: FN1.a
+    kind: template
+    template: slip_repeated_output
+    seed: 5
+    answer: generated
+    solution: null
+    hint: 'Re-read the definition of a function. What exactly is not allowed?'
+    status: audited
+
+  # ---- Looking Ahead to Calculus: needs Dr. Romero's approval ----
+  - id: FN1-B-01
+    tier: bridge
+    item_type: FN1.e
+    kind: template
+    template: circle_halves_bridge
+    seed: 1
+    bridge_note: "Writing the circle as upper and lower functions lets us use single-variable integration to find the area between them"
+    answer: generated
+    solution: null
+    hint: 'Solve for \(y^2\) first. When you take a square root, how many values of \(y\) can come out?'
+    slips:
+      - 'Writing \(y=\sqrt{25-x^2}\) as if it were the whole circle. It is only the top half; the bottom half is a second function.'
+    status: audited        # bridge approved by Dr. Romero, Nov 17 2026
