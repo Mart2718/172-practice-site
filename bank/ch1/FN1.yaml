@@ -30,10 +30,11 @@ problems:
     seed: 7
     answer: generated
     solution: null
-    hint: 'Pick a value for \(x\), solve for \(y\), and see whether you get one answer or more than one.'
+    hint: 'Try to solve for \(y\). One input that gives two different \(y\)-values is enough to show the equation does not define a function. To show that it does, one test input is not enough: explain why every \(x\) gives exactly one \(y\).'
     slips:
       - 'Forgetting the \(\pm\): an even power of \(y\) (like \(y^2\)) gives two \(y\)-values for a positive \(x\).'
       - 'Thinking every equation with a power of \(y\) fails. An odd power (like \(y^5\)) gives exactly one real \(y\) for each \(x\).'
+      - 'Testing one input, getting one \(y\)-value, and concluding the equation is a function. One input can disprove a function but cannot prove one; you must argue for every \(x\).'
     status: audited
 
   - id: FN1-F-03
@@ -144,5 +145,5 @@ problems:
     solution: null
     hint: 'Solve for \(y^2\) first. When you take a square root, how many values of \(y\) can come out?'
     slips:
-      - 'Writing \(y=\sqrt{25-x^2}\) as if it were the whole circle. It is only the top half; the bottom half is a second function.'
+      - 'Treating the positive square root as if it were the whole circle. It is only the top half; the bottom half is a second function, the negative square root.'
     status: audited        # bridge approved by Dr. Romero, Nov 17 2026

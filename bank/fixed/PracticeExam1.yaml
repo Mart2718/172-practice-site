@@ -293,14 +293,15 @@ items:
   parts:
   - q: In which quadrant must the terminal side of \(\theta\) lie if \(\sin\theta < 0\) and \(\tan\theta > 0\)?
     a: Quadrant III. \(\sin\theta < 0\) means Quadrant III or IV, and \(\tan\theta > 0\) means Quadrant I or III. Only III satisfies both.
-  - q: The unit circle shows the terminal point \(P\left(-\dfrac{\sqrt{2}}{2}, -\dfrac{\sqrt{2}}{2}\right)\) at \(\theta = \dfrac{5\pi}{4}\). Find the reference angle, then \(\sin\theta\) and \(\cos\theta\).
-    a: \(\theta_r = \dfrac{5\pi}{4} - \pi = \dfrac{\pi}{4}\). \(\sin\theta = -\dfrac{\sqrt{2}}{2}\) and \(\cos\theta = -\dfrac{\sqrt{2}}{2}\).
+  - q: On the unit circle, the angle \(\theta = \dfrac{2\pi}{3}\) has terminal point \(P\left(-\dfrac{1}{2}, \dfrac{\sqrt{3}}{2}\right)\). Find the reference angle, then \(\sin\theta\) and \(\cos\theta\).
+    a: \(\theta_r = \pi - \dfrac{2\pi}{3} = \dfrac{\pi}{3}\). \(\sin\theta = \dfrac{\sqrt{3}}{2}\) and \(\cos\theta = -\dfrac{1}{2}\).
   hint: Sine is the \(y\)-coordinate and cosine is the \(x\)-coordinate. Tangent is \(\dfrac{y}{x}\), so it is positive when \(x\) and \(y\) have the same sign. The reference angle is the acute angle between the terminal side
     and the \(x\)-axis.
   slips:
   - Using only one condition. Two quadrants satisfy \(\sin\theta < 0\); the tangent condition picks between them.
-  - Giving \(\dfrac{5\pi}{4}\) or \(2\pi - \dfrac{5\pi}{4}\) as the reference angle. In Quadrant III, subtract \(\pi\).
+  - Giving \(\dfrac{2\pi}{3}\) itself as the reference angle. The reference angle is acute; in Quadrant II, subtract \(\theta\) from \(\pi\).
   - Swapping which coordinate is sine and which is cosine.
+  note: Audit fix. Part (b) used to give 5π/4 and a Quadrant III point, which revealed the answer to part (a). Part (b) now uses an angle in Quadrant II.
 - id: PE1-19
   standard: FN5
   stem: Let \(f(x) = 2x - 3\) and \(g(x) = x^{2} + 2\).
@@ -476,11 +477,11 @@ items:
   - q: If \(g(x) = 4x - 7\), solve \(g(x) = 13\).
     a: \(4x - 7 = 13\), so \(4x = 20\) and \(x = 5\).
   - q: If \(k(x) = x^{2} - 9\), solve \(k(x) = 16\).
-    a: \(x^{2} - 9 = 16\), so \(x^{2} = 25\) and \(x = \pm 5\). Both \(5\) and \(-5\) work.
+    a: \(x^{2} - 9 = 16\), so \(x^{2} = 25\), and \(x = -5\) or \(x = 5\). Both \(-5\) and \(5\) work.
   hint: Set the formula equal to the output and solve for \(x\). The input is the unknown, not the output.
   slips:
   - Evaluating \(g(13)\) instead of solving \(g(x) = 13\).
-  - Giving only \(x = 5\) in (b). A squared variable has two solutions.
+  - Giving only \(x = 5\) in (b). An equation of the form \(x^{2} = \text{a positive number}\) has two solutions, one positive and one negative.
   - Forgetting to add \(9\) to both sides before taking the square root.
   note: Lab wrote the second function as h(x); renamed k(x) because h is reserved for the increment in f(x+h) (CONVENTIONS.md).
 - id: PE1-31
@@ -494,7 +495,7 @@ items:
   - Using \((0,1)\) for the intercept. An \(x\)-intercept has \(y = 0\).
   - Subtracting the coordinates in a different order on the top and the bottom of the slope.
   - Stopping at the slope. The question asks for an equation.
-  note: Lab tag was LF2. Retagged LF3 to match blueprint item type LF3.a (equation from a point and an x-intercept).
+  note: Lab tag was LF2. Kept as LF3 because Quiz 2 item 1.4.2a (an LF3 item) asks for the equation of a line from a point and an x-intercept (blueprint item type LF3.a). Audit flagged the conflict with the old LF2 description; the LF2 and LF3 descriptions in standards.yaml were corrected to match Quiz 2.
 - id: PE1-32
   standard: LF3
   stem: ''
@@ -506,7 +507,7 @@ items:
   - Writing the points with the coordinates swapped, \((0,-5)\) and \((8,0)\).
   - A sign error in \(0 - (-5)\).
   - Using run over rise, \(\dfrac{5}{8}\), instead of rise over run.
-  note: Lab tag was LF2. Retagged LF3 to match blueprint item type LF3.b (equation from both intercepts).
+  note: Lab tag was LF2. Kept as LF3 because Quiz 2 item 1.4.2b (an LF3 item) asks for the equation of a line from both intercepts (blueprint item type LF3.b). See the note on PE1-31.
 - id: PE1-33
   standard: FN4
   stem: Each panel shows a parent function \(f\) (dashed) and its transformed graph \(g\) (solid). In panel A, \(f(x) = |x|\). In panel B, \(f(x) = \sqrt{x}\). For each panel, describe the transformations from \(f\) to \(g\),
