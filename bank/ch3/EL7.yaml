@@ -1,0 +1,67 @@
+outcome: EL7
+title: Applications of Exponential and Logarithmic Functions
+chapter: 3
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/EL7/
+objective: Use an exponential model to solve an application problem involving growth or decay, evaluating the model and solving for the input given an output.
+generator: el
+problems:
+- id: EL7-F-01
+  tier: floor
+  item_type:
+  - EL7.a
+  - EL7.b
+  kind: template
+  template: growth_compound
+  seed: 1
+  answer: generated
+  solution: null
+  hint: To evaluate, replace \(t\) with the number of years. To find when a target is reached, divide to isolate the exponential, then take a logarithm of both sides.
+  slips:
+  - Rounding the growth factor before computing the power, which changes the answer.
+  - Rounding down when the balance has not yet reached the target. Check the whole year in the model.
+  status: checked
+- id: EL7-F-02
+  tier: floor
+  item_type:
+  - EL7.a
+  - EL7.b
+  kind: template
+  template: growth_doubling
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Evaluate by substituting. To solve for \(t\), divide both sides by the starting amount, then write the result as a power of the base.
+  slips:
+  - Dividing the target by the base instead of by the starting amount.
+  - Using the number of days as the exponent but forgetting to substitute in the model.
+  status: checked
+- id: EL7-F-03
+  tier: floor
+  item_type:
+  - EL7.a
+  - EL7.b
+  kind: template
+  template: decay_half_life
+  seed: 1
+  answer: generated
+  solution: null
+  hint: The exponent \(t/\text{half-life}\) counts how many half-lives have passed. Evaluate by substituting; solve by dividing and matching the power of \(\dfrac{1}{2}\).
+  slips:
+  - Using \(t\) as the exponent instead of \(t\) divided by the half-life.
+  - Solving for the exponent and forgetting to multiply back by the half-life.
+  status: checked
+- id: EL7-A-01
+  tier: assessment
+  item_type:
+  - EL7.a
+  - EL7.b
+  kind: template
+  template: growth_continuous
+  seed: 1
+  answer: generated
+  solution: null
+  hint: For \(A=Pe^{rt}\), isolate \(e^{rt}\) and take the natural logarithm of both sides. \(\ln(e^{u})=u\).
+  slips:
+  - Taking the logarithm before isolating the exponential.
+  - Forgetting that \(r\) is negative for decay, so \(t\) comes out positive only after dividing by a negative number.
+  status: checked

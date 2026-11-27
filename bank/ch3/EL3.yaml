@@ -1,0 +1,50 @@
+outcome: EL3
+title: Introduction to Logarithms
+chapter: 3
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/EL3/
+objective: Convert between exponential and logarithmic form, and evaluate a logarithm.
+generator: el
+problems:
+- id: EL3-F-01
+  tier: floor
+  item_type:
+  - EL3.a
+  - EL3.b
+  kind: template
+  template: log_convert
+  seed: 1
+  answer: generated
+  solution: null
+  hint: 'A logarithm is an exponent: \(\log_b(N)=n\) means \(b^{n}=N\). The base stays the base.'
+  slips:
+  - Putting the exponent where the argument goes. In \(\log_b(N)=n\), the argument is \(N\) and the exponent is \(n\).
+  - Changing the base when you switch forms.
+  status: checked
+- id: EL3-F-02
+  tier: floor
+  item_type:
+  - EL3.c
+  kind: template
+  template: log_evaluate
+  seed: 1
+  answer: generated
+  solution: null
+  hint: 'Ask: what power of the base gives the argument? Rewrite the argument as a power of the base, using negative exponents for reciprocals and fractional exponents for roots.'
+  slips:
+  - Giving a positive answer for a reciprocal. \(\log_2\left(\dfrac{1}{8}\right)=-3\).
+  - Turning a root into a whole number. \(\log_{125}(5)=\dfrac{1}{3}\) because \(125^{1/3}=5\).
+  status: checked
+- id: EL3-A-01
+  tier: assessment
+  item_type:
+  - EL3.c
+  kind: template
+  template: log_special_values
+  seed: 1
+  answer: generated
+  solution: null
+  hint: 'Use the meaning of a logarithm: \(\log_b(b^{k})=k\), \(\log_b(1)=0\), and \(\log_b(b)=1\). \(\log\) means base 10 and \(\ln\) means base \(e\).'
+  slips:
+  - Saying \(\log_b(1)=1\). It is \(0\) because \(b^{0}=1\).
+  - Forgetting that \(\log\) without a base is base 10.
+  status: checked

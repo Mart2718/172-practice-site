@@ -1,0 +1,37 @@
+outcome: PR4
+title: Polynomial Long Division
+chapter: 5
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/PR4/
+objective: Use long division to find the quotient and remainder when dividing one polynomial by another.
+generator: pr
+problems:
+- id: PR4-F-01
+  tier: floor
+  item_type:
+  - PR4.a
+  kind: template
+  template: poly_long_division
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Divide the leading term of the dividend by the leading term of the divisor, multiply that result by the whole divisor, subtract, bring down the next term, and repeat. Stop when what is left has smaller degree than the divisor.
+  slips:
+  - Subtracting only the first term of the product. Subtract every term, and change every sign.
+  - Using the wrong sign for the divisor. Dividing by \(x+2\) uses \(c=-2\), not \(c=2\).
+  - Skipping a missing power of \(x\). Write it with a zero coefficient (for example \(0x^2\)) so the columns line up.
+  status: checked
+- id: PR4-A-01
+  tier: assessment
+  item_type:
+  - PR4.b
+  - PR4.c
+  kind: template
+  template: poly_long_division_quadratic
+  seed: 1
+  answer: generated
+  solution: null
+  hint: With a quadratic divisor, the remainder can have degree 1, so keep dividing until the leftover has degree less than 2. For the remainder theorem, the remainder on division by \(x-c\) is \(f(c)\).
+  slips:
+  - Stopping too early. The remainder must have smaller degree than the divisor, so a degree-1 leftover with a quadratic divisor is finished, but a degree-2 leftover is not.
+  - Using \(f(-c)\) for division by \(x-c\). The remainder is \(f(c)\).
+  status: checked

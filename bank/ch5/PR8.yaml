@@ -1,0 +1,36 @@
+outcome: PR8
+title: Quadratic Inequalities
+chapter: 5
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/PR8/
+objective: Solve a quadratic inequality and express the solution in interval notation.
+generator: pr
+problems:
+- id: PR8-F-01
+  tier: floor
+  item_type:
+  - PR8.a
+  kind: template
+  template: quad_inequality
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Find where the quadratic equals zero. Those numbers split the number line into intervals; test one point in each interval to see where the inequality is true.
+  slips:
+  - Using brackets for a strict inequality, or parentheses when the inequality includes equality.
+  - Writing \(x<a\) and \(x>b\) as one interval. When the solution is the outside, you need two intervals joined with \(\cup\).
+  status: checked
+- id: PR8-A-01
+  tier: assessment
+  item_type:
+  - PR8.a
+  - PR8.b
+  kind: template
+  template: quad_inequality_rearranged
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Get zero on one side first. If the quadratic never crosses the \(x\)-axis, the answer is either every real number or no real number, depending on the inequality.
+  slips:
+  - Dividing or moving terms and forgetting to reverse the inequality when you multiply or divide by a negative number.
+  - Reporting an interval when the quadratic has no real zeros. Check the discriminant first.
+  status: checked

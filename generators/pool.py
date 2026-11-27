@@ -13,7 +13,7 @@ Writes
 Rules this script enforces (see SCHEMA.md, "Student site pool"):
   * Pool versions use seeds from 100000 up, so they never reuse a seed printed in the book.
   * A version whose text matches a book version, or an earlier pool version, is dropped.
-  * Only `audited` or `published` problems are exported. `draft` and `proposed` are skipped.
+  * Only `checked`, `audited` or `published` problems are exported. `draft` and `proposed` are skipped.
   * Items from bank/fixed/*.yaml (hand-written problems such as the Practice Exam 1 review set)
     are exported as written.
   * Math is normalised for MathJax + MathSpeak: degrees are \\text{°}, < and > inside math are
@@ -43,7 +43,7 @@ from build import figures_of, table_meta  # noqa: E402
 POOL = os.path.join(ROOT, "site", "pool")
 FIGS = os.path.join(POOL, "figures")
 SEED_BASE = 100_000
-FROZEN_OK = ("audited", "published")
+FROZEN_OK = ("checked", "audited", "published")   # "checked": passed the template asserts and verify_pool; awaiting an outside audit
 CHECKIT = "https://tbil.org/preview/precalculus/exercises/#/bank/{code}/"
 EXAM_OF_CHAPTER = {1: "Exam 1", 2: "Exam 1", 3: "Exam 2", 4: "Exam 2", 5: "Final only"}
 

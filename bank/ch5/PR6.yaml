@@ -1,0 +1,63 @@
+outcome: PR6
+title: Rational Equations
+chapter: 5
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/PR6/
+objective: Solve rational equations, giving exact solutions, and identify extraneous solutions that arise from clearing denominators.
+generator: pr
+problems:
+- id: PR6-F-01
+  tier: floor
+  item_type:
+  - PR6.a
+  kind: template
+  template: rational_eq_single
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Clear the fractions by multiplying both sides by the denominators (or cross-multiply when each side is one fraction), solve the equation you get, and check that no denominator is zero.
+  slips:
+  - Multiplying only one side of the equation by the denominator.
+  - Skipping the check. A value that makes a denominator zero is not a solution.
+  status: checked
+- id: PR6-F-02
+  tier: floor
+  item_type:
+  - PR6.a
+  kind: template
+  template: rational_eq_denominators
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Find a common denominator for all the fractions, multiply every term by it, and solve. Notice that \(x^2-p^2\) factors as \((x-p)(x+p)\).
+  slips:
+  - Multiplying only some of the terms by the common denominator.
+  - Not factoring \(x^2-p^2\), so the common denominator is much bigger than it needs to be.
+  status: checked
+- id: PR6-F-03
+  tier: floor
+  item_type:
+  - PR6.b
+  kind: template
+  template: rational_zero_numerator
+  seed: 1
+  answer: generated
+  solution: null
+  hint: A fraction equals zero only where the numerator is zero and the denominator is not. Factor the numerator and compare its zeros with the denominator's zero.
+  slips:
+  - Giving every zero of the numerator as a solution without checking the denominator.
+  - Explaining only that the value is a root of the numerator, not that it makes the denominator zero.
+  status: checked
+- id: PR6-A-01
+  tier: assessment
+  item_type:
+  - PR6.b
+  kind: template
+  template: rational_no_solution
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Write down the values that make a denominator zero before you solve. After clearing denominators, compare your result with that list.
+  slips:
+  - Reporting the value you found without checking it. A value that makes a denominator zero is extraneous.
+  - Writing \(x=p\) as the answer when the correct statement is that the equation has no solution.
+  status: checked

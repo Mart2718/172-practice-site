@@ -1,0 +1,65 @@
+outcome: EL5
+title: Properties of Logarithms
+chapter: 3
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/EL5/
+objective: Expand and condense logarithmic expressions using the properties of logarithms.
+generator: el
+problems:
+- id: EL5-F-01
+  tier: floor
+  item_type:
+  - EL5.a
+  kind: template
+  template: log_expand
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Quotient rule first (a quotient becomes a difference), then the product rule (a product becomes a sum), then bring each exponent down in front with the power rule.
+  slips:
+  - Distributing the log over a sum, as in \(\log(a+b)=\log a+\log b\). That is not a property.
+  - Forgetting parentheses when the denominator has two factors; both are subtracted.
+  status: checked
+- id: EL5-F-02
+  tier: floor
+  item_type:
+  - EL5.b
+  kind: template
+  template: log_condense
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Move each coefficient into an exponent first (the power rule backward). Then add logs by multiplying and subtract logs by dividing.
+  slips:
+  - Putting the coefficient in front of the argument instead of as its exponent.
+  - Multiplying the subtracted term instead of dividing by it.
+  status: checked
+- id: EL5-A-01
+  tier: assessment
+  item_type:
+  - EL5.a
+  - EL5.c
+  kind: template
+  template: log_properties_given
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Factor the number into the numbers you are given logs for. Products become sums, quotients become differences, and exponents come down in front.
+  slips:
+  - Writing \(\log_b(12)\) as \(\log_b(3)\cdot\log_b(4)\). A product inside becomes a sum outside.
+  - Treating a square root as \(\dfrac{1}{2}\) times the number instead of the exponent \(\dfrac{1}{2}\).
+  status: checked
+- id: EL5-A-02
+  tier: assessment
+  item_type:
+  - EL5.b
+  - EL5.c
+  kind: template
+  template: log_combine_evaluate
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Combine into a single logarithm first, then ask what power of the base gives the result.
+  slips:
+  - Adding the arguments when the logs are added. A sum of logs is the log of a product.
+  - Subtracting the arguments when the logs are subtracted. A difference of logs is the log of a quotient.
+  status: checked
