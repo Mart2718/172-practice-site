@@ -32,11 +32,7 @@ That server does not send the security headers from `_headers`. To test with the
 
 ## Deploy to Netlify
 
-| Setting | Value |
-|---|---|
-| Base directory | (blank) |
-| Build command | (blank) |
-| Publish directory | `site` |
+The repo's `netlify.toml` already tells Netlify to publish the `site` folder with no build step, so importing the repo needs no manual settings. If you ever deploy another way (for example a drag-and-drop), the folder to upload is `site`, not the whole repo; otherwise the home page shows "Page not found" and the site only appears under `/site/`.
 
 `_headers` is picked up automatically. It sets a strict Content Security Policy (everything from this site only), long caching for `/vendor/*`, and a 5-minute cache for `/pool/*` so a regenerated pool shows up quickly.
 
