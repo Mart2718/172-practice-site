@@ -174,8 +174,8 @@ def _isq(n):
 
 def _im(t):
     """Imaginary part text for t = sqrt(k): '3i' or 'i\\sqrt{5}'."""
-    k = t * t
-    return f"{int(t)}i" if t == int(t) else f"i\\sqrt{{{int(k)}}}"
+    k = round(t * t)                      # t = sqrt(k) as a float: t * t can be 2.9999999999999996
+    return f"{int(t)}i" if t == int(t) else f"i\\sqrt{{{k}}}"
 
 
 def _rad(k):
@@ -364,8 +364,9 @@ def rational_no_solution(rng):
     cleared = sp.expand(x - (p + c * (x - p)))
     assert sp.solve(cleared, x) == [p]
     assert sp.simplify(lhs - rhs - (1 - c)) == 0 and c != 1   # the two sides differ by a nonzero constant wherever defined
-    eq = rf"\dfrac{{x}}{{{d}}} = \dfrac{{{p}}}{{{d}}} + {c}"
-    ans = (f"Multiply both sides by {m(d)}: {m(f'x = {p} + {c}({d})')}. This gives {m(f'{_coef(1 - c)}x = {p * (1 - c)}')}, so {m(f'x = {p}')}. "
+    sg = "+" if c > 0 else "-"
+    eq = rf"\dfrac{{x}}{{{d}}} = \dfrac{{{p}}}{{{d}}} {sg} {abs(c)}"
+    ans = (f"Multiply both sides by {m(d)}: {m(f'x = {p} {sg} {abs(c)}({d})')}. This gives {m(f'{_coef(1 - c)}x = {p * (1 - c)}')}, so {m(f'x = {p}')}. "
            f"But {m(f'x = {p}')} makes the denominator {m(0)}, so it is extraneous. The equation has no solution.")
     parts = [(f"Solve {m(eq)}. Check each result in the original equation.", ans),
              ("How can you tell, before solving, that the value " + m(f"x = {p}") + " can never be a solution?",
@@ -521,7 +522,8 @@ def quad_inequality_rearranged(rng):
             assert S not in (sp.S.EmptySet, sp.S.Reals)
             _sample_check(lhs - rhs, op, S)
             q = f"Solve {m(tex(lhs) + ' ' + OPS[op][1] + ' ' + tex(rhs))}. Express your answer in interval notation."
-            a_ = (f"Subtract {m(tex(rhs))} from both sides to get {m(tex(lhs - rhs) + ' ' + OPS[op][1] + ' 0')}, then factor and use a sign chart. "
+            step = f"Subtract {m(tex(rhs))} from both sides" if rhs > 0 else f"Add {m(tex(-rhs))} to both sides" if rhs < 0 else "Everything is already on one side"
+            a_ = (f"{step} to get {m(tex(lhs - rhs) + ' ' + OPS[op][1] + ' 0')}, then factor and use a sign chart. "
                   f"Solution: {m(iv_tex(S))}.")
             parts.append((q, a_))
         else:

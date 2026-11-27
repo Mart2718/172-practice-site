@@ -40,8 +40,10 @@ SPECIAL = [30, 45, 60, 120, 135, 150, 210, 225, 240, 300, 315, 330]
 def sum_difference_exact(rng):
     fn = rng.choice(["sin", "cos"])
     target = rng.choice([15, 75, 105, 165, 195, 255, 285, 345])
+    # 15 and 75 appear only as cos 15 and sin 75, so a practice item is never word-for-word an item used in class
+    assert (fn, target) not in (("sin", 15), ("cos", 75))
     options = [(A, B, op) for A in SPECIAL for B in (30, 45, 60) for op in "+-" if A != B
-               and ((A + B if op == "+" else A - B) % 360) == target and (op == "+" or A > B)]
+               and (A + B if op == "+" else A - B) == target]
     assert options
     A, B, op = rng.choice(options)
     f = sp.sin if fn == "sin" else sp.cos
@@ -132,7 +134,7 @@ def pythagorean_quadrant(rng):
 
 def power_reduce(rng):
     fn = rng.choice(["sin", "cos"])
-    c = rng.choice([2, 3, 4, 5, 6, 8, 10, 12])
+    c = rng.choice([2, 3, 4, 5, 6, 7, 10, 12])
     k = rng.choice([1, 2, 3, 4, 5])
     arg = "x" if k == 1 else f"{k}x"
     double = f"{2 * k}x"
@@ -393,7 +395,8 @@ def _general(fn, sols):
 def trig_general_solution(rng):
     items = []
     for fn in rng.sample(["sin", "cos", "tan"], 2):
-        c = rng.choice(VALS[fn])
+        # sin = sqrt(3)/2 and tan = 1 are left for in-class use, so practice items are not word-for-word the same as class items
+        c = rng.choice([v for v in VALS[fn] if not ((fn == "sin" and v == sp.sqrt(3) / 2) or (fn == "tan" and v == 1))])
         sols = _solutions(fn, c)
         assert len(sols) == _expected_count(fn, c, 1)
         gen = _general(fn, sols)
@@ -409,7 +412,7 @@ def trig_general_solution(rng):
 def trig_squared_interval(rng):
     items = []
     for fn in rng.sample(["sin", "cos", "tan"], 2):
-        c = rng.choice([v for v in VALS[fn] if float(v) > 0])
+        c = rng.choice([v for v in VALS[fn] if float(v) > 0 and not (fn == "sin" and v == sp.sqrt(3) / 2)])
         sols = _solutions(fn, c, squared=True)
         assert len(sols) == 4, (fn, c, sols)
         c2 = sp.expand(c ** 2)

@@ -351,7 +351,7 @@ def _pexp(v, p):
 
 def log_expand(rng):
     vx, vy, vz = rng.choice(VARSETS)
-    b_ = rng.choice([2, 3, 4, 5, "e"])
+    b_ = rng.choice([2, 3, 4, 6, 7, "e"])
     pn = [rng.choice([1, 2, 3]), rng.choice([1, 2])]
     pd = rng.choice([1, 2, 3])
     two_den = rng.random() < 0.3
@@ -593,13 +593,15 @@ def growth_doubling(rng):
     target = P0 * base ** tn
     pop1 = P0 * base ** t1
     assert math.isclose(math.log(target / P0, base), tn)
-    things = rng.choice([("bacteria", "days"), ("yeast cells", "hours"), ("a viral video's views", "days")])
+    subject, unit, noun = rng.choice([("A culture of bacteria", "days", "population"), ("A culture of yeast cells", "hours", "population"),
+                                      ("The number of views of a viral video", "days", "number of views")])
+    things = (noun, unit)
     word = {2: "doubles", 3: "triples"}[base]
-    stem = (f"A culture of {things[0]} {word} every {things[1][:-1]}. The population after {m('t')} {things[1]} is "
+    stem = (f"{subject} {word} every {unit[:-1]}. The {noun} after {m('t')} {unit} is "
             f"{m(f'P(t) = {P0} \\cdot {base}^{{t}}')}.")
     parts = [
-        (f"Find the population after {m(t1)} {things[1]}.", f"{m(f'P({t1}) = {P0} \\cdot {base}^{{{t1}}} = {pop1}')}."),
-        (f"After how many {things[1]} will the population reach {target:,}?",
+        (f"Find the {noun} after {m(t1)} {unit}.", f"{m(f'P({t1}) = {P0} \\cdot {base}^{{{t1}}} = {pop1}')}."),
+        (f"After how many {unit} will the {noun} reach {target:,}?",
          f"Solve {m(f'{P0} \\cdot {base}^{{t}} = {target}')}: divide by {m(P0)} to get {m(f'{base}^{{t}} = {base ** tn}')}. "
          f"Since {m(f'{base ** tn} = {base}^{{{tn}}}')}, {m(f't = {tn}')} {things[1]}."),
     ]

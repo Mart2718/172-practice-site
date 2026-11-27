@@ -2,6 +2,7 @@
 """Make math-audit packets for ChatGPT (or any reviewer) from the practice pool.
 
     python3 generators/audit_pool.py [--out audit] [--per-family 2] [--conventions PATH]
+    python3 generators/audit_pool.py --standards EL1,EL2,EL3 --name new-exponentials --out /tmp/audit   # one packet for chosen standards
 
 Two packets are written under --out:
 
@@ -193,6 +194,8 @@ def main():
     ap.add_argument("--out", default=os.path.join(ROOT, "audit"))
     ap.add_argument("--per-family", type=int, default=2)
     ap.add_argument("--conventions", default=os.path.join(ROOT, "CONVENTIONS.md"))
+    ap.add_argument("--standards", help="comma-separated codes, e.g. EL1,EL2: write one packet of generated problems for just these standards")
+    ap.add_argument("--name", default="generated", help="folder name for the packet when --standards is used")
     a = ap.parse_args()
 
     idx = json.load(open(os.path.join(POOL, "index.json")))["standards"]
@@ -223,14 +226,17 @@ def main():
     for it in items:
         if not it["family"].startswith("PE1"):
             by_fam.setdefault(it["family"], []).append(it)
+    only = set(a.standards.split(",")) if a.standards else None
     gen = []
     for fid in sorted(by_fam):
-        gen += pick(by_fam[fid], a.per_family)
+        if only is None or by_fam[fid][0]["std"] in only:
+            gen += pick(by_fam[fid], a.per_family)
 
     os.makedirs(a.out, exist_ok=True)
     open(os.path.join(a.out, "AUDIT-PROMPT.md"), "w").write(PROMPT)
-    for name, title, sel in (("pe1", "Practice Exam 1 review problems", pe1),
-                             ("generated", "Generated practice problems (sample)", gen)):
+    packets = ((a.name, f"Generated practice problems: {a.standards}", gen),) if only else (
+        ("pe1", "Practice Exam 1 review problems", pe1), ("generated", "Generated practice problems (sample)", gen))
+    for name, title, sel in packets:
         d = os.path.join(a.out, name)
         shutil.rmtree(d, ignore_errors=True)
         n, nf = write_packet(d, title, sel, families, notes, std_title, a.conventions, standards_md)

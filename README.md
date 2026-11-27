@@ -1,6 +1,6 @@
 # Math 172 Practice Site
 
-A free, accessible practice and review website for **Math 172 (Precalculus & Trigonometry)** at Santa Ana College. Students practice any of the 38 standards, take a practice test, or do random recall, with a hint, an answer and common-slip notes for every problem.
+A free, accessible practice and review website for **Math 172 (Precalculus & Trigonometry)** at Santa Ana College. Students practice any of the 38 standards (all 38 have practice problems; 14 Chapter 1–2 standards still have only the Exam 1 review questions), take a practice test, or do random recall, with a hint, an answer and common-slip notes for every problem.
 
 It is a static site (no server, no accounts, no tracking) that deploys to Netlify. See [`site/README.md`](site/README.md) to run, deploy and embed it.
 
@@ -20,11 +20,15 @@ Nothing from `172-exam-bank` ever goes in this repo. New practice problems never
 |---|---|
 | `site/` | The website: pages, MathJax (self-hosted), and the generated problem pool in `site/pool/` |
 | `generators/pool.py` | Exports the pool: up to 12 versions per template, plus the hand-written problems |
-| `generators/verify_pool.py` | Re-derives answers independently and fails if any is wrong (FN1 and FN2 so far) |
-| `generators/fn1.py`, `fn2.py`, `common.py` | Problem templates and helpers. Answers are computed (SymPy), never typed by hand |
+| `generators/verify_pool.py` | Re-derives answers independently and fails if any is wrong (FN1 and FN2) |
+| `generators/verify_ch35.py`, `texeval.py`, `vbase.py`, `vc_*.py` | The same for the 22 standards in Chapters 3–5 (EL, PF2–3, TE, PR3–9): 1,635 checks |
+| `generators/mutate_ch35.py` | Plants wrong answers to test whether the verifier catches them (95% overall, 100% of wrong final answers) |
+| `generators/blueprint.py` | Writes `BLUEPRINT.md`, the list of problem families and a sample question for each |
+| `generators/audit_pool.py` | Builds the packets for the outside blind-solve audit (`--standards` for chosen standards) |
+| `generators/fn1.py`, `fn2.py`, `el.py`, `pf.py`, `te.py`, `pr.py`, `common.py` | Problem templates and helpers. Answers are computed (SymPy) and checked a second way inside the template, never typed by hand |
 | `generators/build.py`, `packet.py` | Copied from the textbook repo; `pool.py` imports two helpers from `build.py` |
 | `bank/standards.yaml` | The 38 standards |
-| `bank/ch1/` | Template problems with `hint` and `slips` |
+| `bank/ch1/`, `ch3/`, `ch4/`, `ch5/` | Template problems with `hint` and `slips`, by chapter |
 | `bank/fixed/` | Hand-written problems (the 38 Practice Exam 1 review questions) and their images |
 
 ## Make the pool
@@ -33,7 +37,8 @@ Nothing from `172-exam-bank` ever goes in this repo. New practice problems never
 pip install pyyaml sympy matplotlib numpy
 python3 generators/pool.py            # about 40 seconds; rewrites site/pool/
 python3 generators/pool.py --check    # validates what is in site/pool/
-python3 generators/verify_pool.py     # independent answer check
+python3 generators/verify_pool.py     # independent answer check, FN1 and FN2
+python3 generators/verify_ch35.py     # independent answer check, Chapters 3-5
 cd site && python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
@@ -43,7 +48,8 @@ The templates and the chapter 1 bank files were copied from `172-textbook-proble
 
 ## Docs
 
-- [`SCHEMA.md`](SCHEMA.md): bank file and pool file formats, and what `pool.py` guarantees
+- [`SCHEMA.md`](SCHEMA.md): bank file and pool file formats, statuses, what `pool.py` guarantees, and how answers are verified
+- [`BLUEPRINT.md`](BLUEPRINT.md): the kinds of problem each Chapter 3–5 standard asks, with a sample question for each
 - [`ACCESSIBILITY.md`](ACCESSIBILITY.md): what is built in, what was tested, what is not done yet
 - [`ROADMAP.md`](ROADMAP.md): what comes next
 

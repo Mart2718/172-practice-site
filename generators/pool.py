@@ -185,7 +185,7 @@ def export_bank(std, path, n_versions, report):
                 report.append(f"  skip {p['id']} (status {p['status']})")
                 continue
             types = p["item_type"] if isinstance(p["item_type"], list) else [p["item_type"]]
-            fam = {"tier": p["tier"], "types": types, "hint": p.get("hint", ""), "slips": p.get("slips", [])}
+            fam = {"tier": p["tier"], "types": types, "hint": clean_html(p.get("hint", "")), "slips": [clean_html(t) for t in p.get("slips", [])]}
             if not fam["hint"]:
                 report.append(f"  warn {p['id']}: no hint")
             if p.get("bridge_note"):
@@ -254,8 +254,8 @@ def export_fixed(code_to_items, report):
             errs = check_item(item)
             if errs:
                 raise SystemExit(f"{raw['id']}: {'; '.join(sorted(set(errs)))}")
-            fam = {"tier": "review", "types": [raw.get("item_type", raw["standard"])], "hint": raw.get("hint", ""),
-                   "slips": raw.get("slips", []), "source": src}
+            fam = {"tier": "review", "types": [raw.get("item_type", raw["standard"])], "hint": clean_html(raw.get("hint", "")),
+                   "slips": [clean_html(t) for t in raw.get("slips", [])], "source": src}
             code_to_items.setdefault(raw["standard"], ([], {}))
             code_to_items[raw["standard"]][1][raw["id"]] = fam
             code_to_items[raw["standard"]][0].append(item)
