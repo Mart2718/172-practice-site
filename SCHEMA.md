@@ -89,6 +89,6 @@ Written by `generators/pool.py`. Never edit by hand.
 
 ### Public pool and private assessments
 
-- **Public pool (this repo):** each template exports up to 12 versions, drawn from seeds 100000 and up. The site picks a standard, then a kind of problem, then a version, and avoids repeating recent ones.
+- **Public pool (this repo):** each template exports up to 12 versions, drawn from seeds 100000 and up. Decision, Nov 27 2026 (Dr. Romero): publish all of them for now rather than capping the public pool at 3. Faculty assessments use a separate seed range, so no assessment version appears in the public pool. The site picks a standard, then a kind of problem, then a version, and avoids repeating recent ones.
 - **Faculty pool (planned, private):** at least 5 different problems per standard for assessments and reassessments, drawn from the same templates with seeds in a separate range that this repo never uses, and the faculty generator skips any version whose printed text matches a public one. The seed register lives in `172-exam-bank`.
 - **Real quiz and exam items and their keys** live only in the private `172-exam-bank` repo. New bank problems never reuse them.

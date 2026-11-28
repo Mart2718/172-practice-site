@@ -25,12 +25,12 @@ standards:
     title: 'Equations of Lines'
     chapter: 1
     section: '1.4'
-    blurb: 'Equations of lines: slope and y-intercept from standard form, and equations from a point and slope, two points, or a graph'
+    blurb: 'Equations of lines: slope and y-intercept from standard form, and the equation of a line through two points or from a point and a slope'
   - code: LF3
     title: 'Graphs of Linear Equations'
     chapter: 1
     section: '1.4'
-    blurb: 'Graphing lines from points, intercepts, a slope, or an equation in any form, including horizontal and vertical lines'
+    blurb: 'Lines and their graphs: the equation of a line from a point and an intercept, from both intercepts, or from a graph, and graphing a line from points, intercepts, a slope, or an equation in any form, including horizontal and vertical lines'
   - code: LF5
     title: 'Linear Models and Meanings'
     chapter: 1
