@@ -36,7 +36,7 @@ problems:
   seed: 1
   answer: generated
   solution: null
-  hint: When there is no common factor, every zero of the denominator is a vertical asymptote. If the degrees are equal, the horizontal asymptote is the ratio of the leading coefficients. If the numerator has the smaller degree, it is \(y=0\).
+  hint: Factor the numerator and the denominator and look for a common factor. The zeros of the denominator that is left give the vertical asymptotes, and the zeros of the numerator give the zeros. Compare the degree of the numerator with the degree of the denominator to decide the horizontal asymptote.
   slips:
   - Taking the ratio of the constants instead of the leading coefficients for the horizontal asymptote.
   - Forgetting the leading coefficient in the denominator when the degrees are equal.

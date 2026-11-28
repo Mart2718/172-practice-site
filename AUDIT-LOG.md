@@ -37,7 +37,7 @@ Independent reviews of the problems on this site. Add a new section for each rev
 |---|---|
 | Template self-checks (every answer computed two ways before export) | All pass; draws that fail an assert are dropped silently and counted in the `pool.py` output |
 | Independent verifier `generators/verify_ch35.py` (reads only the printed problem) | 1,702 checks, **0 fail** (1,635 at first; the extra checks were added after the audit below) |
-| Planted-error test `generators/mutate_ch35.py` (seed 5, 4 per family) | 599 plants: **95.8% caught**, 100% of wrong final answers, 93.4% of sign slips (95.0% of 598 before the audit below) |
+| Planted-error test `generators/mutate_ch35.py` (seed 5, 4 per family) | 599 plants: **96.5% caught**, 100% of wrong final answers, 93.4% of sign slips (95.8% before the two audits below) |
 | Real-item reuse check (against the private bank, never stored here) | No whole item reused. 5 templates changed to avoid word-for-word twins. About 10 near-variants remain (different sign, function or value, so a different answer). Short special-value questions coincide where there is only one way to write them |
 | Page test, all 22 pages in Chrome | Math renders, no raw LaTeX on screen, no `None` or `nan`, exactly one `h1`, axe-core WCAG 2.1 A and AA: **0 violations**. Colour contrast is "incomplete" in axe (it cannot compute it for math), so it still needs a manual check |
 | MathJax sweep of every math fragment in the new pools | 3,610 distinct fragments, 0 errors |
@@ -85,3 +85,33 @@ Independent reviews of the problems on this site. Add a new section for each rev
 - The reviewer's full report (134 verdict rows and the "remaining hint, wording, and convention issues") has not reached Claude. Only the five-row table above was available, so anything else in it is not yet reviewed.
 - The fixed families are still `checked`. They move to `audited` after a re-check packet comes back clean.
 
+## 2026-11-27 · ChatGPT re-check, audit 2b (45 problems)
+
+**Method.** A re-check packet of the 45 problems touched by audit 2 (`Math172-ChatGPT-audit-2b_recheck`), solved blind and compared with the key.
+
+**Result.** All 45 final answers correct, and all five mathematical corrections from audit 2 confirmed. The reviewer asked for five wording changes and one hint change. Reviewer confidence: 99%, no final-answer changes needed.
+
+| Where | Finding | Resolution |
+|---|---|---|
+| #19–20 (PF3-F-02) | "Changing the input does not change the outputs." is wrong: a horizontal shift keeps the *range*, not each output | The range sentence now says moving the graph left or right does not change the range, or that stretching it horizontally does not; an added `π` term says it shifts the interval |
+| #23–24 (PR4-A-01) | The answer and slip used `f(c)` where the problem's function is `g` | They use the function's own name, and the slip says "evaluating the function at `−c`" |
+| #28–30 (PR6-A-01) | The slip said "Writing x = p" and `p` is not in the problem | Reworded to "Writing the extraneous value as the answer when the correct statement is that the equation has no solution" |
+| #43–45 (PR7-F-01) | The answer did not name the polynomial factors, and part (b) lost the original domain exclusion | Part (a) now factors both polynomials and names the common factor. Part (b) says the other numerator zero is not in the domain of the original function, so it is a hole and not a zero |
+| Hints in #19–21 (PF3-F-02) and #41 (PR7-A-01) | The hints supplied the requested answers, against the hint policy | Both hints now name the move (ask what the original function can take; factor and compare degrees) and no longer state a result |
+
+**Found while fixing, not reported by the reviewer.** The EL4-F-01, PF2-F-01 and PF2-F-02 hints and slips had the same defect (they stated the range, or the interval, that the question asks for). Reworded to point to the first move.
+
+**Checker changes.**
+
+- Hint-states-answer check: fails if a math fragment in the hint equals the last math fragment of any answer in the family. It also fails if a hint says "all real numbers" in a family that asks for a domain or range, or names some inverse functions and not all that the family uses.
+- `pool.py` now stops with a message if a hint or slip is not a string. Two reworded hints had an unquoted `: ` that YAML read as a mapping, and one crashed the build part-way through the export.
+- Prose restatements that the planted-error test showed nothing was reading, now read: the period formula in PF2 (`2π/k` for secant and cosecant, `π/k` for tangent and cotangent); the "never between −1 and 1" and stretch-factor sentence; the expression inside "is undefined where … equals"; the logarithm argument in "must be positive"; the PR6 multiplied-through equation against (left − right) × factor; every "division by" and "makes the denominator" statement in every part of PR6; the value at a hole in PR7; the right triangle in PF3.
+- The old PR4 checker compared the rewritten function with its numerator, as the template had. It now reads the question to see whether the function is a fraction.
+
+**Numbers.** Independent verifier: 1,702 checks, 0 fail. Planted-error test on the six touched standards (EL4, PF2, PF3, PR4, PR6, PR7; seed 5, 4 per family): **119 of 120 caught** (89.2% before), all final-answer plants caught; the survivor is `π/2 + nπ` against `π/2 − nπ`, which is the same set. All 22 standards: 599 plants, **96.5% caught**. Page checks for the six standards and the MathJax sweep (3,651 fragments, 0 errors) pass.
+
+**Still open.**
+
+- The reviewer's full reports (the 134-row audit 2 report and the 45-row re-check report) did not reach Claude; only the summary tables did. Anything beyond them is not reviewed.
+- The reviewer has not seen these last fixes (the hint rewording and the PF2 and EL4 changes). All 67 families are still `checked`; none is `audited`.
+- No real screen-reader test; no graphs in the new items; `CONVENTIONS.md` has nothing for Chapters 3–5 yet.

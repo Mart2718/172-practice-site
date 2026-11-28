@@ -91,6 +91,10 @@ def family_templates():
     return out
 
 
+def norm_math(t):
+    return re.sub(r"\s+", "", t).replace("\\dfrac", "\\frac").replace("\\left", "").replace("\\right", "")
+
+
 def family_text(code):
     """Hints and slips live on the family, so check them against the items of that family."""
     d = json.load(open(os.path.join(POOL, f"{code}.json")))
@@ -101,13 +105,24 @@ def family_text(code):
             for part in it["parts"]:
                 used |= set(re.findall(r"\\(arcsin|arccos|arctan)", part["q"] + part["a"]))
         said = fam.get("hint", "") + " ".join(fam.get("slips", []))
+        hint_named = set(re.findall(r"\\(arcsin|arccos|arctan)", fam.get("hint", "")))
         for fn in sorted(used):
-            if "\\" + fn not in said:
-                fail(items[0], f"the hint and slips never mention \\{fn}, but items in this family use it")
+            if hint_named and fn not in hint_named:       # a hint that names some inverse functions must name all that the family uses
+                fail(items[0], f"the hint names {sorted(hint_named)} but items in this family also use \\{fn}")
             interval = {"arcsin": r"\left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]", "arccos": r"[0, \pi]"}.get(fn)
             asks_range = any("State the range" in part["q"] for it in items for part in it["parts"])   # there the interval is the answer, so the hint must not give it
             if fn != "arctan" and not asks_range and "\\" + fn in said and interval and interval not in said:
                 fail(items[0], f"the hint and slips name \\{fn} but never give its interval")
+        # a hint must not state the answer: no math fragment of the hint may be the last math fragment of an answer in its family
+        hint_math = {norm_math(t) for t in re.findall(r"\\\((.*?)\\\)", fam.get("hint", "")) if len(norm_math(t)) >= 2}
+        for it in items:
+            for part in it["parts"]:
+                tail = maths(part["a"])
+                if tail and norm_math(tail[-1]) in hint_math:
+                    fail(it, f"the hint states an answer: \\({tail[-1].strip()}\\)")
+        asks_dr = any(re.search(r"\b(range|domain)\b", part["q"]) for it in items for part in it["parts"])
+        if asks_dr and "all real numbers" in fam.get("hint", ""):
+            fail(items[0], "the hint says 'all real numbers' but the family asks for a domain or range, so it gives the answer")
         ok["family hint covers every inverse function used"] += 1
 
 

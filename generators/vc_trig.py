@@ -85,6 +85,12 @@ def pf2_part(item, p, F):
         if ex is None:
             fail(item, "no excluded values printed")
             return
+        mw = re.search(r"undefined where the (?:sine|cosine) is \\\(0\\\), that is where \\\(((?:(?!\\\)).)*)\\\) equals", a)
+        if mw:
+            body = body_of(item["stem"])
+            ma = re.search(r"\\(?:cot|tan)\\left\((.*)\\right\)", body)
+            if ma and compile_tex(mw.group(1))({"x": 0.7}) != compile_tex(ma.group(1))({"x": 0.7}):
+                fail(item, f"the text says {mw.group(1)} but the function's inner expression is {ma.group(1)}")
         inside = [v for v in ex if -12 <= v <= 12]
         for r in poles:
             if not any(abs(r - v) < 1e-4 for v in inside):
@@ -93,6 +99,11 @@ def pf2_part(item, p, F):
             if not any(abs(r - v) < 1e-4 for r in poles):
                 fail(item, f"x = {v:.5f} is excluded in the printed domain but F is finite there")
     if "period" in q:
+        mf = re.search(r"The period of \\\(\\(sin|cos|tan|cot|sec|csc)\(kx\)\\\) is \\\(\\dfrac\{(\d*\\pi)\}\{k\}\\\)", a)
+        if mf:
+            want = "2\\pi" if mf.group(1) in ("sin", "cos", "sec", "csc") else "\\pi"
+            if mf.group(2) != want:
+                fail(item, f"the period of {mf.group(1)}(kx) is {want}/k, not {mf.group(2)}/k")
         P = last_value(a)
         for x_ in (0.123, 0.77, 1.31, -0.55):
             try:
@@ -113,6 +124,16 @@ def pf2_part(item, p, F):
             if same:
                 fail(item, f"{P:.6g} is not the smallest period (so is {P / m_:.6g})")
     if "range" in q:
+        mb = re.search(r"never between \\\(([^\\]*)\\\) and \\\(([^\\]*)\\\), and the stretch factor is \\\(([^\\]*)\\\)", a)
+        if mb:
+            if (mb.group(1), mb.group(2)) != ("-1", "1"):
+                fail(item, f"secant and cosecant values are never between -1 and 1, not between {mb.group(1)} and {mb.group(2)}")
+            mc = re.search(r"(-?\d*)\\(?:sec|csc)", item["stem"])
+            if mc:
+                coef = {"": 1, "-": -1}.get(mc.group(1), None)
+                coef = coef if coef is not None else int(mc.group(1))
+                if abs(coef) != int(mb.group(3)):
+                    fail(item, f"the stretch factor is {abs(coef)}, not {mb.group(3)}")
         frag = [t for t in maths(a) if r"\infty" in t][-1]
         iv = parse_iv(frag)
         samples = []
@@ -672,6 +693,13 @@ def arc_argument(text, fn):
 
 
 def pf3_static(item):
+    for p in item["parts"]:
+        if "range" in p["q"] and "Changing the input" in p["a"]:
+            fail(item, "'Changing the input does not change the outputs' is vague; a horizontal change keeps the range")
+        if "range" in p["q"]:
+            stem_in = [arc_argument(item["stem"], fn) for fn in ("arcsin", "arccos", "arctan") if arc_argument(item["stem"], fn)]
+            if stem_in and stem_in[0].strip() != "x" and "added" not in p["a"] and "left or right" not in p["a"] and "horizontally" not in p["a"]:
+                fail(item, "the range explanation should say that a horizontal change keeps the range")
     stem_fn = re.search(r"\\(arcsin|arccos)", item["stem"])
     if stem_fn:                                    # domain/range: the inequality in the answer must be about the same inside expression
         inside = arc_argument(item["stem"], stem_fn.group(1))
@@ -690,6 +718,9 @@ def pf3_static(item):
             arg = arc_argument(q, qa.group(1))
             if arg is not None and abs(evaluate(arg) - evaluate(mw.group(2))) > 1e-9:
                 fail(item, f"the explanation says the {mw.group(1)} is {mw.group(2)}, but the question has {arg}")
+        mt3 = re.search(r"known side \\\((\d+)\\\) and hypotenuse \\\((\d+)\\\): the other side is \\\((\d+)\\\)", a)
+        if mt3 and int(mt3.group(1)) ** 2 + int(mt3.group(3)) ** 2 != int(mt3.group(2)) ** 2:
+            fail(item, f"{mt3.group(1)}, {mt3.group(3)}, {mt3.group(2)} is not a right triangle")
         mi = re.search(r"\\\(((?:(?!\\\)).)*)\\\) is not in that interval", a)
         inner0 = re.search(r"\\(?:sin|cos|tan)\\left\((.*)\\right\)\\right\)", q)
         if mi and inner0 and abs(evaluate(inner0.group(1)) - evaluate(mi.group(1))) > 1e-9:

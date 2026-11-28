@@ -267,6 +267,34 @@ def el2(item):
         exp_part(item, p, F)
 
 
+def log_argument(text):
+    """What is inside the first logarithm of the text, with \\left( \\right) pairs balanced."""
+    mt = re.search(r"(?:\\log_\{[^}]*\}|\\ln)\s*(?:\\left)?\(", text)
+    if not mt:
+        return None
+    depth, i = 1, mt.end()
+    while i < len(text):
+        if text.startswith("\\left(", i):
+            depth += 1
+            i += 6
+        elif text.startswith("\\right)", i):
+            depth -= 1
+            if depth == 0:
+                return text[mt.end():i]
+            i += 7
+        elif text[i] == "(":
+            depth += 1
+            i += 1
+        elif text[i] == ")":
+            depth -= 1
+            if depth == 0:
+                return text[mt.end():i]
+            i += 1
+        else:
+            i += 1
+    return None
+
+
 def log_part(item, p, F):
     q, a = p["q"], p["a"]
     edge, right = domain_edge(F)
@@ -287,11 +315,13 @@ def log_part(item, p, F):
         want = -int(mi.group(2)) if mi.group(1) == "+" else int(mi.group(2))
         if int(mi.group(3)) != want:
             fail(item, f"x {mi.group(1)} {mi.group(2)} > 0 gives x > {want}, not {mi.group(3)}")
-    mg = re.search(r"argument must be positive, so \\\((.*?) \\gt\s+0\\\)", a)
+    mg = re.search(r"argument must be positive(?:, so|:) \\\(((?:(?!\\\)).)*?) \\gt\s+0\\\)", a)
     if mg and F is not None:
         arg_ = compile_tex(mg.group(1))
-        stem_arg = re.search(r"\\log_\{[^}]*\}\((.*?)\)(?:\s|\+|-|$)", item["stem"])
-        if stem_arg and any(abs(arg_({"x": xv}) - compile_tex(stem_arg.group(1))({"x": xv})) > 1e-9 for xv in (-1.3, 0.4, 2.9)):
+        stem_arg = log_argument(item["stem"])
+        if stem_arg is None:
+            fail(item, "could not find the logarithm's argument in the stem")
+        elif any(abs(arg_({"x": xv}) - compile_tex(stem_arg)({"x": xv})) > 1e-9 for xv in (-1.3, 0.4, 2.9)):
             fail(item, f"the argument {mg.group(1)} is not the argument of the logarithm in the stem")
     for mset in re.finditer(r"Set \\\(\w\(x\) = (.*?)\\\)", a):
         if mset.group(1).strip() != "0":

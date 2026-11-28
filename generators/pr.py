@@ -422,10 +422,11 @@ def rational_hole_features(rng):
     else:
         shown = rf"\dfrac{{{cf}{lin(a_)}{lin(b_)}}}{{{lin(a_)}{lin(c_)}}}"
     parts = [
-        ("Find any holes.", f"{m(f'x = {a_}')} is a factor of both the numerator and the denominator. After canceling it, the denominator that is left is "
+        ("Find any holes.", (f"Factor: {m(f'{num_t} = {cf}{lin(a_)}{lin(b_)}')} and {m(f'{den_t} = {lin(a_)}{lin(c_)}')}. " if unfactored else "") +
+                            f"The factor {m(lin(a_))} is common to the numerator and the denominator. After canceling it, the denominator that is left is "
                             f"{m(_poly_tex(rd_left))}, which is not {m(0)} at {m(f'x = {a_}')}, so the factor canceled completely and there is a hole at {m(f'x = {a_}')}. "
                             f"After canceling, the value there is {m(f'y = ' + frac_tex(hole_y))}, so the hole is at {m(f'({a_}, {frac_tex(hole_y)})')}."),
-        ("Find the zeros.", f"The zero is {m(f'x = {b_}')} (the other numerator zero, {m(f'x = {a_}')}, is a hole, not a zero)."),
+        ("Find the zeros.", f"The zero is {m(f'x = {b_}')}. The other numerator zero, {m(f'x = {a_}')}, is not in the domain of the original function, so it is a hole, not a zero."),
         ("Find the vertical asymptote.", f"{m(f'x = {c_}')}."),
         ("Find the horizontal asymptote.", f"The degrees are equal, so the horizontal asymptote is the ratio of the leading coefficients: {m(f'y = {k}')}."),
         (f"Find the {m('y')}-intercept.", f"{m(f'{F}(0) = ' + frac_tex(yint))}, so the {m('y')}-intercept is {m(f'(0, {frac_tex(yint)})')}."),

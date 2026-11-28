@@ -239,6 +239,11 @@ def rational_prose(item, p0, g, num, den, cands, good):
         E = sp.Poly(sp.expand(tex2sym(mk.group(1))), x)
         if sp.div(sp.Poly(den, x), E)[1] != 0:
             fail(item, f"'{mk.group(1)}' is not a denominator of the equation")
+    for me in re.finditer(r"Multiply both sides by \\\(((?:(?!\\\)).)*)\\\): \\\(((?:(?!\\\)).)*)\\\)", a):
+        E = tex2sym(me.group(1))
+        sides = me.group(2).split("=")
+        if len(sides) == 2 and sp.simplify((tex2sym(sides[0]) - tex2sym(sides[1])) - g * E) != 0:
+            fail(item, f"after multiplying by {me.group(1)} the equation should be the original times that factor, not {me.group(2)}")
     for mm in re.finditer(r"Multiply both sides by \\\((.*?)\\\)", a):
         E = sp.Poly(sp.expand(tex2sym(mm.group(1))), x)
         if sp.div(sp.Poly(den, x), E)[1] != 0 or sp.div(E, sp.Poly(den, x))[1] != 0 and E.degree() > sp.Poly(den, x).degree():
@@ -269,6 +274,10 @@ def rational_equation(item):
     plain = strip_text(p0["a"])
     printed = x_values(p0["a"])
     rational_prose(item, p0, g, num, den, cands, good)
+    for part in item["parts"]:                      # every part, including the "explain why" part
+        for mz in re.finditer(r"(?:division by|makes the denominator|denominator [^.]*? equals) \\\((-?\d+)\\\)", part["a"]):
+            if mz.group(1).strip() != "0":
+                fail(item, f"the text says the denominator or divisor is {mz.group(1)}, it should be 0")
     if not good:
         if "no solution" not in plain:
             fail(item, "expected no solution")
@@ -302,10 +311,25 @@ def rational_features(item):
     ans = [p["a"] for p in item["parts"]]
     # holes
     if holes:
-        pt = re.findall(r"\\\(\((.*?), (.*?)\)\\\)", ans[0])
+        pt = re.findall(r"\\\(\(((?:(?!\\\)).)*?), ((?:(?!\\\)).)*?)\)\\\)", ans[0])
         h = holes[0]
         if not pt or not same(tex2sym(pt[-1][0]), h) or not same(tex2sym(pt[-1][1]), red.subs(x, h)):
             fail(item, f"hole {pt} vs {(h, red.subs(x, h))}")
+        mf = re.search(r"The factor \\\(((?:(?!\\\)).)*)\\\) is common to the numerator and the denominator", ans[0])
+        if not mf:
+            fail(item, "the hole answer must name the common factor as a polynomial factor, not as 'x = a'")
+        elif not same(tex2sym(mf.group(1)), x - h):
+            fail(item, f"the common factor {mf.group(1)} is not x - {h}")
+        for t in maths(ans[0]):
+            if "=" in t and not re.match(r"\s*[xy] = ", t) and not t.strip().startswith("("):
+                lhs, rhs = t.split("=", 1)
+                if "\\dfrac" not in t and not same(tex2sym(lhs), tex2sym(rhs)):
+                    fail(item, f"the factoring shown is wrong: {t}")
+        if "not in the domain of the original function" not in ans[1]:
+            fail(item, "the zeros answer must say that the excluded value is not in the domain of the original function")
+        mv = re.search(r"the value there is \\\(y = ((?:(?!\\\)).)*)\\\)", ans[0])
+        if not mv or not same(tex2sym(mv.group(1)), red.subs(x, h)):
+            fail(item, f"the value at the hole is {mv.group(1) if mv else None} but the reduced function gives {red.subs(x, h)}")
         ml = re.search(r"denominator that is left is \\\((.*?)\\\), which is not \\\(0\\\) at \\\(x = (.*?)\\\)", ans[0])
         if not ml:
             fail(item, "the hole answer must show the denominator that is left after canceling and that it is not zero at the hole")
@@ -318,11 +342,11 @@ def rational_features(item):
     for v in x_values(ans[0]):
         if not any(same(v, h) for h in holes):
             fail(item, f"the hole answer mentions x = {v}, which is not a hole")
-    mo = re.search(r"\(the other numerator zero, \\\((.*?)\\\)", ans[1])
+    mo = re.search(r"[Tt]he other numerator zero, \\\((.*?)\\\)", ans[1])
     if mo and not any(same(v, h) for v in x_values("\\(" + mo.group(1) + "\\)") for h in holes):
         fail(item, f"'the other numerator zero {mo.group(1)}' is not a hole")
     # zeros
-    zs = x_values(re.split(r"\(the other", ans[1])[0])
+    zs = x_values(re.split(r"\(the other|The other numerator zero", ans[1])[0])
     if sorted(zs, key=float) != zeros:
         fail(item, f"zeros {zs} vs {zeros}")
     # vertical asymptotes

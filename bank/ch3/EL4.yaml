@@ -14,10 +14,10 @@ problems:
   seed: 1
   answer: generated
   solution: null
-  hint: The argument of a logarithm must be positive. Set the argument greater than \(0\) and solve; the boundary is the vertical asymptote. The range of a logarithmic function is all real numbers.
+  hint: The argument of a logarithm must be positive. Set the argument greater than \(0\) and solve; the boundary is the vertical asymptote. For the range, ask whether a shift or a reflection could limit the outputs of a logarithm.
   slips:
   - Using the wrong direction after a reflection. For \(-x+c>0\), you get \(x<c\).
-  - Giving a restricted range. A vertical shift or reflection does not change the range of a logarithm.
+  - Giving a restricted range. Ask whether a vertical shift or a reflection limits the outputs of a logarithm.
   status: checked
 - id: EL4-A-01
   tier: assessment

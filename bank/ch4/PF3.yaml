@@ -29,7 +29,7 @@ problems:
   seed: 1
   answer: generated
   solution: null
-  hint: The input to \(\arcsin\) or \(\arccos\) is a sine or cosine value, so the domain is \([-1, 1]\). The input to \(\arctan\) can be any real number. The range is the restricted interval of the original function. Shifts and stretches change the domain or range in the usual way.
+  hint: The inputs of an inverse trig function are values of the original trig function, and its outputs are angles. For the domain, ask which values the original function can take and whether the expression inside can reach all of them. For the range, start from the restricted interval of the original function, then ask what a shift or stretch does to it.
   slips:
   - Swapping the domain and range of an inverse trig function.
   - Giving the range of \(\arccos\) as \(\left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]\). That interval belongs to \(\arcsin\).

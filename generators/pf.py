@@ -228,7 +228,9 @@ def inverse_trig_domain_range(rng):
         why_d = (f"The input of {m(chr(92) + kind)} must be between {m(-1)} and {m(1)}: {m('-1 \\le ' + inner + ' \\le 1')}, which gives {m('x \\in ' + dom)}.")
     base_rng = {"arcsin": r"\left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]", "arccos": r"[0, \pi]", "arctan": r"\left(-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right)"}[kind]
     why_r = (f"The output of {m(chr(92) + kind)} lies in {m(base_rng)}." +
-             (f" The added {m(_pi_tex(out_off))} shifts that interval." if out_off != 0 else " Changing the input does not change the outputs."))
+             (f" The added {m(_pi_tex(out_off))} shifts that interval." if out_off != 0 else
+              " Moving the graph left or right does not change the range." if form == "shift_in" else
+              " Stretching the graph horizontally does not change the range." if form == "scale_in" else ""))
     parts = [("State the domain.", f"{why_d} The domain is {m(dom)}."),
              ("State the range.", f"{why_r} The range is {m(rng_txt)}.")]
     return {"stem": f"Let {m(expr)}.", "parts": parts, "figure": None}

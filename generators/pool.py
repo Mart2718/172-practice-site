@@ -185,6 +185,9 @@ def export_bank(std, path, n_versions, report):
                 report.append(f"  skip {p['id']} (status {p['status']})")
                 continue
             types = p["item_type"] if isinstance(p["item_type"], list) else [p["item_type"]]
+            for txt in [p.get("hint", "")] + list(p.get("slips", [])):
+                if not isinstance(txt, str):     # YAML reads 'text: more text' as a mapping; quote the line or remove the colon
+                    sys.exit(f"{p['id']}: a hint or slip is not text (a ': ' inside an unquoted YAML line?): {txt}")
             fam = {"tier": p["tier"], "types": types, "hint": clean_html(p.get("hint", "")), "slips": [clean_html(t) for t in p.get("slips", [])]}
             if not fam["hint"]:
                 report.append(f"  warn {p['id']}: no hint")

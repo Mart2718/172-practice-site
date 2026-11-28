@@ -112,7 +112,7 @@ python3 generators/verify_ch35.py [CODE ...]        # exit status 1 on any failu
 python3 generators/mutate_ch35.py [CODE ...] [--per-family N] [--seed S]
 ```
 
-**Does the checker catch errors?** `mutate_ch35.py` copies an answer, plants one wrong number or sign, and asks whether the verifier fails. Run with `--seed 5 --per-family 4`: 599 plants, **95.8% caught**; 100% of plants that change a final answer; 93.4% of sign changes and of changes anywhere in the text. The survivors are mostly wording that no program reads (a prose sentence with the number in it) and plants that leave an equivalent expression. The tool writes survivors to `.mutation-survivors.json` (ignored by git).
+**Does the checker catch errors?** `mutate_ch35.py` copies an answer, plants one wrong number or sign, and asks whether the verifier fails. Run with `--seed 5 --per-family 4`: 599 plants, **96.5% caught**; 100% of plants that change a final answer; 93.4% of sign changes; 95.0% of changes anywhere in the text. The survivors are mostly wording that no program reads (a prose sentence with the number in it) and plants that leave an equivalent expression (for example `π/2 + nπ` written as `π/2 − nπ`, the same set because n is any integer). The tool writes survivors to `.mutation-survivors.json` (ignored by git).
 
 What a program does **not** judge: whether a hint gives the answer away, whether a slip is a mistake students really make, whether wording is ambiguous, whether a problem is fair. That is what the outside audit is for.
 

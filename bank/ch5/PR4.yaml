@@ -30,8 +30,8 @@ problems:
   seed: 1
   answer: generated
   solution: null
-  hint: With a quadratic divisor, the remainder can have degree 1, so keep dividing until the leftover has degree less than 2. For the remainder theorem, the remainder on division by \(x-c\) is \(f(c)\).
+  hint: With a quadratic divisor, the remainder can have degree 1, so keep dividing until the leftover has degree less than 2. For the remainder theorem, the remainder on division by \(x-c\) is the value of the function at \(c\).
   slips:
   - Stopping too early. The remainder must have smaller degree than the divisor, so a degree-1 leftover with a quadratic divisor is finished, but a degree-2 leftover is not.
-  - Using \(f(-c)\) for division by \(x-c\). The remainder is \(f(c)\).
+  - Evaluating the function at \(-c\) for division by \(x-c\). The remainder comes from evaluating at \(c\).
   status: checked

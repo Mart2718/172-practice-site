@@ -15,11 +15,11 @@ problems:
   seed: 1
   answer: generated
   solution: null
-  hint: Tangent is sine over cosine and cotangent is cosine over sine, so each is undefined where its denominator is \(0\). Set the inside of the function equal to the first excluded angle plus a multiple of the period, then solve for \(x\). The period of \(\tan(kx)\) and \(\cot(kx)\) is \(\dfrac{\pi}{|k|}\). Their range is all real numbers.
+  hint: Tangent is sine over cosine and cotangent is cosine over sine, so each is undefined where its denominator is \(0\). Set the inside of the function equal to the first excluded angle plus a multiple of the period, then solve for \(x\). The period of \(\tan(kx)\) and \(\cot(kx)\) is \(\dfrac{\pi}{|k|}\). For the range, ask whether the outputs of tangent and cotangent are limited to an interval.
   slips:
   - Using \(2\pi\) as the period of tangent or cotangent. Their basic period is \(\pi\).
   - Setting the inside of the function equal to an excluded angle but forgetting to divide by \(k\) when solving for \(x\).
-  - Giving a restricted range such as \([-1, 1]\). Tangent and cotangent take every real value.
+  - Giving a restricted range such as \([-1, 1]\), which belongs to sine and cosine. Check whether tangent and cotangent outputs are limited.
   status: checked
 - id: PF2-F-02
   tier: floor
@@ -31,9 +31,9 @@ problems:
   seed: 1
   answer: generated
   solution: null
-  hint: Secant is \(\dfrac{1}{\cos}\) and cosecant is \(\dfrac{1}{\sin}\), so each is undefined where that cosine or sine is \(0\). For a stretch factor \(a\), the outputs never lie between \(-|a|\) and \(|a|\), so the range has two pieces. The basic period is \(2\pi\), divided by \(|k|\).
+  hint: Secant is \(\dfrac{1}{\cos}\) and cosecant is \(\dfrac{1}{\sin}\), so each is undefined where that cosine or sine is \(0\). For a stretch factor \(a\), start from the fact that sine and cosine stay between \(-1\) and \(1\), then ask what taking the reciprocal does to those values. The basic period is \(2\pi\), divided by \(|k|\).
   slips:
-  - Giving \([-a, a]\) or all real numbers as the range. A secant or cosecant graph has a gap between \(-|a|\) and \(|a|\).
+  - Giving \([-a, a]\) or all real numbers as the range. Pick a value inside \([-a, a]\) and ask whether the graph can reach it.
   - Using the zeros of sine to find the asymptotes of secant, or the zeros of cosine for cosecant. Secant uses cosine and cosecant uses sine.
   - Using \(\pi\) as the period of secant or cosecant.
   status: checked
