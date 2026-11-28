@@ -1,0 +1,67 @@
+outcome: TE3
+title: Solving Trigonometric Equations
+chapter: 4
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/TE3/
+objective: 'Solve trigonometric equations: all solutions, solutions on an interval, squared equations, multiple-angle equations, and equations that factor.'
+generator: te
+problems:
+- id: TE3-F-01
+  tier: floor
+  item_type:
+  - TE3.a
+  kind: template
+  template: trig_general_solution
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Find the angles in one turn \([0, 2\pi)\) with the unit circle. Then add \(2n\pi\) to each of them, or just \(n\pi\) for a tangent equation, where \(n\) is any integer.
+  slips:
+  - Adding \(2n\pi\) to a tangent solution. Tangent repeats every \(\pi\).
+  - Giving one angle when sine or cosine takes the value at two angles in one turn.
+  - Leaving out that \(n\) is any integer.
+  status: checked
+- id: TE3-F-02
+  tier: floor
+  item_type:
+  - TE3.b
+  kind: template
+  template: trig_squared_interval
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Take the square root of both sides and keep both the positive and negative roots. Solve each equation with the unit circle.
+  slips:
+  - Dropping the negative root.
+  - Finding the angles for only one of the two roots.
+  - Listing the reference angle only, without placing it in each quadrant.
+  status: checked
+- id: TE3-F-03
+  tier: floor
+  item_type:
+  - TE3.c
+  kind: template
+  template: trig_multiple_angle
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Let \(u = k\theta\). As \(\theta\) goes from \(0\) to \(2\pi\), \(u\) goes from \(0\) to \(2k\pi\). Find every solution for \(u\) in that range, then divide each by \(k\).
+  slips:
+  - Solving for \(u\) only in \([0, 2\pi)\), which misses most of the solutions.
+  - Dividing only the first solutions by \(k\) and forgetting to divide the added multiples of the period.
+  - Forgetting to divide by \(k\) at the end.
+  status: checked
+- id: TE3-A-01
+  tier: assessment
+  item_type:
+  - TE3.a
+  kind: template
+  template: trig_quadratic_form
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Move everything to one side, treat \(\sin\theta\) (or \(\cos\theta\)) as the variable, and factor. Set each factor equal to \(0\) and solve each equation on the unit circle.
+  slips:
+  - Dividing both sides by \(\sin\theta\) or \(\cos\theta\), which loses the solutions where it equals \(0\).
+  - Rejecting \(\sin\theta = -1\) or \(\cos\theta = -1\) as impossible. Only values beyond \(-1\) and \(1\) are impossible.
+  - Solving one factor and stopping.
+  status: checked

@@ -1,0 +1,52 @@
+outcome: EL6
+title: Solving Exponential and Logarithmic Equations
+chapter: 3
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/EL6/
+objective: Solve exponential and logarithmic equations for a variable.
+generator: el
+problems:
+- id: EL6-F-01
+  tier: floor
+  item_type:
+  - EL6.a
+  - EL6.b
+  kind: template
+  template: exp_eq_basic
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Isolate the exponential expression first. If both sides can be written with the same base, set the exponents equal.
+  slips:
+  - Dividing by the coefficient after you have already changed the base. Isolate the exponential first.
+  - Setting exponents equal before the bases match.
+  status: checked
+- id: EL6-F-02
+  tier: floor
+  item_type:
+  - EL6.c
+  - EL6.d
+  kind: template
+  template: log_eq_basic
+  seed: 1
+  answer: generated
+  solution: null
+  hint: 'Isolate the logarithm: subtract the constant, then divide by the coefficient. Then rewrite in exponential form.'
+  slips:
+  - Rewriting in exponential form before isolating the log.
+  - Forgetting to check that the argument is positive.
+  status: checked
+- id: EL6-A-01
+  tier: assessment
+  item_type:
+  - EL6.a
+  - EL6.d
+  kind: template
+  template: exp_log_eq_advanced
+  seed: 1
+  answer: generated
+  solution: null
+  hint: When the bases cannot be matched, take a logarithm of both sides. For a sum of logs, combine with the product rule, solve the resulting equation, and check every answer in the original equation.
+  slips:
+  - Keeping an answer that makes a logarithm's argument negative. It is extraneous.
+  - Writing \(\dfrac{\ln(N)}{\ln(b)}\) as \(\ln(N)-\ln(b)\).
+  status: checked

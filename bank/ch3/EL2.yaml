@@ -1,0 +1,36 @@
+outcome: EL2
+title: Graphing Exponential Functions
+chapter: 3
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/EL2/
+objective: Find the domain, range, and asymptote of a transformed exponential function.
+generator: el
+problems:
+- id: EL2-F-01
+  tier: floor
+  item_type:
+  - EL2.a
+  kind: template
+  template: exp_graph_features
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Start from the basic graph \(y=b^{x}\), which has the \(x\)-axis as its asymptote. A vertical shift moves the asymptote with it; a reflection over the \(x\)-axis flips which side the graph is on.
+  slips:
+  - Reading the asymptote from the horizontal shift. Only the number added or subtracted outside the exponential moves it.
+  - Giving the range as \((k,\infty)\) after a reflection over the \(x\)-axis. The graph is then below \(y=k\).
+  status: checked
+- id: EL2-A-01
+  tier: assessment
+  item_type:
+  - EL2.a
+  - EL2.b
+  kind: template
+  template: exp_graph_transform
+  seed: 1
+  answer: generated
+  solution: null
+  hint: 'Read the transformations in order: the number inside the exponent shifts left or right, a minus sign out front reflects, and the number added at the end shifts up or down.'
+  slips:
+  - Shifting the wrong way horizontally. \(x-2\) in the exponent shifts right.
+  - Evaluating at \(x=0\) incorrectly. Substitute into the whole expression, including the shift.
+  status: checked

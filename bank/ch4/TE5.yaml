@@ -1,0 +1,67 @@
+outcome: TE5
+title: The Law of Sines and the Law of Cosines
+chapter: 4
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/TE5/
+objective: Solve non-right triangles with the Law of Sines and the Law of Cosines, including the case with two possible triangles.
+generator: te
+problems:
+- id: TE5-F-01
+  tier: floor
+  item_type:
+  - TE5.a
+  kind: template
+  template: law_sines_aas
+  seed: 1
+  answer: generated
+  solution: null
+  hint: When two angles are known, the third is \(180^{\circ}\) minus their sum. With an angle and its opposite side known, use \(\dfrac{\sin A}{a} = \dfrac{\sin B}{b}\) to find another side.
+  slips:
+  - Using the Law of Sines without a matching angle and opposite side.
+  - Forgetting to find the third angle first.
+  - Pairing a side with an angle that is not opposite it.
+  status: checked
+- id: TE5-F-02
+  tier: floor
+  item_type:
+  - TE5.b
+  kind: template
+  template: law_cosines_sss
+  seed: 1
+  answer: generated
+  solution: null
+  hint: 'With three sides and no angle, use the Law of Cosines: \(\cos A = \dfrac{b^{2} + c^{2} - a^{2}}{2bc}\). The side whose square is subtracted is the one opposite the angle.'
+  slips:
+  - Subtracting the wrong side's square. The side opposite the angle is the one subtracted.
+  - Forgetting the \(2bc\) in the denominator.
+  - Stopping at the cosine and not applying the inverse cosine.
+  status: checked
+- id: TE5-F-03
+  tier: floor
+  item_type:
+  - TE5.c
+  kind: template
+  template: law_cosines_sas
+  seed: 1
+  answer: generated
+  solution: null
+  hint: 'Two sides and the angle between them: use the Law of Cosines for the third side, \(c^{2} = a^{2} + b^{2} - 2ab\cos C\), and take a square root. Then find another angle and subtract from \(180^{\circ}\) for the last one.'
+  slips:
+  - Subtracting before multiplying, such as \((a^{2} + b^{2} - 2ab)\cos C\).
+  - Using the Law of Sines first, when there is no angle with its opposite side.
+  - Reporting \(c^{2}\) as \(c\), without taking the square root.
+  status: checked
+- id: TE5-A-01
+  tier: assessment
+  item_type:
+  - TE5.d
+  kind: template
+  template: ambiguous_ssa
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Two sides and an angle opposite one of them can give no triangle, one triangle, or two. Use the Law of Sines to find \(\sin B\). If it is greater than \(1\) there is no triangle. Otherwise \(B\) and \(180^{\circ} - B\) are both candidates, and each stays only if the three angles can still add to \(180^{\circ}\).
+  slips:
+  - Stopping after the first angle and missing the second triangle.
+  - Keeping \(180^{\circ} - B\) when \(A + (180^{\circ} - B)\) is already \(180^{\circ}\) or more.
+  - Saying there is no solution because the sine is less than \(1\).
+  status: checked

@@ -5,7 +5,7 @@ How a problem gets from the bank to a student. Three steps: **bank** (templates 
 ## Bank files
 
 - `bank/standards.yaml`: the 38 standards (code, title, chapter, blurb; `section` for chapter 1 only).
-- `bank/ch1/FN1.yaml`, `FN2.yaml`: one file per standard that has templates. Each problem names a template in `generators/` and a book `seed`.
+- `bank/ch1/` (FN1, FN2), `bank/ch3/` (EL1–EL7), `bank/ch4/` (PF2, PF3, TE1–TE6), `bank/ch5/` (PR3–PR9): one file per standard that has templates. Each problem names a template in `generators/` (`fn1`, `fn2`, `el`, `pf`, `te`, `pr`) and a book `seed`. `BLUEPRINT.md` lists every family in `ch3`–`ch5` with a sample question.
 - `bank/fixed/*.yaml`: hand-written problems with no template (see below).
 
 A template problem in `bank/ch1/<CODE>.yaml`:
@@ -21,7 +21,7 @@ A template problem in `bank/ch1/<CODE>.yaml`:
   hint: 'Look at each input and decide which inequality it satisfies.'
   slips:
     - 'Using the wrong piece at the boundary value.'
-  status: audited                 # proposed | draft | audited | published
+  status: audited                 # proposed | draft | checked | audited | published
 ```
 
 ## Practice-site fields: `hint` and `slips`
@@ -34,6 +34,19 @@ Every problem that goes to the practice site needs both. They are written once p
 | `slips` | 1–3 short notes naming mistakes students really make. Phrased as what to check ("Did you evaluate inside the parentheses first?"), not as blame. |
 
 The LibreTexts book build in `172-textbook-problem-bank` ignores both fields, so adding them never changes a published book page.
+
+`pool.py` runs hints and slips through the same math clean-up as problems (degrees as `\text{°}`, `<` and `>` inside math as `\lt` and `\gt`). A bare `x<c` in a slip is read by the browser as an HTML tag and cuts the text off; the clean-up prevents that.
+
+### Status
+
+| Status | Meaning | Exported |
+|---|---|---|
+| `proposed`, `draft` | Not reviewed | No |
+| `checked` | Passed the template's own asserts **and** the independent verifier (below); no outside audit yet | Yes |
+| `audited` | An outside blind-solve audit found no open error (see `AUDIT-LOG.md`) | Yes |
+| `published` | Audited and in the textbook | Yes |
+
+All 67 families in `bank/ch3`–`ch5` are `checked`. They become `audited` when Dr. Romero's ChatGPT blind-solve loop comes back clean.
 
 ## Fixed problems: `bank/fixed/*.yaml`
 
@@ -71,7 +84,7 @@ Written by `generators/pool.py`. Never edit by hand.
 - `index.json`: `{standards: [{code, title, chapter, section?, blurb, exam, items, families, checkit}]}`. `exam` is Exam 1 (Ch. 1–2), Exam 2 (Ch. 3–4) or Final only (Ch. 5).
 - `<CODE>.json`: `{families: {id: {tier, types, hint, slips, bridge_note?, source?}}, items: [{id, family, stem, parts: [{q, a}], figures: [{src, alt, label?, table?}], seed?}]}`.
 - Tiers shown to students: floor "Core practice", assessment "Putting it together", slip "Spot the slip", bridge "Looking ahead to calculus", review "Exam 1 review question".
-- Only `audited` or `published` problems are exported; `proposed` bridge problems stay out until approved.
+- Only `checked`, `audited` or `published` problems are exported; `draft` and `proposed` problems stay out until approved.
 
 ### What `pool.py` does to every problem
 
@@ -85,10 +98,27 @@ Written by `generators/pool.py`. Never edit by hand.
 
 ### Independent check
 
-`generators/verify_pool.py` re-derives answers from the printed problem alone (a small LaTeX-to-SymPy reader), without calling the templates. It currently covers FN1 and FN2 (507 checks). Standards without a checker rely on the templates' own assertions and on the audit.
+Two programs re-derive answers from the printed problem alone, without calling the templates.
+
+| Program | Covers | Result |
+|---|---|---|
+| `generators/verify_pool.py` (LaTeX-to-SymPy reader) | FN1, FN2 | 507 checks, 0 fail |
+| `generators/verify_ch35.py` | EL1–EL7, PF2, PF3, TE1–TE6, PR3–PR9 (804 items) | 1,702 checks, 0 fail |
+
+`verify_ch35.py` reads only the printed stem, question and answer from `site/pool/*.json`. It has four layers: **G1** re-evaluates every chain of equalities in an answer (`a = b = c`, `a \approx b`) with a small LaTeX evaluator (`texeval.py`), allowing half a unit of the last printed digit for an approximation; a **generic worked-step layer** (`vc_gen.py`) re-checks each intermediate step at the true values of its letters; **per-template checks** (`vc_el.py`, `vc_pr.py`, `vc_trig.py`, `vc_tri.py`) parse the question, solve it again (roots, intercepts, asymptotes, ranges, triangles, inequalities) and compare with the printed answer; and **env chains** substitute the solution back into the printed steps. A family-level check also reads the hint and slips: every inverse trig function that an item uses must be named there, and a composition item's hint must give each interval.
+
+```bash
+python3 generators/verify_ch35.py [CODE ...]        # exit status 1 on any failure
+python3 generators/mutate_ch35.py [CODE ...] [--per-family N] [--seed S]
+```
+
+**Does the checker catch errors?** `mutate_ch35.py` copies an answer, plants one wrong number or sign, and asks whether the verifier fails. Run with `--seed 5 --per-family 4`: 599 plants, **95.8% caught**; 100% of plants that change a final answer; 93.4% of sign changes and of changes anywhere in the text. The survivors are mostly wording that no program reads (a prose sentence with the number in it) and plants that leave an equivalent expression. The tool writes survivors to `.mutation-survivors.json` (ignored by git).
+
+What a program does **not** judge: whether a hint gives the answer away, whether a slip is a mistake students really make, whether wording is ambiguous, whether a problem is fair. That is what the outside audit is for.
 
 ### Public pool and private assessments
 
 - **Public pool (this repo):** each template exports up to 12 versions, drawn from seeds 100000 and up. Decision, Nov 27 2026 (Dr. Romero): publish all of them for now rather than capping the public pool at 3. Faculty assessments use a separate seed range, so no assessment version appears in the public pool. The site picks a standard, then a kind of problem, then a version, and avoids repeating recent ones.
 - **Faculty pool (planned, private):** at least 5 different problems per standard for assessments and reassessments, drawn from the same templates with seeds in a separate range that this repo never uses, and the faculty generator skips any version whose printed text matches a public one. The seed register lives in `172-exam-bank`.
 - **Real quiz and exam items and their keys** live only in the private `172-exam-bank` repo. New bank problems never reuse them.
+- **How that rule is checked.** Before each export, every question in the new standards is compared with the text of the real items (kept outside this repo, never committed). Nov 27 2026: no whole item is reused. A few short special-value questions (for example `\arcsin` of a standard value) coincide with an item because there is only one way to write them. Where a template produced a word-for-word twin of a real item, the template was changed so it cannot (five templates). About ten near-variants remain: the same kind of problem with a different sign, function or value, so a different answer.

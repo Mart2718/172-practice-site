@@ -1,0 +1,36 @@
+outcome: EL4
+title: Graphing Logarithmic Functions
+chapter: 3
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/EL4/
+objective: Find the domain, range, and vertical asymptote of a transformed logarithmic function.
+generator: el
+problems:
+- id: EL4-F-01
+  tier: floor
+  item_type:
+  - EL4.a
+  kind: template
+  template: log_graph_features
+  seed: 1
+  answer: generated
+  solution: null
+  hint: The argument of a logarithm must be positive. Set the argument greater than \(0\) and solve; the boundary is the vertical asymptote. The range of a logarithmic function is all real numbers.
+  slips:
+  - Using the wrong direction after a reflection. For \(-x+c>0\), you get \(x<c\).
+  - Giving a restricted range. A vertical shift or reflection does not change the range of a logarithm.
+  status: checked
+- id: EL4-A-01
+  tier: assessment
+  item_type:
+  - EL4.a
+  - EL4.b
+  kind: template
+  template: log_graph_transform
+  seed: 1
+  answer: generated
+  solution: null
+  hint: For an \(x\)-intercept, set \(f(x)=0\) and rewrite in exponential form. To find a value, choose an input that makes the argument a power of the base.
+  slips:
+  - Writing the \(x\)-intercept as \(x=b^{-k}\) and forgetting to add back the shift.
+  - Using an input outside the domain.
+  status: checked

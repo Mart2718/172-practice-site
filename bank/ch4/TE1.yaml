@@ -1,0 +1,99 @@
+outcome: TE1
+title: Trigonometric Identities
+chapter: 4
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/TE1/
+objective: Find exact values and rewrite expressions with the sum and difference, double-angle, half-angle, power-reducing, and Pythagorean identities.
+generator: te
+problems:
+- id: TE1-F-01
+  tier: floor
+  item_type:
+  - TE1.a
+  kind: template
+  template: sum_difference_exact
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Write the angle as a sum or difference of two special angles. Then use \(\sin(A \pm B) = \sin A\cos B \pm \cos A\sin B\) or \(\cos(A \pm B) = \cos A\cos B \mp \sin A\sin B\), and substitute exact values.
+  slips:
+  - Using the wrong sign in the cosine formula. \(\cos(A + B)\) has a minus sign and \(\cos(A - B)\) has a plus sign.
+  - 'Distributing the function: \(\sin(A + B)\) is not \(\sin A + \sin B\).'
+  - Dropping a negative sign when substituting values from Quadrants II, III, or IV.
+  status: checked
+- id: TE1-F-02
+  tier: floor
+  item_type:
+  - TE1.b
+  kind: template
+  template: pythagorean_quadrant
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Use \(\sin^{2}\theta + \cos^{2}\theta = 1\) (or \(1 + \tan^{2}\theta = \sec^{2}\theta\)) to find the size of the missing value. The quadrant then decides its sign.
+  slips:
+  - Choosing the sign without using the quadrant, or taking only the positive root.
+  - Using the wrong sign for a quadrant. Sine is positive in Quadrants I and II, and cosine is positive in Quadrants I and IV.
+  - Squaring a fraction incorrectly, such as \(\left(\dfrac{3}{5}\right)^{2} = \dfrac{9}{5}\).
+  status: checked
+- id: TE1-F-03
+  tier: floor
+  item_type:
+  - TE1.c
+  kind: template
+  template: power_reduce
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Replace \(\sin^{2}u\) with \(\dfrac{1 - \cos 2u}{2}\) and \(\cos^{2}u\) with \(\dfrac{1 + \cos 2u}{2}\). The angle inside the cosine doubles. Then multiply the constant through.
+  slips:
+  - Forgetting to double the angle inside the cosine.
+  - Using a plus sign for \(\sin^{2}u\). The sine formula has a minus sign.
+  - Multiplying the constant by only part of the result.
+  status: checked
+- id: TE1-F-04
+  tier: floor
+  item_type:
+  - TE1.d
+  kind: template
+  template: half_angle_exact
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Write the angle as half of a special angle \(\theta\). Use \(\sin\dfrac{\theta}{2} = \pm\sqrt{\dfrac{1 - \cos\theta}{2}}\), \(\cos\dfrac{\theta}{2} = \pm\sqrt{\dfrac{1 + \cos\theta}{2}}\), or \(\tan\dfrac{\theta}{2} = \dfrac{\sin\theta}{1 + \cos\theta}\). Choose the sign from the quadrant of \(\dfrac{\theta}{2}\), not of \(\theta\).
+  slips:
+  - Choosing the sign from the quadrant of \(\theta\) instead of the quadrant of \(\dfrac{\theta}{2}\).
+  - Mixing up the plus and minus inside the radical for sine and cosine.
+  - Halving the cosine value instead of halving the angle.
+  status: checked
+- id: TE1-A-01
+  tier: assessment
+  item_type:
+  - TE1.b
+  - TE1.c
+  - TE1.d
+  kind: template
+  template: double_angle_given
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Find the missing sine or cosine with the Pythagorean identity, using the quadrant for the sign. Then use \(\sin 2\theta = 2\sin\theta\cos\theta\), \(\cos 2\theta = \cos^{2}\theta - \sin^{2}\theta\), and \(\tan 2\theta = \dfrac{\sin 2\theta}{\cos 2\theta}\).
+  slips:
+  - Computing \(\sin 2\theta\) as \(2\sin\theta\), which doubles the sine instead of using the formula.
+  - Writing \(\cos 2\theta\) as \(\sin^{2}\theta - \cos^{2}\theta\), which has the wrong sign.
+  - Choosing the wrong sign for the missing value because the quadrant was not used.
+  status: checked
+- id: TE1-A-02
+  tier: assessment
+  item_type:
+  - TE1.c
+  kind: template
+  template: power_reduce_fourth
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Treat the fourth power as the square of a square. Reduce the inner square, expand the result, and reduce the new \(\cos^{2}\) term. Collect like terms.
+  slips:
+  - Squaring only the first term when expanding, such as \((1 + \cos 2u)^{2} = 1 + \cos^{2}2u\). The middle term \(2\cos 2u\) is lost.
+  - Forgetting to double the angle again in the second reduction.
+  - Dropping the constant multiplier.
+  status: checked

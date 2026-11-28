@@ -1,0 +1,37 @@
+outcome: TE2
+title: Verifying Trigonometric Identities
+chapter: 4
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/TE2/
+objective: Verify an identity by working with one side only, using algebra and known identities.
+generator: te
+problems:
+- id: TE2-F-01
+  tier: floor
+  item_type:
+  - TE2.a
+  kind: template
+  template: verify_identity_basic
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Choose one side, usually the more complicated one, and work only on that side until it matches the other. If you are stuck, rewrite everything in sines and cosines. Do not move terms across the equals sign.
+  slips:
+  - Starting from the whole equation and doing the same thing to both sides. Verifying means changing one side into the other.
+  - Canceling a term that is added instead of multiplied, such as canceling \(\cos x\) in \(\dfrac{\cos x + 1}{\cos x}\).
+  - Using a wrong Pythagorean identity, such as \(1 - \sin^{2}x = \sin x\).
+  status: checked
+- id: TE2-A-01
+  tier: assessment
+  item_type:
+  - TE2.a
+  kind: template
+  template: verify_identity_fractions
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Combine fractions over a common denominator, or multiply the top and bottom by a conjugate such as \(1 + \sin x\). Then use \(\sin^{2}x + \cos^{2}x = 1\) to simplify.
+  slips:
+  - Adding fractions by adding the numerators and the denominators.
+  - Expanding \((1 + \cos x)^{2}\) as \(1 + \cos^{2}x\). The middle term \(2\cos x\) is lost.
+  - Multiplying only the denominator by a conjugate.
+  status: checked

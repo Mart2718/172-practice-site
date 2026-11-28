@@ -1,0 +1,56 @@
+outcome: PF2
+title: Graphing Tangent, Cotangent, Secant, and Cosecant
+chapter: 4
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/PF2/
+objective: Find the domain, range, period, and vertical asymptotes of tangent, cotangent, secant, and cosecant functions, including stretches, shifts, and a changed period.
+generator: pf
+problems:
+- id: PF2-F-01
+  tier: floor
+  item_type:
+  - PF2.a
+  - PF2.b
+  kind: template
+  template: tan_cot_features
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Tangent is sine over cosine and cotangent is cosine over sine, so each is undefined where its denominator is \(0\). Set the inside of the function equal to the first excluded angle plus a multiple of the period, then solve for \(x\). The period of \(\tan(kx)\) and \(\cot(kx)\) is \(\dfrac{\pi}{|k|}\). Their range is all real numbers.
+  slips:
+  - Using \(2\pi\) as the period of tangent or cotangent. Their basic period is \(\pi\).
+  - Setting the inside of the function equal to an excluded angle but forgetting to divide by \(k\) when solving for \(x\).
+  - Giving a restricted range such as \([-1, 1]\). Tangent and cotangent take every real value.
+  status: checked
+- id: PF2-F-02
+  tier: floor
+  item_type:
+  - PF2.a
+  - PF2.b
+  kind: template
+  template: sec_csc_features
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Secant is \(\dfrac{1}{\cos}\) and cosecant is \(\dfrac{1}{\sin}\), so each is undefined where that cosine or sine is \(0\). For a stretch factor \(a\), the outputs never lie between \(-|a|\) and \(|a|\), so the range has two pieces. The basic period is \(2\pi\), divided by \(|k|\).
+  slips:
+  - Giving \([-a, a]\) or all real numbers as the range. A secant or cosecant graph has a gap between \(-|a|\) and \(|a|\).
+  - Using the zeros of sine to find the asymptotes of secant, or the zeros of cosine for cosecant. Secant uses cosine and cosecant uses sine.
+  - Using \(\pi\) as the period of secant or cosecant.
+  status: checked
+- id: PF2-A-01
+  tier: assessment
+  item_type:
+  - PF2.a
+  - PF2.b
+  - PF2.c
+  kind: template
+  template: trig_graph_assessment
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Find the excluded values first, then list the ones that fall in the interval by trying \(n = 0, 1, 2, \ldots\) until you leave the interval. Check that the period you found matches the spacing of the asymptotes.
+  slips:
+  - Listing excluded values outside the requested interval.
+  - Dropping the phase shift when listing asymptotes.
+  - Spacing the asymptotes by the period. Tangent and cotangent asymptotes are one period apart, but secant and cosecant asymptotes are only half a period apart, because their period is \(\dfrac{2\pi}{|k|}\) and their asymptotes are \(\dfrac{\pi}{|k|}\) apart.
+  status: checked

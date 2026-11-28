@@ -1,0 +1,43 @@
+outcome: PR7
+title: Graphs of Rational Functions
+chapter: 5
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/PR7/
+objective: Find the zeros, vertical and horizontal asymptotes, y-intercept, and any holes of a rational function.
+generator: pr
+problems:
+- id: PR7-F-01
+  tier: floor
+  item_type:
+  - PR7.a
+  - PR7.b
+  - PR7.c
+  - PR7.d
+  - PR7.e
+  kind: template
+  template: rational_hole_features
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Factor the numerator and denominator completely and cancel the common factors. A factor that cancels completely gives a hole. Then look at the denominator that is left; a factor of it that is still there is a vertical asymptote, and the remaining zeros of the numerator are the zeros. Compare degrees for the horizontal asymptote.
+  slips:
+  - Mixing up holes and vertical asymptotes. A factor that cancels completely makes a hole. If the factor is still in the denominator after canceling, that input is a vertical asymptote.
+  - Counting a canceled factor as a zero of the function.
+  - Finding the \(y\)-value of the hole from the original expression, which is undefined there. Use the simplified expression.
+  status: checked
+- id: PR7-A-01
+  tier: assessment
+  item_type:
+  - PR7.b
+  - PR7.c
+  - PR7.d
+  - PR7.e
+  kind: template
+  template: rational_no_hole_features
+  seed: 1
+  answer: generated
+  solution: null
+  hint: When there is no common factor, every zero of the denominator is a vertical asymptote. If the degrees are equal, the horizontal asymptote is the ratio of the leading coefficients. If the numerator has the smaller degree, it is \(y=0\).
+  slips:
+  - Taking the ratio of the constants instead of the leading coefficients for the horizontal asymptote.
+  - Forgetting the leading coefficient in the denominator when the degrees are equal.
+  status: checked

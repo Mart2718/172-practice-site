@@ -1,0 +1,53 @@
+outcome: PR5
+title: Zeros of Polynomials
+chapter: 5
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/PR5/
+objective: Find the zeros of a polynomial, including complex or irrational zeros, and express the polynomial as a product of linear factors.
+generator: pr
+problems:
+- id: PR5-F-01
+  tier: floor
+  item_type:
+  - PR5.a
+  - PR5.b
+  kind: template
+  template: zeros_complex_factor
+  seed: 1
+  answer: generated
+  solution: null
+  hint: 'Set each factor equal to zero. A quadratic factor with no real zeros gives complex zeros: solve it with the square root property or the quadratic formula and use \(i=\sqrt{-1}\). Each zero \(r\) gives a linear factor \((x-r)\).'
+  slips:
+  - Dropping the \(\pm\) when you take a square root of a negative number. Complex zeros come in pairs.
+  - Writing the factor as \((x+r)\) when the zero is \(r\). The factor is \((x-r)\).
+  - Leaving out a repeated factor when you write the product of linear factors.
+  status: checked
+- id: PR5-F-02
+  tier: floor
+  item_type:
+  - PR5.a
+  - PR5.b
+  kind: template
+  template: zeros_irrational_factor
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Use the quadratic formula (or complete the square) on the quadratic factor and keep the answer exact. Each zero \(r\) gives a linear factor \((x-r)\).
+  slips:
+  - Rounding a radical to a decimal when the question asks for exact values.
+  - Getting the sign wrong in a factor. If the zero is \(2+\sqrt{3}\), the factor is \(x-2-\sqrt{3}\).
+  status: checked
+- id: PR5-A-01
+  tier: assessment
+  item_type:
+  - PR5.a
+  - PR5.b
+  kind: template
+  template: zeros_from_one_zero
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Divide by the factor that the given zero provides. The quotient is a quadratic you can solve with the quadratic formula.
+  slips:
+  - Dividing by \(x+r\) when \(r\) is the zero. A zero \(r\) gives the divisor \(x-r\).
+  - Stopping after the division and never writing the linear factors for the zeros of the quotient.
+  status: checked

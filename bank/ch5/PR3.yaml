@@ -1,0 +1,40 @@
+outcome: PR3
+title: Graphs of Polynomial Functions
+chapter: 5
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/PR3/
+objective: Find the zeros of a polynomial with their multiplicities, the y-intercept, and describe the end behavior of its graph.
+generator: pr
+problems:
+- id: PR3-F-01
+  tier: floor
+  item_type:
+  - PR3.a
+  - PR3.b
+  - PR3.c
+  kind: template
+  template: poly_zeros_multiplicity
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Each factor \((x-r)^m\) gives the zero \(x=r\), and the exponent \(m\) is its multiplicity. The \(y\)-intercept is \(f(0)\). For the ends of the graph, look at the degree and the sign of the leading coefficient.
+  slips:
+  - Reading a zero with the wrong sign. The factor \((x+1)\) gives \(x=-1\), not \(x=1\).
+  - Using one exponent as the degree. The degree is the sum of all the exponents (times the leading factor).
+  - Using only the sign of the leading coefficient for the ends. An even degree and an odd degree behave differently on the left.
+  status: checked
+- id: PR3-A-01
+  tier: assessment
+  item_type:
+  - PR3.a
+  - PR3.c
+  - PR3.d
+  kind: template
+  template: poly_graph_behavior
+  seed: 1
+  answer: generated
+  solution: null
+  hint: 'The multiplicity tells you what the graph does at a zero: an odd exponent means it crosses the \(x\)-axis, an even exponent means it touches and turns around. The ends come from the degree and the leading coefficient.'
+  slips:
+  - Saying a zero of odd multiplicity greater than 1 only touches the axis. It still crosses; it just flattens there.
+  - Forgetting that a factor of \(x\) means the graph passes through the origin, so the \(y\)-intercept is \((0,0)\).
+  status: checked

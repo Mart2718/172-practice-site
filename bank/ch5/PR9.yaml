@@ -1,0 +1,36 @@
+outcome: PR9
+title: Rational Inequalities
+chapter: 5
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/PR9/
+objective: Solve a rational inequality, accounting for values where the expression is undefined, and express the solution in interval notation.
+generator: pr
+problems:
+- id: PR9-F-01
+  tier: floor
+  item_type:
+  - PR9.a
+  kind: template
+  template: rational_inequality
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Find where the numerator is zero and where the denominator is zero. Both split the number line; test a point in each interval. A value that makes the denominator zero is never in the solution.
+  slips:
+  - Including the value that makes the denominator zero. It is always excluded, even for \(\le\) and \(\ge\).
+  - Excluding the numerator's zero when the inequality includes equality.
+  status: checked
+- id: PR9-A-01
+  tier: assessment
+  item_type:
+  - PR9.a
+  - PR9.b
+  kind: template
+  template: rational_inequality_product
+  seed: 1
+  answer: generated
+  solution: null
+  hint: 'List every critical number: the zeros of the numerator and of the denominator. If the right side is not zero, move everything to one side and combine over a common denominator first.'
+  slips:
+  - Multiplying both sides by the denominator. Its sign changes from interval to interval, so the direction of the inequality can change. Use a sign chart instead.
+  - Forgetting one of the critical numbers, so one of the intervals is never tested.
+  status: checked

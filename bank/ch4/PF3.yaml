@@ -1,0 +1,52 @@
+outcome: PF3
+title: Inverse Trigonometric Functions
+chapter: 4
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/PF3/
+objective: Evaluate inverse sine, cosine, and tangent exactly, state their domains and ranges, and simplify compositions such as tan(arccos x) and arccos(cos x).
+generator: pf
+problems:
+- id: PF3-F-01
+  tier: floor
+  item_type:
+  - PF3.a
+  kind: template
+  template: inverse_trig_exact
+  seed: 1
+  answer: generated
+  solution: null
+  hint: The output of an inverse trig function is an angle. Ask which angle, inside the restricted interval for that function, has the given sine, cosine, or tangent. \(\arcsin\) returns an angle in \(\left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]\), \(\arccos\) in \([0, \pi]\), and \(\arctan\) in \(\left(-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right)\).
+  slips:
+  - Giving an angle outside the restricted interval, such as \(\dfrac{4\pi}{3}\) for \(\arccos\left(-\dfrac{1}{2}\right)\) instead of \(\dfrac{2\pi}{3}\).
+  - Reading \(\arcsin x\) as \(\dfrac{1}{\sin x}\). The \(-1\) in \(\sin^{-1}\) means inverse function, not reciprocal.
+  - Giving \(\dfrac{11\pi}{6}\) for \(\arcsin\left(-\dfrac{1}{2}\right)\) instead of \(-\dfrac{\pi}{6}\). The output must lie in \(\left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]\).
+  status: checked
+- id: PF3-F-02
+  tier: floor
+  item_type:
+  - PF3.b
+  kind: template
+  template: inverse_trig_domain_range
+  seed: 1
+  answer: generated
+  solution: null
+  hint: The input to \(\arcsin\) or \(\arccos\) is a sine or cosine value, so the domain is \([-1, 1]\). The input to \(\arctan\) can be any real number. The range is the restricted interval of the original function. Shifts and stretches change the domain or range in the usual way.
+  slips:
+  - Swapping the domain and range of an inverse trig function.
+  - Giving the range of \(\arccos\) as \(\left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]\). That interval belongs to \(\arcsin\).
+  - Giving all real numbers as the domain of \(\arcsin\) or \(\arccos\).
+  status: checked
+- id: PF3-A-01
+  tier: assessment
+  item_type:
+  - PF3.c
+  kind: template
+  template: inverse_trig_compose
+  seed: 1
+  answer: generated
+  solution: null
+  hint: For a trig function of an inverse trig value, such as \(\tan(\arcsin x)\) or \(\sin(\arccos x)\), let the inside be an angle \(\theta\), draw a right triangle that fits it, find the missing side, and read off the ratio. For an inverse trig function of a trig value, such as \(\arcsin(\sin\theta)\) or \(\arccos(\cos\theta)\), check whether \(\theta\) is already in the interval for that inverse function, which is \(\left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]\) for \(\arcsin\) and \([0, \pi]\) for \(\arccos\). If it is not, find the angle in that interval with the same sine or cosine.
+  slips:
+  - Canceling \(\arcsin(\sin\theta)\) to \(\theta\), or \(\arccos(\cos\theta)\) to \(\theta\), without checking that \(\theta\) is in the interval for that inverse function.
+  - Choosing a negative missing side. The angle from \(\arcsin\) is in \(\left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]\), where the cosine is never negative, and the angle from \(\arccos\) is in \([0, \pi]\), where the sine is never negative.
+  - Mixing up the adjacent and opposite sides when reading the ratio from the triangle.
+  status: checked

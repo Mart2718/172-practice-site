@@ -13,7 +13,7 @@ Writes
 Rules this script enforces (see SCHEMA.md, "Student site pool"):
   * Pool versions use seeds from 100000 up, so they never reuse a seed printed in the book.
   * A version whose text matches a book version, or an earlier pool version, is dropped.
-  * Only `audited` or `published` problems are exported. `draft` and `proposed` are skipped.
+  * Only `checked`, `audited` or `published` problems are exported. `draft` and `proposed` are skipped.
   * Items from bank/fixed/*.yaml (hand-written problems such as the Practice Exam 1 review set)
     are exported as written.
   * Math is normalised for MathJax + MathSpeak: degrees are \\text{°}, < and > inside math are
@@ -43,7 +43,7 @@ from build import figures_of, table_meta  # noqa: E402
 POOL = os.path.join(ROOT, "site", "pool")
 FIGS = os.path.join(POOL, "figures")
 SEED_BASE = 100_000
-FROZEN_OK = ("audited", "published")
+FROZEN_OK = ("checked", "audited", "published")   # "checked": passed the template asserts and verify_pool; awaiting an outside audit
 CHECKIT = "https://tbil.org/preview/precalculus/exercises/#/bank/{code}/"
 EXAM_OF_CHAPTER = {1: "Exam 1", 2: "Exam 1", 3: "Exam 2", 4: "Exam 2", 5: "Final only"}
 
@@ -99,7 +99,8 @@ def check_item(it):
             errs.append("unbalanced \\[ \\]")
         if re.search(r"\\\((?:(?!\\\)).)*[<>]", s, flags=re.S):
             errs.append("bare < or > inside math")
-        if re.search(r"\bNone\b|\bnan\b|\{\{|\}\}\}", s):
+        # "}}}" is legal LaTeX (nested radicals and fractions), so it is not a placeholder signal; "{v}" is an unfilled identity template.
+        if re.search(r"\bNone\b|\bnan\b|\{\{|\{v\}", s):
             errs.append("placeholder text in item")
     if not it["parts"]:
         errs.append("no parts")
@@ -184,7 +185,7 @@ def export_bank(std, path, n_versions, report):
                 report.append(f"  skip {p['id']} (status {p['status']})")
                 continue
             types = p["item_type"] if isinstance(p["item_type"], list) else [p["item_type"]]
-            fam = {"tier": p["tier"], "types": types, "hint": p.get("hint", ""), "slips": p.get("slips", [])}
+            fam = {"tier": p["tier"], "types": types, "hint": clean_html(p.get("hint", "")), "slips": [clean_html(t) for t in p.get("slips", [])]}
             if not fam["hint"]:
                 report.append(f"  warn {p['id']}: no hint")
             if p.get("bridge_note"):
@@ -253,8 +254,8 @@ def export_fixed(code_to_items, report):
             errs = check_item(item)
             if errs:
                 raise SystemExit(f"{raw['id']}: {'; '.join(sorted(set(errs)))}")
-            fam = {"tier": "review", "types": [raw.get("item_type", raw["standard"])], "hint": raw.get("hint", ""),
-                   "slips": raw.get("slips", []), "source": src}
+            fam = {"tier": "review", "types": [raw.get("item_type", raw["standard"])], "hint": clean_html(raw.get("hint", "")),
+                   "slips": [clean_html(t) for t in raw.get("slips", [])], "source": src}
             code_to_items.setdefault(raw["standard"], ([], {}))
             code_to_items[raw["standard"]][1][raw["id"]] = fam
             code_to_items[raw["standard"]][0].append(item)

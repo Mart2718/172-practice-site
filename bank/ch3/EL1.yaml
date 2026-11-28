@@ -1,0 +1,79 @@
+outcome: EL1
+title: Introduction to Exponentials
+chapter: 3
+checkit: https://tbil.org/preview/precalculus/exercises/#/bank/EL1/
+objective: Determine if a table represents an exponential function, evaluate an exponential function, and find an equation of an exponential function given two points.
+generator: el
+problems:
+- id: EL1-F-01
+  tier: floor
+  item_type:
+  - EL1.a
+  kind: template
+  template: exp_table_identify
+  seed: 1
+  answer: generated
+  solution: null
+  hint: In an exponential function, equal steps in \(x\) multiply \(y\) by the same number. Divide each output by the one before it and see whether the ratios match.
+  slips:
+  - Checking differences instead of ratios. A constant difference means a linear function.
+  - Checking only one pair of consecutive outputs. Check them all.
+  status: checked
+- id: EL1-F-02
+  tier: floor
+  item_type:
+  - EL1.b
+  kind: template
+  template: exp_evaluate
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Replace \(x\) with the input, then apply the exponent before you multiply by the coefficient. A negative exponent means a reciprocal.
+  slips:
+  - Multiplying the coefficient and the base first. In \(3\cdot 2^{4}\), compute \(2^{4}\) first.
+  - Treating a negative exponent as a negative number. \(2^{-3}\) is \(\dfrac{1}{8}\), not \(-8\).
+  status: checked
+- id: EL1-F-03
+  tier: floor
+  item_type:
+  - EL1.c
+  kind: template
+  template: exp_two_points
+  seed: 1
+  answer: generated
+  solution: null
+  hint: The point with \(x=0\) gives \(a\). Put the other point into \(y=ab^{x}\) and solve for \(b\).
+  slips:
+  - Using the \(y\)-value of the second point as \(b\). It is \(ab^{n}\), so you must undo the power.
+  - Forgetting to take the root. If \(b^{3}=64\), then \(b=4\), not \(64\).
+  status: checked
+- id: EL1-A-01
+  tier: assessment
+  item_type:
+  - EL1.a
+  - EL1.b
+  - EL1.c
+  kind: template
+  template: exp_three_part
+  seed: 1
+  answer: generated
+  solution: null
+  hint: 'Part (a): compare ratios. Part (b): exponent before coefficient. Part (c): the point with \(x=0\) gives \(a\) (or divide the two equations if neither point has \(x=0\)).'
+  slips:
+  - Using differences in part (a). Exponential functions have a constant ratio.
+  - Treating \(f(4)=3\cdot 2^{4}\) as \((3\cdot 2)^{4}\).
+  status: checked
+- id: EL1-A-02
+  tier: assessment
+  item_type:
+  - EL1.c
+  kind: template
+  template: exp_two_points_general
+  seed: 1
+  answer: generated
+  solution: null
+  hint: Write one equation for each point, then divide the second equation by the first. The \(a\) cancels and you are left with a power of \(b\).
+  slips:
+  - Subtracting the equations instead of dividing them. Division cancels \(a\); subtraction does not.
+  - Finding \(b\) and stopping. You still need \(a\) from one of the original equations.
+  status: checked
