@@ -103,16 +103,16 @@ Two programs re-derive answers from the printed problem alone, without calling t
 | Program | Covers | Result |
 |---|---|---|
 | `generators/verify_pool.py` (LaTeX-to-SymPy reader) | FN1, FN2 | 507 checks, 0 fail |
-| `generators/verify_ch35.py` | EL1–EL7, PF2, PF3, TE1–TE6, PR3–PR9 (804 items) | 1,635 checks, 0 fail |
+| `generators/verify_ch35.py` | EL1–EL7, PF2, PF3, TE1–TE6, PR3–PR9 (804 items) | 1,702 checks, 0 fail |
 
-`verify_ch35.py` reads only the printed stem, question and answer from `site/pool/*.json`. It has four layers: **G1** re-evaluates every chain of equalities in an answer (`a = b = c`, `a \approx b`) with a small LaTeX evaluator (`texeval.py`), allowing half a unit of the last printed digit for an approximation; a **generic worked-step layer** (`vc_gen.py`) re-checks each intermediate step at the true values of its letters; **per-template checks** (`vc_el.py`, `vc_pr.py`, `vc_trig.py`, `vc_tri.py`) parse the question, solve it again (roots, intercepts, asymptotes, ranges, triangles, inequalities) and compare with the printed answer; and **env chains** substitute the solution back into the printed steps.
+`verify_ch35.py` reads only the printed stem, question and answer from `site/pool/*.json`. It has four layers: **G1** re-evaluates every chain of equalities in an answer (`a = b = c`, `a \approx b`) with a small LaTeX evaluator (`texeval.py`), allowing half a unit of the last printed digit for an approximation; a **generic worked-step layer** (`vc_gen.py`) re-checks each intermediate step at the true values of its letters; **per-template checks** (`vc_el.py`, `vc_pr.py`, `vc_trig.py`, `vc_tri.py`) parse the question, solve it again (roots, intercepts, asymptotes, ranges, triangles, inequalities) and compare with the printed answer; and **env chains** substitute the solution back into the printed steps. A family-level check also reads the hint and slips: every inverse trig function that an item uses must be named there, and a composition item's hint must give each interval.
 
 ```bash
 python3 generators/verify_ch35.py [CODE ...]        # exit status 1 on any failure
 python3 generators/mutate_ch35.py [CODE ...] [--per-family N] [--seed S]
 ```
 
-**Does the checker catch errors?** `mutate_ch35.py` copies an answer, plants one wrong number or sign, and asks whether the verifier fails. Run with `--seed 5 --per-family 4`: 598 plants, **95.0% caught**; 100% of plants that change a final answer; 92.6% of sign changes; 91.9% of changes anywhere in the text. The survivors are mostly wording that no program reads (a prose sentence with the number in it) and plants that leave an equivalent expression. The tool writes survivors to `.mutation-survivors.json` (ignored by git).
+**Does the checker catch errors?** `mutate_ch35.py` copies an answer, plants one wrong number or sign, and asks whether the verifier fails. Run with `--seed 5 --per-family 4`: 599 plants, **95.8% caught**; 100% of plants that change a final answer; 93.4% of sign changes and of changes anywhere in the text. The survivors are mostly wording that no program reads (a prose sentence with the number in it) and plants that leave an equivalent expression. The tool writes survivors to `.mutation-survivors.json` (ignored by git).
 
 What a program does **not** judge: whether a hint gives the answer away, whether a slip is a mistake students really make, whether wording is ambiguous, whether a problem is fair. That is what the outside audit is for.
 

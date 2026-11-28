@@ -396,6 +396,8 @@ def value_sentence(item):
 @check("log_expand", "log_condense")
 def log_rewrite(item):
     p = item["parts"][0]
+    if "positive" not in p["q"]:
+        fail(item, "expanding or condensing logarithms needs the statement that all variables are positive")
     fq = compile_tex(maths(p["q"])[0])
     frags = [compile_tex(t) for t in maths(p["a"])]
     names = "abcdfghjklmnoprstuvwxyz"

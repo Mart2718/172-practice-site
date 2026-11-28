@@ -117,8 +117,20 @@ def _plus(r_poly, rt):
     return f" + ({rt})"
 
 
-def _div_answer(F, dividend, divisor_tex, q, r_poly, variable_r=False):
+def _div_answer(F, dividend, divisor_tex, q, r_poly, variable_r=False, excluded=None):
+    """Answer text for a division. If `excluded` is given, F(x) is the *fraction* dividend/divisor (undefined at
+    x = excluded), so F(x) = q + r/divisor; the form 'divisor times quotient plus remainder' is then stated for the numerator."""
     qt, rt = tex(q), tex(r_poly)
+    if excluded is not None:
+        ne = m(rf"x \ne {excluded}")
+        num_t = _poly_tex(dividend)
+        if r_poly == 0:
+            return (f"Quotient {m('q(x) = ' + qt)}, remainder {m('0')}. Because the remainder is {m('0')}, {m(divisor_tex)} divides evenly into the numerator "
+                    f"{m(num_t)}, so {m(f'{F}(x) = ' + qt)} for {ne}.")
+        frac = rf"\dfrac{{{abs(r_poly)}}}{{{divisor_tex}}}"
+        sgn = "-" if r_poly < 0 else "+"
+        return (f"Quotient {m('q(x) = ' + qt)}, remainder {m('r(x) = ' + rt)}. In other words, {m(f'{F}(x) = {qt} {sgn} ' + frac)}, with {ne}. "
+                f"Multiplying by the divisor gives the same fact for the numerator: {m(f'{num_t} = ({divisor_tex})({qt})' + _plus(r_poly, rt))}.")
     if r_poly == 0:
         return (f"Quotient {m('q(x) = ' + qt)}, remainder {m('0')}. Because the remainder is {m('0')}, "
                 f"{m(divisor_tex)} divides evenly into {m(F + '(x)')}.")
@@ -138,7 +150,7 @@ def poly_long_division(rng):
     assert sp.expand(qq - q) == 0 and rr == r and dividend.subs(x, c) == r  # division algorithm and remainder theorem
     divisor_tex = f"x - {c}" if c > 0 else f"x + {-c}"
     q_txt = f"Use long division to find the quotient and remainder for {m(F + '(x) = \\dfrac{' + _poly_tex(dividend) + '}{' + divisor_tex + '}')}."
-    return {"stem": "", "parts": [(q_txt, _div_answer(F, dividend, divisor_tex, q, r))], "figure": None}
+    return {"stem": "", "parts": [(q_txt, _div_answer(F, dividend, divisor_tex, q, r, excluded=c))], "figure": None}
 
 
 def poly_long_division_quadratic(rng):
@@ -399,6 +411,8 @@ def rational_hole_features(rng):
     yint = sp.Rational(k * b_, c_)
     assert holes == [a_] and zeros == [b_] and vas == [c_] and ha == k
     assert red.subs(x, a_) == hole_y and sp.Rational(num_.subs(x, 0), den_.subs(x, 0)) == yint
+    rd_left = sp.cancel(den_ / (x - a_))                    # what is left of the denominator after the common factor is canceled
+    assert rd_left == x - c_ and rd_left.subs(x, a_) != 0   # not zero at a: the factor canceled completely, so a is a hole and not an asymptote
     unfactored = rng.random() < 0.5
     cf = _coef(k)
     if unfactored:
@@ -408,7 +422,8 @@ def rational_hole_features(rng):
     else:
         shown = rf"\dfrac{{{cf}{lin(a_)}{lin(b_)}}}{{{lin(a_)}{lin(c_)}}}"
     parts = [
-        ("Find any holes.", f"{m(f'x = {a_}')} is a factor of both the numerator and the denominator, so there is a hole at {m(f'x = {a_}')}. "
+        ("Find any holes.", f"{m(f'x = {a_}')} is a factor of both the numerator and the denominator. After canceling it, the denominator that is left is "
+                            f"{m(_poly_tex(rd_left))}, which is not {m(0)} at {m(f'x = {a_}')}, so the factor canceled completely and there is a hole at {m(f'x = {a_}')}. "
                             f"After canceling, the value there is {m(f'y = ' + frac_tex(hole_y))}, so the hole is at {m(f'({a_}, {frac_tex(hole_y)})')}."),
         ("Find the zeros.", f"The zero is {m(f'x = {b_}')} (the other numerator zero, {m(f'x = {a_}')}, is a hole, not a zero)."),
         ("Find the vertical asymptote.", f"{m(f'x = {c_}')}."),

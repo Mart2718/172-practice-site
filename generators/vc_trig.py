@@ -651,9 +651,49 @@ def pf2_static(item):
                 fail(item, f"the interval {tex} should be [0, 2\\pi)")
 
 
+def arc_argument(text, fn):
+    """The text inside \\arcXXX\\left( ... \\right) with its own \\left/\\right pairs balanced."""
+    mt = re.search(r"\\" + fn + r"\\left\(", text)
+    if not mt:
+        return None
+    depth, i = 1, mt.end()
+    while i < len(text):
+        if text.startswith("\\left", i):
+            depth += 1
+            i += 5
+        elif text.startswith("\\right", i):
+            depth -= 1
+            if depth == 0:
+                return text[mt.end():i]
+            i += 6
+        else:
+            i += 1
+    return None
+
+
 def pf3_static(item):
+    stem_fn = re.search(r"\\(arcsin|arccos)", item["stem"])
+    if stem_fn:                                    # domain/range: the inequality in the answer must be about the same inside expression
+        inside = arc_argument(item["stem"], stem_fn.group(1))
+        for p in item["parts"]:
+            ms = re.search(r"-1 \\le (.*?) \\le 1", p["a"])
+            if inside and ms:
+                for xv in (0.37, 1.9, -2.3):
+                    if abs(evaluate(inside, {"x": xv}) - evaluate(ms.group(1), {"x": xv})) > 1e-9:
+                        fail(item, f"the domain inequality is about {ms.group(1)} but the function has {inside} inside")
+                        break
     for p in item["parts"]:
         a, q = p["a"], p["q"]
+        mw = re.search(r"whose (sine|cosine|tangent) is \\\(((?:(?!\\\)).)*)\\\)", a)
+        qa = re.search(r"\\(arcsin|arccos|arctan)", q)
+        if mw and qa:
+            arg = arc_argument(q, qa.group(1))
+            if arg is not None and abs(evaluate(arg) - evaluate(mw.group(2))) > 1e-9:
+                fail(item, f"the explanation says the {mw.group(1)} is {mw.group(2)}, but the question has {arg}")
+        mi = re.search(r"\\\(((?:(?!\\\)).)*)\\\) is not in that interval", a)
+        inner0 = re.search(r"\\(?:sin|cos|tan)\\left\((.*)\\right\)\\right\)", q)
+        if mi and inner0 and abs(evaluate(inner0.group(1)) - evaluate(mi.group(1))) > 1e-9:
+            fail(item, f"'{mi.group(1)} is not in that interval' but the angle inside is {inner0.group(1)}")
         for m in re.finditer(r"\\\(\\(arcsin|arccos|arctan)\\\) (?:must lie|lies) in \\\((.*?)\\\)", a):
             if not interval_matches(m.group(2), m.group(1)):
                 fail(item, f"the range printed for {m.group(1)} is wrong: {m.group(2)}")

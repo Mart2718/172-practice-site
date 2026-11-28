@@ -28,10 +28,10 @@ problems:
   seed: 1
   answer: generated
   solution: null
-  hint: Find a common denominator for all the fractions, multiply every term by it, and solve. Notice that \(x^2-p^2\) factors as \((x-p)(x+p)\).
+  hint: Find a common denominator for all the fractions, multiply every term by it, and solve. Notice that the denominator on the right is a difference of squares, so it factors into the two denominators on the left.
   slips:
   - Multiplying only some of the terms by the common denominator.
-  - Not factoring \(x^2-p^2\), so the common denominator is much bigger than it needs to be.
+  - Not factoring the denominator on the right, so the common denominator is much bigger than it needs to be.
   status: checked
 - id: PR6-F-03
   tier: floor

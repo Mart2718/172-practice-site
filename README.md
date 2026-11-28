@@ -21,8 +21,8 @@ Nothing from `172-exam-bank` ever goes in this repo. New practice problems never
 | `site/` | The website: pages, MathJax (self-hosted), and the generated problem pool in `site/pool/` |
 | `generators/pool.py` | Exports the pool: up to 12 versions per template, plus the hand-written problems |
 | `generators/verify_pool.py` | Re-derives answers independently and fails if any is wrong (FN1 and FN2) |
-| `generators/verify_ch35.py`, `texeval.py`, `vbase.py`, `vc_*.py` | The same for the 22 standards in Chapters 3–5 (EL, PF2–3, TE, PR3–9): 1,635 checks |
-| `generators/mutate_ch35.py` | Plants wrong answers to test whether the verifier catches them (95% overall, 100% of wrong final answers) |
+| `generators/verify_ch35.py`, `texeval.py`, `vbase.py`, `vc_*.py` | The same for the 22 standards in Chapters 3–5 (EL, PF2–3, TE, PR3–9): 1,702 checks |
+| `generators/mutate_ch35.py` | Plants wrong answers to test whether the verifier catches them (96% overall, 100% of wrong final answers) |
 | `generators/blueprint.py` | Writes `BLUEPRINT.md`, the list of problem families and a sample question for each |
 | `generators/audit_pool.py` | Builds the packets for the outside blind-solve audit (`--standards` for chosen standards) |
 | `generators/fn1.py`, `fn2.py`, `el.py`, `pf.py`, `te.py`, `pr.py`, `common.py` | Problem templates and helpers. Answers are computed (SymPy) and checked a second way inside the template, never typed by hand |

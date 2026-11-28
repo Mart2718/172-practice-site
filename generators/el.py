@@ -372,7 +372,7 @@ def log_expand(rng):
     rhs = (pn[0] * math.log(vals[vx], base) + pn[1] * math.log(vals[vy], base)
            - sum(p * math.log(vals[v], base) for v, p in den_vars))
     assert abs(lhs - rhs) < 1e-9
-    q = f"Expand {m(lg(arg))}, showing the property used at each step."
+    q = f"Expand {m(lg(arg))}, showing the property used at each step. Assume all variables are positive."
     num_f = [(vx, pn[0]), (vy, pn[1])]
     step1 = f"{lg(num_t)} - {lg(den_t)}"
     sum_num = " + ".join(lg(_pexp(v, p)) for v, p in num_f)
@@ -405,7 +405,7 @@ def log_condense(rng):
     assert abs(lhs - rhs) < 1e-9
     ans = (f"Power rule first: move each coefficient into an exponent. Then use the product rule for the sum and the quotient rule for the difference. "
            f"Result: {m(final)}.")
-    return {"stem": "", "parts": [(f"Condense {m(expr)} into a single logarithm.", ans)], "figure": None}
+    return {"stem": "", "parts": [(f"Condense {m(expr)} into a single logarithm. Assume all variables are positive.", ans)], "figure": None}
 
 
 def log_properties_given(rng):

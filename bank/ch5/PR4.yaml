@@ -17,7 +17,7 @@ problems:
   hint: Divide the leading term of the dividend by the leading term of the divisor, multiply that result by the whole divisor, subtract, bring down the next term, and repeat. Stop when what is left has smaller degree than the divisor.
   slips:
   - Subtracting only the first term of the product. Subtract every term, and change every sign.
-  - Using the wrong sign for the divisor. Dividing by \(x+2\) uses \(c=-2\), not \(c=2\).
+  - Using the wrong sign for the divisor's constant when you multiply and subtract. The divisor \(x+a\) has constant \(+a\), and \(x-a\) has constant \(-a\).
   - Skipping a missing power of \(x\). Write it with a zero coefficient (for example \(0x^2\)) so the columns line up.
   status: checked
 - id: PR4-A-01

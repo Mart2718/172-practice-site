@@ -91,11 +91,32 @@ def family_templates():
     return out
 
 
+def family_text(code):
+    """Hints and slips live on the family, so check them against the items of that family."""
+    d = json.load(open(os.path.join(POOL, f"{code}.json")))
+    for fid, fam in d["families"].items():
+        items = [it for it in d["items"] if it["family"] == fid]
+        used = set()
+        for it in items:
+            for part in it["parts"]:
+                used |= set(re.findall(r"\\(arcsin|arccos|arctan)", part["q"] + part["a"]))
+        said = fam.get("hint", "") + " ".join(fam.get("slips", []))
+        for fn in sorted(used):
+            if "\\" + fn not in said:
+                fail(items[0], f"the hint and slips never mention \\{fn}, but items in this family use it")
+            interval = {"arcsin": r"\left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]", "arccos": r"[0, \pi]"}.get(fn)
+            asks_range = any("State the range" in part["q"] for it in items for part in it["parts"])   # there the interval is the answer, so the hint must not give it
+            if fn != "arctan" and not asks_range and "\\" + fn in said and interval and interval not in said:
+                fail(items[0], f"the hint and slips name \\{fn} but never give its interval")
+        ok["family hint covers every inverse function used"] += 1
+
+
 def main():
     wanted = [a for a in sys.argv[1:] if a in CODES] or CODES
     tmpl = family_templates()
     for code in wanted:
         d = json.load(open(os.path.join(POOL, f"{code}.json")))
+        family_text(code)
         for item in d["items"]:
             for part in item["parts"]:
                 g1(item, part["a"])

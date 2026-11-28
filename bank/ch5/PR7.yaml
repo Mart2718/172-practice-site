@@ -18,9 +18,9 @@ problems:
   seed: 1
   answer: generated
   solution: null
-  hint: Factor the numerator and denominator completely. A factor common to both gives a hole. The remaining zeros of the denominator give vertical asymptotes, and the remaining zeros of the numerator are the zeros. Compare degrees for the horizontal asymptote.
+  hint: Factor the numerator and denominator completely and cancel the common factors. A factor that cancels completely gives a hole. Then look at the denominator that is left; a factor of it that is still there is a vertical asymptote, and the remaining zeros of the numerator are the zeros. Compare degrees for the horizontal asymptote.
   slips:
-  - Calling a hole a vertical asymptote. A canceled factor makes a hole.
+  - Mixing up holes and vertical asymptotes. A factor that cancels completely makes a hole. If the factor is still in the denominator after canceling, that input is a vertical asymptote.
   - Counting a canceled factor as a zero of the function.
   - Finding the \(y\)-value of the hole from the original expression, which is undefined there. Use the simplified expression.
   status: checked

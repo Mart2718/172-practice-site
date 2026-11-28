@@ -102,7 +102,9 @@ def split_fraction(tex):
     return tex2sym(m.group(1)), tex2sym(m.group(2))
 
 
-def division_matches(item, N, D, answer):
+def division_matches(item, N, D, answer, rational=False):
+    """rational=True: the question defines F(x) as the fraction N/D, so F(x) = q + r/D (not N = D q + r).
+    rational=False: F(x) is the dividend itself, so F(x) = D q + r."""
     q, r = sp.div(sp.Poly(sp.expand(N), x), sp.Poly(sp.expand(D), x))
     mq = re.search(r"q\(x\) = (.*?)\\\)", answer)
     mr = re.search(r"r\(x\) = (.*?)\\\)", answer) or re.search(r"remainder \\\((.*?)\\\)", answer)
@@ -111,7 +113,32 @@ def division_matches(item, N, D, answer):
         return
     if not same(tex2sym(mq.group(1)), q.as_expr()) or not same(tex2sym(mr.group(1)), r.as_expr()):
         fail(item, f"quotient/remainder {mq.group(1)} | {mr.group(1)} vs {q.as_expr()} | {r.as_expr()}")
-    m = re.match(r"f\(x\) = (.*)", maths(answer)[-1].strip()) or re.match(r"[fg]\(x\) = (.*)", maths(answer)[-1].strip())
+    ms = [t.strip() for t in maths(answer)]
+    mn = re.search(r"into the numerator \\\((.*?)\\\)", answer)
+    if mn and not same(tex2sym(mn.group(1)), sp.expand(N)):
+        fail(item, f"'divides evenly into the numerator {mn.group(1)}' but the numerator is {sp.expand(N)}")
+    if rational:
+        want = sp.cancel(sp.expand(N) / sp.expand(D))
+        forms = [t for t in ms if re.match(r"[A-Za-z]\(x\) = ", t) and not re.match(r"[qr]\(x\)", t)]
+        if not forms:
+            fail(item, "the answer never writes F(x) as quotient plus remainder over the divisor")
+        for t in forms:
+            if not same(tex2sym(t.split("=", 1)[1]), want):
+                fail(item, f"{t} is not equal to the fraction N/D that the question defines")
+        root = sp.solve(sp.expand(D), x)[0]
+        ne = [t for t in ms if re.match(r"x \\ne ", t)]
+        if not ne or not same(tex2sym(re.sub(r"^x\s*\\ne\s*", "", ne[0])), root):
+            fail(item, f"the answer should state x not equal to {root}")
+        if r.as_expr() != 0:
+            ident = [t for t in ms if "=" in t and not re.match(r"[A-Za-z]\(x\)", t) and not t.startswith("x ")]
+            if not ident:
+                fail(item, "no numerator identity N = D q + r")
+            for t in ident:
+                lhs, rhs = t.split("=", 1)
+                if not same(tex2sym(lhs), tex2sym(rhs)) or not same(tex2sym(lhs), sp.expand(N)):
+                    fail(item, f"numerator identity is wrong: {t}")
+        return
+    m = re.match(r"[A-Za-z]\(x\) = (.*)", ms[-1])
     if m and not same(tex2sym(m.group(1)), sp.expand(N)):
         fail(item, "the rewritten form does not rebuild f")
 
@@ -120,7 +147,7 @@ def division_matches(item, N, D, answer):
 def poly_long_division(item):
     q = item["parts"][0]["q"]
     N, D = split_fraction(maths(q)[0])
-    division_matches(item, N, D, item["parts"][0]["a"])
+    division_matches(item, N, D, item["parts"][0]["a"], rational=True)
 
 
 @check("poly_long_division_quadratic")
@@ -267,6 +294,7 @@ def rational_features(item):
     holes = sorted(sp.roots(G).keys(), key=float) if G.degree() > 0 else []
     red = sp.cancel(Np.as_expr() / Dp.as_expr())
     rn, rd = sp.fraction(red)
+    holes = [h for h in holes if sp.simplify(rd.subs(x, h)) != 0]     # a canceled factor still in the denominator is an asymptote, not a hole
     zeros = sorted(sp.roots(sp.Poly(rn, x)).keys(), key=float)
     vas = sorted(sp.roots(sp.Poly(rd, x)).keys(), key=float)
     ha = sp.limit(red, x, sp.oo)
@@ -278,6 +306,13 @@ def rational_features(item):
         h = holes[0]
         if not pt or not same(tex2sym(pt[-1][0]), h) or not same(tex2sym(pt[-1][1]), red.subs(x, h)):
             fail(item, f"hole {pt} vs {(h, red.subs(x, h))}")
+        ml = re.search(r"denominator that is left is \\\((.*?)\\\), which is not \\\(0\\\) at \\\(x = (.*?)\\\)", ans[0])
+        if not ml:
+            fail(item, "the hole answer must show the denominator that is left after canceling and that it is not zero at the hole")
+        else:
+            left = tex2sym(ml.group(1))
+            if not same(left, sp.cancel(Dp.as_expr() / (x - h))) or sp.simplify(left.subs(x, h)) == 0 or not same(tex2sym(ml.group(2)), h):
+                fail(item, f"left-over denominator {ml.group(1)} is wrong or is zero at {h}")
     elif "no holes" not in ans[0]:
         fail(item, "should say there are no holes")
     for v in x_values(ans[0]):
@@ -299,6 +334,8 @@ def rational_features(item):
     if not hv or not same(tex2sym(hv[-1]), ha):
         fail(item, f"horizontal asymptote {hv} vs {ha}")
     # y-intercept
+    if not re.search(r"\w\(0\) = ", ans[4]):
+        fail(item, "the y-intercept explanation should evaluate the function at 0")
     pt = re.findall(r"\\\(\(0, (.*?)\)\\\)", ans[4])
     if not pt or not same(tex2sym(pt[-1]), yint):
         fail(item, f"y-intercept {pt} vs {yint}")

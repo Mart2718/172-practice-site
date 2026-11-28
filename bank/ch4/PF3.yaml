@@ -44,9 +44,9 @@ problems:
   seed: 1
   answer: generated
   solution: null
-  hint: For an expression like \(\tan(\arccos x)\), let the inside be an angle \(\theta\), draw a right triangle that fits it, find the missing side, and read off the ratio. For \(\arccos(\cos\theta)\), check whether \(\theta\) is already in \([0, \pi]\). If it is not, find the angle in \([0, \pi]\) with the same cosine.
+  hint: For a trig function of an inverse trig value, such as \(\tan(\arcsin x)\) or \(\sin(\arccos x)\), let the inside be an angle \(\theta\), draw a right triangle that fits it, find the missing side, and read off the ratio. For an inverse trig function of a trig value, such as \(\arcsin(\sin\theta)\) or \(\arccos(\cos\theta)\), check whether \(\theta\) is already in the interval for that inverse function, which is \(\left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]\) for \(\arcsin\) and \([0, \pi]\) for \(\arccos\). If it is not, find the angle in that interval with the same sine or cosine.
   slips:
-  - Canceling \(\arccos(\cos\theta)\) to \(\theta\) without checking that \(\theta\) is in \([0, \pi]\).
-  - Choosing a negative missing side when the angle from \(\arccos\) must be in \([0, \pi]\), where the sine is never negative.
+  - Canceling \(\arcsin(\sin\theta)\) to \(\theta\), or \(\arccos(\cos\theta)\) to \(\theta\), without checking that \(\theta\) is in the interval for that inverse function.
+  - Choosing a negative missing side. The angle from \(\arcsin\) is in \(\left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]\), where the cosine is never negative, and the angle from \(\arccos\) is in \([0, \pi]\), where the sine is never negative.
   - Mixing up the adjacent and opposite sides when reading the ratio from the triangle.
   status: checked

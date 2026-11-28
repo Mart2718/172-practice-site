@@ -85,8 +85,8 @@ Expand and condense logarithmic expressions using the properties of logarithms.
 
 | Family | Tier | Item type | Template | Sample question |
 |---|---|---|---|---|
-| EL5-F-01 | Core practice | EL5.a | `log_expand` | (a) Expand $\log_{6}\left(\dfrac{xy^{2}}{z^{3}}\right)$, showing the property used at each step. |
-| EL5-F-02 | Core practice | EL5.b | `log_condense` | (a) Condense $\dfrac{1}{2}\log_{5}\left(x\right) + 2\log_{5}\left(y\right) - 3\log_{5}\left(z\right)$ into a single logarithm. |
+| EL5-F-01 | Core practice | EL5.a | `log_expand` | (a) Expand $\log_{6}\left(\dfrac{xy^{2}}{z^{3}}\right)$, showing the property used at each step. Assume all variables are positive. |
+| EL5-F-02 | Core practice | EL5.b | `log_condense` | (a) Condense $\dfrac{1}{2}\log_{5}\left(x\right) + 2\log_{5}\left(y\right) - 3\log_{5}\left(z\right)$ into a single logarithm. Assume all variables are positive. |
 | EL5-A-01 | Putting it together | EL5.a, EL5.c | `log_properties_given` | Suppose $\log_b(3) = p$ and $\log_b(2) = q$. (a) Write $\log_b\left(18\right)$ in terms of $p$ and $q$. (b) Write $\log_b\left(\dfrac{27}{2}\right)$ in terms of $p$ and $q$. (c) Write $\log_b\left(\sqrt{6}\right)$ in terms of $p$ and $q$. |
 | EL5-A-02 | Putting it together | EL5.b, EL5.c | `log_combine_evaluate` | (a) Evaluate $\log_{2}(4) + \log_{2}(2)$ without a calculator. (b) Evaluate $\log_{3}(81) - \log_{3}(3)$ without a calculator. |
 
